@@ -1,0 +1,41 @@
+{
+    "output": null,
+    "generator": "site",
+    "title": "pandora 技术实现相关设计",
+    "description": null,
+    "extension": null,
+    "github": null,
+    "githubHost": "https://github.com/",
+    "plugins": [],
+    "pluginsConfig": {
+        "fontSettings": {
+            "theme": "white",
+            "family": "serif",
+            "size": 1
+        }
+    },
+    "links": {
+    	"sidebar": {
+    	    "Pandora CarConfiguration": "http://40.73.0.200:8086/front/index.html"
+    	},
+        "sharing": {
+            "google": null,
+            "facebook": null,
+            "twitter": null,
+            "weibo": null,
+            "all": null
+        }
+    },
+    "pdf": {
+        "toc": true,
+        "pageNumbers": false,
+        "fontSize": 12,
+        "paperSize": "a4",
+        "margin": {
+            "right": 62,
+            "left": 62,
+            "top": 36,
+            "bottom": 36
+        }
+    }
+}
