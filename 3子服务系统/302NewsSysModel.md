@@ -1,25 +1,25 @@
 
 ### 3.2.1. 数据模型
 
-#### 3.2.1.1. 资讯资源管理
+#### 3.2.1.1. 库基本信息表  Table bmw_library
 
-```SQL
-Table bmw_library
 
-id
-series         			大系列, 1:1系列 3:3系列 5:5系列 7:7系列
-e_series       			小系列
-import_date    			导入时间
-basic_file_name     	基础数据导入文件名
-basic_file_url      	基础数据文件路径
-optional_file_name  	可选数据文件名
-optional_file_url   	可选数据导入路径
-library_output_date     文件导出时间
-libarary_data_date      数据日期
-version         版本号
-created_at     创建时间
-updated_at     更新时间
-```
+ 字段名 | 解释 
+ :-- | :-- 
+id | 主键
+series         			|	大系列, 1:1系列 3:3系列 5:5系列 7:7系列
+e_series       			|	小系列
+import_date    			|	导入时间
+basic_file_name     	|	基础数据导入文件名
+basic_file_url      	|	基础数据文件路径
+optional_file_name  	|	可选数据文件名
+optional_file_url   	|	可选数据导入路径
+library_output_date     |	文件导出时间
+libarary_data_date      |	数据日期
+version         		|	版本号
+created_at     			|	创建时间
+updated_at     			|	更新时间
+
 
 #### 3.2.1.2. 库基本信息表
 
@@ -36,9 +36,9 @@ optional_file_name  	可选数据文件名
 optional_file_url   	可选数据导入路径
 library_output_date     文件导出时间
 libarary_data_date      数据日期
-version         版本号
-created_at     创建时间
-updated_at     更新时间
+version         		版本号
+created_at     			创建时间
+updated_at     			更新时间
 ```
 
 注: 
