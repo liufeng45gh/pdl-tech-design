@@ -1,14 +1,67 @@
 
 ### 3.2.1. 数据模型
 
-#### 3.2.1.1. 库基本信息表  Table bmw_library
+####  大系列表  Table config_series (原bmw_series)
 
 
  字段名 | 解释 
  :-- | :-- 
-id | 主键
-series         			|	大系列, 1:1系列 3:3系列 5:5系列 7:7系列
-e_series       			|	小系列
+id 						| 主键(自增)
+code         			|	系统唯一标示码(手动填入,这个字段将作为对外关联的外键)
+name_en       			|	英文名
+name_zh    				|	中文名
+bmw_brand_id     		|	品牌id
+disp_order      		|	显示顺序
+enabled         		|	是否启用
+image_url         		|	右侧显示车图片url
+created_at     			|	创建时间
+updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
+
+
+注: 
+
+```
+唯一约束 -> code 
+索引 -> disp_order
+索引 -> enabled
+```
+
+####  小系列表  Table config_eseries (原bmw_eseries)
+
+
+ 字段名 | 解释 
+ :-- | :-- 
+id 						| 主键(自增)
+series_code         	|	对应 config_series->code
+code         			|	系统唯一标示码(手动填入,这个字段将作为对外关联的外键)
+name_en       			|	英文名
+name_zh    				|	中文名
+disp_order      		|	显示顺序
+enabled         		|	是否启用
+created_at     			|	创建时间
+updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
+
+
+注: 
+
+```
+唯一约束 -> code 
+索引 -> series_code
+索引 -> disp_order
+索引 -> enabled
+```
+
+####  库基本信息表  Table config_library (原bmw_library_management)
+
+
+ 字段名 | 解释 
+ :-- | :-- 
+id 						| 主键(自增)
+e_series_code       	|	小系列对应code
 import_date    			|	导入时间
 basic_file_name     	|	基础数据导入文件名
 basic_file_url      	|	基础数据文件路径
@@ -19,27 +72,37 @@ libarary_data_date      |	数据日期
 version         		|	版本号
 created_at     			|	创建时间
 updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
 
 
-#### 3.2.1.2. 库基本信息表
+注: 
 
-```SQL
-Table bmw_library
-
-id
-series         			大系列, 1:1系列 3:3系列 5:5系列 7:7系列
-e_series       			小系列
-import_date    			导入时间
-basic_file_name     	基础数据导入文件名
-basic_file_url      	基础数据文件路径
-optional_file_name  	可选数据文件名
-optional_file_url   	可选数据导入路径
-library_output_date     文件导出时间
-libarary_data_date      数据日期
-version         		版本号
-created_at     			创建时间
-updated_at     			更新时间
 ```
+唯一约束 -> e_series_code + version 
+
+```
+
+
+
+
+#### 库基本属性表 bmw_library_basic_property(表名没有变化)
+
+ 字段名 | 解释 
+ :-- | :-- 
+id 						| 主键(自增)
+library_id         		|	对应 config_library->id
+system_property_code    |	配件唯一id
+import_date    			|	导入时间
+basic_file_name     	|	基础数据导入文件名
+basic_file_url      	|	基础数据文件路径
+optional_file_name  	|	可选数据文件名
+optional_file_url   	|	可选数据导入路径
+library_output_date     |	文件导出时间
+libarary_data_date      |	数据日期
+version         		|	版本号
+created_at     			|	创建时间
+updated_at     			|	更新时间
 
 注: 
 > 关联标签设计格式 A方案 JSON格式
