@@ -55,7 +55,61 @@ updated_by     			|	更新人
 索引 -> enabled
 ```
 
-####  库基本信息表  Table config_library (原bmw_library_management)
+####  model表  Table config_model (原bmw_eseries)
+
+
+ 字段名 | 解释 
+ :-- | :-- 
+id 						| 主键(自增)
+e_series_code         	|	对应 config_eseries->code
+code         			|	系统唯一标示码(手动填入,这个字段将作为对外关联的外键)
+name_en       			|	英文名
+name_zh    				|	中文名
+disp_order      		|	显示顺序
+enabled         		|	是否启用
+created_at     			|	创建时间
+updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
+
+
+注: 
+
+```
+唯一约束 -> code 
+索引 -> eseries_code
+索引 -> disp_order
+索引 -> enabled
+```
+
+
+
+####  配件汇总表  Table config_unique_item (原sys_option_lib)
+
+
+ 字段名 | 解释 
+ :-- | :-- 
+id						| 主键(自增)
+e_series_code       	|	小系列对应code
+property_code    		|	bmw 系统内代码
+property_name_en     	|	英文名
+property_name_cn      	|	中文名
+property_type		  	|	配件类型 basic/optional
+created_at     			|	创建时间
+updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
+
+
+注: 
+
+```
+唯一约束 -> property_name_en + property_code 
+索引->property_type
+```
+
+
+####  导入库基本信息表  Table config_library (原bmw_library_management)
 
 
  字段名 | 解释 
@@ -86,74 +140,175 @@ updated_by     			|	更新人
 
 
 
-#### 库基本属性表 bmw_library_basic_property(表名没有变化)
+#### 库基本属性表 config_library_basic_property(表名没有变化)
 
  字段名 | 解释 
  :-- | :-- 
 id 						| 主键(自增)
 library_id         		|	对应 config_library->id
-system_property_code    |	配件唯一id
-import_date    			|	导入时间
-basic_file_name     	|	基础数据导入文件名
-basic_file_url      	|	基础数据文件路径
-optional_file_name  	|	可选数据文件名
-optional_file_url   	|	可选数据导入路径
-library_output_date     |	文件导出时间
-libarary_data_date      |	数据日期
-version         		|	版本号
+item_id    				|	配件唯一id ,对应 unique_item -> id
+classify     			|	分类 
+comment      			|	注释
 created_at     			|	创建时间
 updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
 
-注: 
-> 关联标签设计格式 A方案 JSON格式
-```JavaScript
-[
-	{
-		"tagType":  "Club",
-		"tagValue": "ClubID",
-		"tagName":  "国安俱乐部"
-	},
-	{
-		"tagType":  "Player",
-		"tagValue": "PlayerID",
-		"tagName":  "徐云龙"
-	},
-	{
-		"tagType":  "League",
-		"tagValue": "leaugeId",
-		"tagName":  "中超联赛"
-	}
-]
+注释
+```
+唯一约束 ->library_id + item_id
+索引->classify
 ```
 
-#### 3.2.1.3 资讯评论
-```SQL
-Table news_comment		
 
-id 						唯一主键
-news_publish_id 		新闻Id（关联news_publish表 ID）
-user_id 				用户ID
-content					评论内容
-praise_count			点赞数
-ref_user_id				被回复用户ID
-ref_comment_id			被回复评论ID
-timestamp				保存点赞时间（bigint）
-created_at
-updated_at								
-is_deleted				是否删除（用于软删除）
-delete_reason			删除原因
+注释 classify
+```
+1：100% option
+2：Uphostory
+3：Wheel
+4：paint
+5：trim
+6: flexible package
+7: flexible option
+8：individule feature
+9：Special cases
+library里会用到前5个状态
 ```
 
-#### 3.2.1.4  用户与评论的点赞关系
-```SQL
-Table news_comment_praise
+#### 库基本属性内容表 config_library_basic_property_setting(表名没有变化)
 
-id 						唯一主键
-comment_id 				新闻评论ID（关联news_comment表 ID）
-user_id 				用户ID
-timestamp				保存点赞时间（bigint）
-created_at
-updated_at
-is_deleted				是否删除（用于软删除）
+ 字段名 | 解释 
+ :-- | :-- 
+id 						| 主键(自增)
+library_id         		|	对应 config_library->id
+item_id    				|	配件唯一id ,对应 unique_item -> id
+model_code    			|	model唯一代码 对应 config_model -> code
+property_content     	|	设置内容
+lhd_or_rhd      		|	左驾车右驾车 L/R/X
+comment      			|	注释
+created_at     			|	创建时间
+updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
+
+注释
+```
+唯一约束 ->library_id + item_id + model_code
+```
+
+
+
+#### 库可选属性表 config_library_optional_property(表名没有变化)
+
+ 字段名 | 解释 
+ :-- | :-- 
+id 						| 主键(自增)
+library_id         		|	对应 config_library->id
+item_id    				|	配件唯一id ,对应 unique_item -> id
+classify     			|	分类 
+comment      			|	注释
+created_at     			|	创建时间
+updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
+
+注释
+```
+唯一约束 ->library_id + item_id
+索引->classify
+```
+
+注释 classify
+```
+1：100% option
+2：Uphostory
+3：Wheel
+4：paint
+5：trim
+6: flexible package
+7: flexible option
+8：individule feature
+9：Special cases
+library里会用到前5个状态
+```
+
+#### 库可选属性内容表 config_library_optional_property_setting(表名没有变化)
+
+ 字段名 | 解释 
+ :-- | :-- 
+id 						| 主键(自增)
+library_id         		|	对应 config_library->id
+item_id    				|	配件唯一id ,对应 unique_item -> id
+model_code    			|	model唯一代码 对应 config_model -> code
+property_content     	|	设置内容
+lhd_or_rhd      		|	左驾车右驾车 L/R/X
+comment      			|	注释
+created_at     			|	创建时间
+updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
+
+注释
+```
+唯一约束 ->library_id + item_id + model_code
+```
+
+
+#### 库配件规则表 config_library_item_rule(原bmw_library_rule)
+
+ 字段名 | 解释 
+ :-- | :-- 
+id 						| 主键(自增)
+library_id         		|	对应 config_library->id
+item_id    				|	配件唯一id ,对应 unique_item -> id
+model_code    			|	model唯一代码 对应 config_model -> code
+property_content     	|	设置内容
+relation_type      		|	关系类型
+correlated_obj      	|	复杂关系内容
+lhd_or_rhd      		|	左驾车右驾车 L/R/X
+rrp_with_vat      		|	价格,只有combine关系的时候被设定
+rrp_without_vat      	|	价格,只有combine关系的时候被设定
+efp_imp      			|	价格,只有combine关系的时候被设定
+efp_subs      			|	价格,只有combine关系的时候被设定
+comment      			|	注释
+created_at     			|	创建时间
+updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
+
+注释
+```
+唯一约束 ->library_id + item_id + model_code
+```
+
+
+#### profile基础信息表 config_profile(原 bmw_launched_profile + bmw_profile_management)
+
+ 字段名 | 解释 
+ :-- | :-- 
+id 						| 主键(自增)
+eseries_code         	|	对应config_eseries-> code
+profile_name    		|	profile 名称
+profile_url    			|	profile url
+import_date     		|	导入时间
+based_library_id   		|	对应library id
+new_library_id			|	新库id
+sort_date      			|	排序时间
+is_responsible      	|	是否可以响应
+bmw_profile_code      	|	导入时excel 表中响应的code
+root_profile_id      	|	根profile id
+parent_profile_id      	|	父级 profile id
+content      			|	内容
+profile_flag      		|	标签
+status      			|	当前状态
+previous_status      	|	前状态
+created_at     			|	创建时间
+updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
+
+注释
+```
+索引 ->eseries_code
 ```
 
