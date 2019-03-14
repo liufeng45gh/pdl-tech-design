@@ -310,5 +310,47 @@ updated_by     			|	更新人
 注释
 ```
 索引 ->eseries_code
+索引 ->sort_date
+索引 ->status
+```
+
+#### profile变种车型表 config_profile_varent(原 bmw_profile_generation_information)
+
+ 字段名 | 解释 
+ :-- | :-- 
+id 						| 主键(自增)
+profile_id         		|	对应config_profile-> id
+model_code    			|	model唯一代码 对应 config_model -> code
+varient_id    			|	列的标志代码 model_code_varent + "-" + package_code_varent
+model_code_varent    	|	确定唯一列的标志因子,原model_code
+package_code_varent     |	确定唯一列的标志因子,原package_code
+model_name_cn   		|	原 cn_model (model 中文显示名称)
+variant_name			|	原 variant (variant 项显示内容)
+variant_name_cn	     	|	原 cn_variant
+line_code      			|	Line Package Code
+aditional_options      	|	Aditional Options
+engine_output      		|	Engine Output
+volume_mix_planning     |	Volume Mix planning
+dof_for_modell      	|	DOF for Modell
+index      				|	顺序
+sop      				|	SOP 开始时间
+eop      				|	EOP 结束时间
+option_code_in_ivsr     |	option code in ivsr
+price_transition_result |	Detail Price transition result
+price_increase_abs      |	Nominal price increase abs.
+monetary_adjustment     |	Monetary adjustment
+price     				|	price
+created_at     			|	创建时间
+updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
+
+注释
+```
+索引 ->profile_id
+索引 ->model_code
+索引 ->varient_id
+唯一约束 ->profile_id + varient_id
+唯一约束 -> profile_id + model_code_varent + package_code_varent
 ```
 
