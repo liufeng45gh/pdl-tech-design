@@ -318,10 +318,10 @@ updated_by     			|	更新人
 
  字段名 | 解释 
  :-- | :-- 
-id 						| 主键(自增)
+id 						| 主键( 自增)
 profile_id         		|	对应config_profile-> id
+varient_id         		|	model_code_varent + "-" + package_code_varent
 model_code    			|	model唯一代码 对应 config_model -> code
-varient_id    			|	列的标志代码 model_code_varent + "-" + package_code_varent
 model_code_varent    	|	确定唯一列的标志因子,原model_code
 package_code_varent     |	确定唯一列的标志因子,原package_code
 model_name_cn   		|	原 cn_model (model 中文显示名称)
@@ -353,4 +353,73 @@ updated_by     			|	更新人
 唯一约束 ->profile_id + varient_id
 唯一约束 -> profile_id + model_code_varent + package_code_varent
 ```
+
+
+
+#### profile单元格值设置表 config_profile_cell_setting(原 bmw_profile_basic_option + bmw_profile_flexible_option)
+
+ 字段名 | 解释 
+ :-- | :-- 
+id 						| 主键( 自增)
+profile_id         		|	对应config_profile-> id
+varient_id    			|	config_profile_varent->varient_id
+item_id    				|	配件id
+setting_content     	|	设置值
+show_content   			|	显示值
+created_at     			|	创建时间
+updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
+
+注释
+```
+唯一约束 ->profile_id + varient_id + item_id
+```
+
+
+#### profile配件列表 config_profile_item(后加)
+
+
+ 字段名 | 解释 
+ :-- | :-- 
+id 						| 主键( 自增)
+profile_id         		|	对应config_profile-> id
+item_id    				|	配件id
+classify     			|	类型
+price   				|	价格
+rmb_price				| 	人民币价格
+discount				| 	折扣
+created_at     			|	创建时间
+updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
+
+注释
+```
+唯一约束 ->profile_id + item_id + classify
+```
+
+#### profile配件列表 config_profile_item_change(后加)
+
+
+ 字段名 | 解释 
+ :-- | :-- 
+id 						| 主键( 自增)
+profile_id         		|	对应config_profile-> id
+item_id    				|	配件id
+classify     			|	类型
+price   				|	价格
+rmb_price				| 	人民币价格
+discount				| 	折扣
+change_type				|   + / -
+created_at     			|	创建时间
+updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
+
+注释
+```
+唯一约束 ->profile_id + item_id + classify
+```
+
 
