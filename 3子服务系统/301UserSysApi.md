@@ -1,35 +1,86 @@
-### 3.1.2. 用户系统服务接口
+###  carConfiguration 接口
 
-#### 3.1.2.0. 用户手机下发验证码
+#### 1. 获取产品经理负责的车系列
 
-POST https://api-csl.9h-sports.com/v1/user/phone-sms
+POST http://40.73.0.200/carConfig/getCarConfigSeries
 
-上送: BODY: { "phone" : "135xxxxxx"}
+上送: BODY: { "userId" : "1"}
 
-返回: {oper_code:1}
+返回: 
+```
+{
+    "data": [{
+        "id": 2,              //  profile ID
+        "series": "Series1",     // 系列
+        "eSeries": [{          
+            "name": "Series1",       // E系列
+            "isResponsible": "true"   //  “true”表示产品经理负责的车系、
+        }, {
+            "name": "Series1",
+            "isResponsible": "true"
+        }],
+        "userId": "1",
+        "isResponsible": "true"
+    }]
+}
+```
 
-注: 该接口会继续调用第三方系统[短信平台]进行短信下发
-	该接口每个手机号24小时内限制发送5次,同一个ip24小时内限制20次(同一个公司出去的一般都是同一个ip)
-	(此接口做压测要谨慎,最好跟易美那边先沟通，或者不适合做压测)
+注: 该接口是用来提供当前用户（产品经理）负责的车系列
 
 
-#### 3.1.2.1. 比较验证码
+#### 2. 获取E系列配置车列表
 
-POST https://api-csl.9h-sports.com/v1/user/phone-checks
+POST http://40.73.0.200:8762/carConfig/getCarConfigProfileList
 
-上送: BODY: { "telephone" : "135xxxxxx","code":"1234"}
+上送: BODY: { "eSeries" : "G30","userId":"1"}
 
-返回: {oper_code:1}}
+返回:
+```
+{
+    "yearLunchedList": [{
+        "id": 2,
+        "series": "Series1",
+        "eSeries": "G30",
+        "profileName": [{
+            "idNumber": 2,
+            "configName": "profile_name",
+            "state": null,
+            "createAt": "2019-01-30",
+            "isResponsible": "true"
+        }],
+        "userId": "1",
+        "sortDate": "2018",
+        "updateList": null
+    }],
+    "yearLunchedRight": [{
+        "id": 4,
+        "series": "Serise7",
+        "eSeries": "G30",
+        "profileName": [{
+            "idNumber": 4,
+            "configName": "profile_name1",
+            "state": null,
+            "createAt": "2019-01-21",
+            "isResponsible": "true"
+        }]
+}
+```
 
-注: 该接口会比较用户提交的验证码和发给用户的是否一致
+注: 该接口用来提供小系（E系列）配置车列表
 
-#### 3.1.2.2. 用户手机+验证码注册新用户
+#### 3. 创建一个配件车系
 
-POST https://api-csl.9h-sports.com/v1/user/registers
+POST http://40.73.0.200:8762/carConfig/updateCarConfigVariantStatus
 
-上送: BODY: {phone:"18610814074",code:"xxxxxx",password:"xxxxxxx",rePassword:"xxxxxx"}
+上送: BODY: {id:"XXX",userId:"XXX",currentStatus:"XXX",updateDate:"XXX",fileName:"XXX"}
 
-返回: {oper_code:1,data:"token-Characters"}
+返回: 
+```
+{
+    "code": "0", // “0” 表示成功 ，“1”表示失败
+    "message": "成功！"
+}
+```
 
 注: 该接口会需要传入 手机号,验证码,密码，重复密码
 

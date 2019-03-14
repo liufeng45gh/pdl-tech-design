@@ -1,104 +1,391 @@
 ### 3.1.1. 数据模型
 
-#### 3.1.1.1. 用户注册信息
+#### 启动的profile(bmw_launched_profile)
+ 字段名 | 解释 
+ :-- | :-- 
+id           		  	|主键ID,自增长(长整,以下所有id字段皆为该规则)
+series        		  	|车系（大系）
+e_series     		  	|车系（小系）
+profile_name  		  	|导入的profile名称
+profile_url   		  	|导入的profile路径
+import_date  		  	|导入profile日期
+based_library_version	|导入的profile版本号
+based_profile_name      |based profile 名称
+brand_id      		  	|车品牌ID（通过bmw_brand获取车系列，例如 BMW 、 MINI）
+user_id  	          	|用户ID
+sort_date     		  	|短日期
+is_responsible     	  	|权限字段（判断是否有权限查看）
+profile_id   		  	|导入的profile的ID
 
-```SQL
-Table user
-
-id        自增长(长整,以下所有id字段皆为该规则)
-uuid      uuid生成规则(App侧调用)
-cloud_id  云平台绑定ID(LeanCloud),允许为空
-weixin_id 微信绑定ID,允许为空
-weibo_id  微博绑定ID,允许为空
-qq_id     QQ绑定ID,允许为空
-account   账号(系统自动生成规则QQ+?  WX+?  WB+? Phone+?) 极客学院的案例:weibo_1xvrf8hs
-phone     绑定手机,允许为空
-mail      绑定邮箱,允许为空
-password  密码,(加密后的密码,非明文),允许为空
-salt      加密盐,6位随机数字字母组合,允许为空
-app_tag   在不同的App上的激活标签
+修改建议：
 ```
-注: 除开password,salt,以上字段在有值的情况下皆为唯一值
-
-#### 3.1.1.2. 用户详细资料
-
-```SQL
-Table user_info
-
-id
-user_id   用户唯一ID, FK-> users.id
-nick_name 昵称
-avatar    头像图片路径
-true_name 真实姓名
-sex       性别 1:男 2:女 3:保密
-province  所在省份
-city      所在城市
-card_id   身份证号码
-birth     出生年月日
-level     用户等级
-points    用户积分
-
+1.主键ID应设为 profile_id (去除现有的id字段)
+2.为区分导入的profile跟生成的profile，建议新加parent_id
+3.去除冗余字段（based_profile_name 跟 profile_name 取一个即可）
 ```
 
-#### 3.1.1.3. 用户关注俱乐部
+#### profile管理表(bmw_profile_management)
+ 字段名 | 解释 
+ :-- | :-- 
+id        				|主键ID
+series        		  	|车系（大系）
+e_series     		  	|车系（小系）
+profile_name 			|拖拽的profile名称
+current_status    		|状态（1：draft 2：Cancel 3：finish 4：verified(launched)）
+previous_status 		|之前的状态
+creater       			|创建人
+create_time  			|创建时间
+updater      			|更新人
+update_time   			|更新时间
+creater_user_id     	|创建人ID
+updater_user_id     	|更新人ID
+sort_date    			|短日期
+profile_id   			|导入的profileID
+content      			|快照内容
+profile_flag 			|profile标识
+new_profile_id 			|新生成的profileID
+new_library_id 			|新导入的libraryID
 
-```SQL
-Table user_follow_club
-
-id 
-user_id   用户id  FK-> user.id
-club_id   俱乐部id FK-> data_club.id
+修改建议：
+```
+1.主键ID应设为 new_profile_id (去除现有的id字段)|
+2.profile_id 用作关联 bmw_launched_profile 中的 profile_id
 ```
 
-#### 3.1.1.4. 用户关注比赛
 
-```SQL
-Table user_follow_match
+#### 车辆基本信息表(bmw_profile_generation_information)
+ 字段名 | 解释 
+ :-- | :-- 
+id                  	|主键ID
+series        			|车系（大系）
+e_series     			|车系（小系）
+profile_name        	|拖拽的profile名称
+model               	|车型分类（740Li,730Li,750Le....）
+model_code          	|车型码
+package_code        	|包代码
+cn_model            	|中文model
+variant             	|车
+cn_variant          	|中文variant
+line_code           	|行代码
+aditional_options   	|附加选项
+engine_output       	|发动机输出功率
+volume_mix_planning 	|体积混合规划
+dof_for_modell      	|？？？
+user_id             	|用户ID
+current_status      	|状态（1：draft 2：Cancel 3：finish 4：verified(launched)）
+previous_status     	|之前的状态
+sort_date           	|短日期
+sop                 	|开始日期
+eop                 	|结束日期
+option_code_in_ivsr 	|？？？？
+price_transition_result |价钱（经过计算之后）
+price_increase_abs  	|价格上涨
+price_increase_per  	|价格上涨（欧元）
+monetary_adjustment 	|货币调控
+profile_id          	|导入的profileID
+varient_id          	|车ID
+option_code_input   	|输入的选项code
+model_variant       	|车的mode + variant
+price               	|车价钱
 
-id
-user_id   用户id FK-> user.id
-match_id  比赛id FK-> data_league_match.id
+修改建议：
+```
+1.去除冗余字段。
+2.设置关联ID/字段
 ```
 
-#### 3.1.1.5. 用户关注其他用户的列表
+#### 100% option 表(bmw_profile_basic_option)
+ 字段名 | 解释 
+ :-- | :-- 
+id        			|主键ID
+series        		|车系（大系）
+e_series     		|车系（小系）
+profile_name        |拖拽的profile名称
+model               |车型分类（740Li,730Li,750Le....）
+model_code          |车型码
+package_code        |包代码
+property_code       |属性码
+property_name_en    |属性英文名称
+property_name_cn    |属性中文名称
+setting_content     |设置内容
+show_content        |展示内容
+user_id             |用户ID
+varient_id          |车ID
+classify            |分类（1：100% option 2：Uphostory 3：Wheel 4：paint 5：trim）
+option_id           |选项行ID
+profile_id          |导入的profileID
+rmb_price           |单元格人民币价格
+option_price        |option价格
+discount            |折扣
+compar_flag         |比对标识（0：原有的  1：新增的）
 
-```SQL
-Table user_follow_user
-
-id
-user_id        用户id FK-> user.id
-follow_user_id 该用户关注的对象id FK-> user.id
+修改建议：
+```
+1.去除冗余字段。
+2.设置关联ID/字段
 ```
 
-#### 3.1.1.6. 用户被其他用户关注的列表(与3.1.1.5组成双向关系)
+#### 灵活选配包表(bmw_profile_flexible_package)
+ 字段名 | 解释 
+ :-- | :-- 
+id        				|主键ID
+series        			|车系（大系）
+e_series     			|车系（小系）
+profile_name        	|拖拽的profile名称
+model               	|车型分类（740Li,730Li,750Le....）
+model_code          	|车型码
+package_code        	|包代码
+flexible_package_code 	|灵活选配包码
+classify            	|分类（6: flexible package）
+package_name_en     	|包英文名
+package_name_cn     	|包中文名
+setting_content     	|设置内容
+show_content        	|展示内容
+user_id             	|用户ID
+property_code       	|属性码
+package_setting     	|包设置值
+varient_id          	|车ID
+option_id           	|选项行ID
+profile_id          	|导入的profileID
 
-```SQL
-Table user_followed_by_user
-
-id
-user_id             用户id FK-> user.id
-followed_by_user_id 该用户的关注人id FK-> user.id
-is_blocked          该用户是否屏蔽关注人(1:屏蔽 0:不屏蔽 默认皆为0)
+修改建议：
 ```
-#### 3.1.1.7. 用户的签到信息
-
-```SQL
-Table user_checkin_log
-
-id
-user_id      用户ID
-checked_at   签到时间
+1.去除冗余字段（例：classify字段）。
+2.设置关联ID/字段
 ```
 
-#### 3.1.1.8. 用户等级与积分的对照
+#### 灵活选配项(bmw_profile_flexible_option)
+ 字段名 | 解释 
+ :-- | :-- 
+id                  |主键ID
+series        		|车系（大系）
+e_series     		|车系（小系）
+profile_name        |拖拽的profile名称
+model               |车型分类（740Li,730Li,750Le....）
+model_code          |车型码
+package_code        |包代码
+property_code       |属性码
+classify            |分类（7）
+property_name_en    |属性英文名称
+property_name_cn    |属性中文名称
+setting_content     |设置内容
+show_content		|展示内容
+user_id             |用户ID
+varient_id          |车ID
+option_id           |选项行ID
+profile_id          |导入的profileID
+rmb_price           |单元格人民币价格
+option_price        |option价格
+discount            |折扣
 
-```SQL
-Table user_level_point
+修改建议：
+```
+1.去除冗余字段
+2.设置关联ID/字段
+```
 
-id
-title         称号
-level         等级
-icon_url      等级图标(图片)
-points_higher 积分上限
-points_Lower  积分下限
+#### 其他配置项(bmw_profile_other)
+ 字段名 | 解释 
+ :-- | :-- 
+id                  |主键ID
+series        		|车系（大系）
+e_series     		|车系（小系）
+profile_name        |拖拽的profile名称
+model               |车型分类（740Li,730Li,750Le....）
+model_code          |车型码
+package_code        |包代码
+property_code       |属性码
+classify            |分类（8、9）
+property_name_en    |属性英文名称
+property_name_cn    |属性中文名称
+setting_content     |设置内容
+show_content		|展示内容
+user_id             |用户ID
+varient_id          |车ID
+option_id           |选项行ID
+profile_id          |导入的profileID
+rmb_price           |单元格人民币价格
+option_price        |option价格
+discount            |折扣
+
+修改建议：
+```
+1.去除冗余字段
+2.设置关联ID/字段
+```
+
+#### Library管理表(bmw_library_management)
+ 字段名 | 解释 
+ :-- | :-- 
+id                  |主键ID
+series        		|车系（大系）
+e_series     		|车系（小系）
+version             |版本号
+import_date         |导入日期
+basic_file_name     |Basic文件名
+basic_file_url      |Baisc文件路径
+optional_file_name  |optional文件名称
+optional_file_url   |optional文件路径
+library_output_date |
+libarary_data_date	|
+sort_date           |短日期
+
+修改建议：
+```
+
+```
+
+#### Library Basic属性表(bmw_library_basic_property)
+ 字段名 | 解释 
+ :-- | :-- 
+id                  |主键ID
+series        		|车系（大系）
+e_series     		|车系（小系）
+version             |版本号
+system_property_code|导入时自动生成的唯一标识
+block     			|所属区块
+basic_file_url      |Baisc文件路径
+comment  			|注释说明
+create_time   		|创建时间
+
+修改建议：
+```
+
+```
+
+#### Library Basic属性设置表(bmw_library_basic_property_setting)
+ 字段名 | 解释 
+ :-- | :-- 
+id                  |主键ID
+series        		|车系（大系）
+e_series     		|车系（小系）
+version             |版本号
+system_property_code|导入时自动生成的唯一标识
+model     			|车模型（例如：730Li,740Le...）
+property_content    |属性内容
+lhd_or_rhd  		|左驾车右驾车
+comment   			|注释说明
+create_time   		|创建时间
+
+修改建议：
+```
+
+```
+
+#### Library optional属性表(bmw_library_optional_property)
+ 字段名 | 解释 
+ :-- | :-- 
+id                  |主键ID
+series        		|车系（大系）
+e_series     		|车系（小系）
+version             |版本号
+system_property_code|导入时自动生成的唯一标识
+classify     		|类型（1：100% option 2：Uphostory 3：Wheel 4：paint 5：trim）
+comment   			|注释说明
+create_time   		|创建时间
+rrp_with_vat		|价格（）
+rrp_without_vat		|价格（）
+efp_imp				|价格（）
+efp_subs			|价格（）
+
+修改建议：
+```
+
+```
+
+#### Library optional Package属性设置表(bmw_library_optional_property_setting)
+ 字段名 | 解释 
+ :-- | :-- 
+id                  |主键ID
+series        		|车系（大系）
+e_series     		|车系（小系）
+version             |版本号
+system_property_code|导入时自动生成的唯一标识
+model     			|车模型（例如：730Li,740Le...）
+property_content    |属性内容
+lhd_or_rhd  		|左驾车右驾车
+rrp_with_vat		|价格（）
+rrp_without_vat		|价格（）
+efp_imp				|价格（）
+efp_subs			|价格（）
+comment   			|注释说明
+create_time   		|创建时间
+
+修改建议：
+```
+
+```
+
+#### Library 规则表(bmw_library_rule)
+ 字段名 | 解释 
+ :-- | :-- 
+id                  |主键ID
+series        		|车系（大系）
+e_series     		|车系（小系）
+version             |版本号
+system_property_code|导入时自动生成的唯一标识
+model     			|车模型（例如：730Li,740Le...）
+relation_type    	|规则类型
+correlated_obj		|规则内容
+lhd_or_rhd  		|左驾车右驾车
+rrp_with_vat		|价格（）
+rrp_without_vat		|价格（）
+efp_imp				|价格（）
+efp_subs			|价格（）
+comment   			|注释说明
+create_time   		|创建时间
+
+修改建议：
+```
+
+```
+
+#### Library 车辆表(bmw_library_variant)
+ 字段名 | 解释 
+ :-- | :-- 
+id                  |主键ID
+series        		|车系（大系）
+e_series     		|车系（小系）
+version             |版本号
+model     			|车模型（例如：730Li,740Le...）
+create_time   		|创建时间
+
+修改建议：
+```
+
+```
+
+#### Library option 汇总表(sys_option_lib)
+ 字段名 | 解释 
+ :-- | :-- 
+id                  |主键ID
+series        		|车系（大系）
+e_series     		|车系（小系）
+version             |版本号
+system_property_code|导入时自动生成的唯一标识
+property_code       |属性码
+property_name_en    |属性英文名称
+property_name_cn    |属性中文名称
+deletion_date		|删除时间
+lib_id   			|libraryId
+property_type		|属性类型
+create_time   		|创建时间
+sys_option_lib		|？？？
+
+修改建议：
+```
+1.去除冗余字段
+2.设置关联ID/字段 
+```
+
+#### 转换表(sys_convert_factor)
+ 字段名 | 解释 
+ :-- | :-- 
+id                  |主键ID
+engin  				|发动机
+conver_factor 		|转换因子
+
+修改建议：
+```
+1.设置外键关联 engin
 ```
