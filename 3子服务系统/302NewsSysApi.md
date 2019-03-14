@@ -92,9 +92,11 @@ Swagger: /swagger/index.html
 
 ### 3.5.3.2. 各接口的样例数据及字段解释
 
-#### 获得圈子所有的版块信息
+#### 获得所有的系列
 
-GET http://group.service.9h.com/v1/sections
+GET /all-series
+
+@param enabled
 
 返回格式:
 
@@ -104,15 +106,13 @@ HTTP Stauts Code: 200
 BODY:
 [
     {
-        "sectionId": "1", ->版块id
-        "title": "中超联赛", -> 版块名称
-        "logo": "", -> 版块的缩略图,为俱乐部队徽
-        "clubId": "", -> 关联俱乐部id，中超联赛的版块不关联clubId
-        "bgImage": "", ->背景图片
-        "isHidden":"", ->是否显示
-        "topics": 3456, -> 发帖数
-        "bgImage": "", ->背景图
-        "timestamp": "",->时间戳
+        "id": "1", ->唯一标示
+        "code": "7", -> 系统系列唯一标示码
+        "nameEn": "", -> 英文名
+        "nameZh": "", -> 中文名
+        "disp_order": "", ->显示顺序
+        "enabled":"", ->是否启用
+        "image_url": "", -> 大图url
     },
     {},
     {}
@@ -120,25 +120,3 @@ BODY:
 
 ```
 
-#### 获得某个圈子的版块信息
-
-GET http://group.service.9h.com/v1/sections/{section_id}
-
-@param sectionId @PathVariable("section_id") 板块id
-
-返回格式:
-
-```
-{
-
-                "sectionId": "1", ->版块id
-                "title": "中超联赛", -> 版块名称
-                "logo": "", -> 版块的缩略图,为俱乐部队徽
-                "clubId": "", -> 关联俱乐部id，中超联赛的版块不关联clubId
-                "bgImage": "", ->背景图片
-                "isHidden":"", ->是否显示
-                "topics": 3456, -> 发帖数
-                "bgImage": "", ->背景图
-
-}
-```
