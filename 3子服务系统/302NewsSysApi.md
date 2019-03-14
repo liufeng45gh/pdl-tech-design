@@ -77,8 +77,14 @@ Swagger: /swagger/index.html
   | | | |
  GET| /profile-item-change/{profile_id}|所有 profile_id的 profile-item-change| []|
  GET| /profile-item-change/{profile_id}/{item_id}|所有 profile_id和item_id 确定唯一 profile-item-change| {}|
+   | | | |
+ GET| /profile-cell-setting/{profile_id}|所有 profile_id的 profile-cell-setting| []|
+ GET| /profile-cell-setting/{profile_id}/item/{item_id}|所有 profile_id和item_id  profile-cell-setting| []|
+ GET| /profile-cell-setting/{profile_id}/varient/{varient_id}|所有 profile_id和varient_id 相关的  profile-cell-setting| []|
+ GET| /profile-cell-setting/{profile_id}/{item_id}/{varient_id}| profile_id和varient_id 和 item_id 确定唯一  profile-cell-setting| {}|
+ POST| /profile-cell-setting/{profile_id}/{item_id}/{varient_id}| profile_id和varient_id 和 item_id 确定唯一  profile-cell-setting,这个post 是修改| response-result|
 
- 
+
 
 
 
