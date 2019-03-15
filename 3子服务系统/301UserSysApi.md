@@ -82,254 +82,560 @@ POST http://40.73.0.200:8762/carConfig/updateCarConfigVariantStatus
 }
 ```
 
-注: 该接口会需要传入 手机号,验证码,密码，重复密码
+注: 该接口用作创建配件车系
 
 
-#### 3.1.2.3. 重置密码
+#### 4. 删除配件车系
 
-POST https://api-csl.9h-sports.com/v1/user/reset-pass
+POST http://40.73.0.200:8762/carConfig/deleteCarConfigVariant
 
-上送: BODY: {phone:"18610814074",code:"xxxxxx",password:"xxxxxxx",rePassword:"xxxxxx"}
+上送: BODY: {id:"XXXX"}
 
-返回: {oper_code:1}
+返回: 
+```
+{
+    "code": "0", // “0” 表示成功 ，“1”表示失败
+    "message": "成功！"
+}
+```
+注: 该接口用作删除配件车系
 
-注: 该接口会需要传入 手机号,验证码,密码，重复密码
+#### 5. 修改状态
 
-#### 3.1.2.4. 绑定手机
+POST http://40.73.0.200:8762/carConfig/updateCarConfigVariantStatusById
 
-POST https://api-csl.9h-sports.com/v1/user/bind-phone/{user_id}
+上送: BODY: {id:"XXX",currentStatus:"XXX",updateDate:"XXX",previousStatus:"XXX"}
 
-上送: BODY: {phone:"18610814074",code:"xxxxxx",password:"xxxxxxx",rePassword:"xxxxxx"}
+返回: 
+```
+{
+    "code": "0", // “0” 表示成功 ，“1”表示失败
+    "message": "成功！"
+}
+```
+注: 该接口用作修改配置中profile的状态
 
-返回: {oper_code:1}
+#### 6. 根据系列、E系列、用户ID 获取lib版本
 
-注: 该接口会需要传入 手机号,验证码,密码，重复密码
+POST http://40.73.0.200:8762/carConfig/getLibVersion
 
-#### 3.1.2.4. 从新绑定手机
+上送: BODY: {Serise:"XXX",eSeries:"XXX",userId:"XXX"}
 
-POST https://api-csl.9h-sports.com/v1/user/re-bind-phone/{user_id}
+返回: 
+```
+{
+    "code": 0,           // “0” 表示成功 ，“1”表示失败
+    "data": [{
+        "id": 454798,    //  版本ID
+        "version": 1.0    //  版本名称
+    }],
+    "message": "成功！"
+}
+```
 
-上送: BODY: {phone:"18610814074",code:"xxxxxx",password:"xxxxxxx"}
-
-返回: {oper_code:1}
-
-注: 该接口会需要传入 手机号,验证码,密码 还需要token
-
-
-#### 3.1.2.5. 比较密码
-
-POST https://api-csl.9h-sports.com/v1/user/check-password
-
-上送: BODY: {userId:"xxxx",password:"xxxxxxx"}
-
-返回: {oper_code:1}
-
-注: 该接口需要token
-
-#### 3.1.2.5. 检查手机是否已经注册
-
-GET https://api-csl.9h-sports.com/v1/user/is-phone-exist/{phone}
-
-返回: {oper_code:1}
-
-
-#### 3.1.2.6. 登录
-
-POST https://api-csl.9h-sports.com/v1/user/logins
-
-上送 :BODY : 账号登陆 {phone:"18610814074",password:"xxxxxxx"}, 微博登陆{weiboId:"xxxxxxx",accessToken:"xxxxxxxxxx"},微信登陆{weixinId:"xxxxxxx",accessToken:"xxxxxxxxxx"}
-
-返回 : {oper_code:1,message:"xxxxx"}
+注: 该接口用作获取 library 的版本
 
 
+#### 7. 根据用户ID、Profileid 获取 Profile详情
 
-#### 3.1.2.7. 用户登出系统
+POST http://40.73.0.200:8762/carConfig/getProfileDeteils
 
-DELETE https://api-csl.9h-sports.com/v1/user/logins/{user_id}
+上送: BODY: {userId:"XXX",profileId:"XXX"}
 
-#### 3.1.2.8. 删除某个注册的用户 (目前还未使用)
+返回: 
+```
+{
+    "code": 0,     // “0” 表示成功 ，“1”表示失败
+    "data": [{
+        "id": 454798,    //  版本ID
+        "version": 1.0    //  版本名称
+    }],
+    "message": "成功！"
+}
+```
+注: 该接口用来获取profile的详情
 
-DELETE https://api-csl.9h-sports.com/v1/user/registers/{user_id}
+#### 8. 根据用户ID、Profleid获取lunchProfle详情
+
+POST http://40.73.0.200:8762/carConfig/getLunchProfileList
+
+上送: BODY: {userId:"XXX"}
+
+返回: 
+```
+{
+    "code": 0,
+    "data": [{
+        "id": null,
+        "series": "Series12",                  //  系列
+        "eSeries": "G12",                     // E系列
+        "profileName": "G32_Product_profile_sample(2) - .xlsx",  // 文件名称
+        "profileUrl": "/usr/local/pandora/serverAPI/temp/profile", // 文件路径
+        "importDate": "2019-02-27",                          // 导入日期
+        "basedLibraryVersion": null,                          // libraryVersion
+        "basedProfileName": null
+    }],
+    "message": "成功！"
+}
+```
+注: 该接口用来获取lunchProfile的详情
+
+#### 9. 根据brand获取系列信息
+
+POST http://40.73.0.200:8762/carConfig/getSeriseByBrand?brand=1
+
+上送 :BODY：{brand:"XXX"}
+
+返回 : 
+```
+{
+    "data": [{
+        "id": 1,             // 系列ID
+        "nameEn": "1 Series", // 系列英文名称
+        "nameZh": null      // 系列中文名称
+    }]
+}
+```
+注: 该接口用来获取系列详情
+
+
+#### 10. 根据系列查询E系列
+
+POST http://40.73.0.200:8762/carConfig/getESeriseBySerise?seriseid=7
+
+上送 :BODY：{seriseid:"XXX"}
+
+返回：
+```
+{
+    "code": 0,
+    "data": [{
+        "id": null,
+        "message": "成功"，
+        "version": 1.0,                                             // 版本id
+        "basicFileName": "7_Series_Sedan_(G11_G12)_basic(1).xlsx",      // basicFileName
+        "optionalFileName":"7_Series_Sedan_(G11_G12)_optional(1).xlsx"   // optionalFileName
+    }]
+}
+```
+注：该接口是根据大系获取小系集合
+
+#### 11. 根据车型车系获取FC数据 (目前还未使用)
+
+POST /BmwVolumeMix/ findAllBySeriesAndEseries
+
+上送：BODY：{Serises:"XXX",eSerises:"XXX",year:"XXX"}
+
+返回：
+```
+Code说明 0-成功、1-失败
+
+{
+    "msg": "ok",
+    "code": 0,
+    "data": [
+        {
+            "id": 265301,
+            "series": "7",
+            "eseries": "G12",
+            "variant": "730Li  MSP",
+            "model_code": "7E01",
+            "package_code": "ZOM ",
+            "year": 2019,
+            "jan_volume": 1000,
+            "feb_volume": 1000,
+            "mar_volume": 1000,
+            "apr_volume": 1000,
+            "sep_volume": 1000,
+            "oct_volume": 1000,
+            "jul_volume": 1000,
+            "total_volume": 12000,
+            "aug_volume": 1000,
+            "dec_volume": 1000,
+            "nov_volume": 1000,
+            "may_volume": 1000,
+            "jun_volume": 1000
+        }
+    ]
+}
+```
+注：该接口用作获取FC数据
+
+
+#### 12. 根据车型车系数据类型年份区间获取BP\BU\LRP数据
+
+POST /BmwVolumeMix/GetVolumeBySeriesAndEseriesAndStartAndEnd
+
+request: {Serises :"XXX",eSerises:"XXX",start:"XXX",end:"XXX",Tpye:"XXX"}
+
+response:
+```
+Code说明 0-成功、1-失败、2-没有数据
+{
+    "code": 0,
+    "data": {
+        "M760Li xD \nV12 Excellence": [
+            {
+                "id": 265114,
+                "series": "7",
+                "eseries": "G12",
+                "variant": "M760Li xD \nV12 Excellence",
+                "model_code": "7E01",
+                "package_code": "ZSL",
+                "year": 2019,
+                "type": "2",
+                "volume": 1000
+            } ],
+        "750Li xDrive MSP": [
+            {
+                "id": 265092,
+                "series": "7",
+                "eseries": "G12",
+                "variant": "750Li xDrive MSP",
+                "model_code": "7E01",
+                "package_code": "ZOM ",
+                "year": 2019,
+                "type": "2",
+                "volume": 1000
+            } ]
+    }
+}
+```
+注：该接口是根据车型车系数据类型年份区间获取BP\BU\LRP数据
+
+
+#### 13. 保存volumeMix
+
+POST  /BmwVolumeMix/SaveVolumeMix
+
+上送：
+```
+saveData:
+[{
+            "id": "421518",
+            "profileName": "test1",
+            "variant": "730Li  MSP",
+            "modelCode": "7E01",
+            "packageCode": "ZOM ",
+            "itemsList":[
+                {
+                    "id": 421546,
+                    "year": 2020,
+                    "volume": 1000,
+                    "carId": 421518
+                }   
+            ]
+            
+        }]
+```
+
+
+#### 14. 获取单独年份的BU\BP\LRP值  
+
+POST  /BmwVolumeMix/GetVolumeByYearAndType
+
+上送：BODY：{Serises:"XXX",eSerises:"XXX",year:"XXX",type:"XXX"}
+
+response : 
+```
+{
+    "code": 0,
+    "data": [
+        {
+            "id": 421518,
+            "series": "7",
+            "e_series": "G12",
+            "variant": "730Li  MSP",
+            "model_code": "7E01",
+            "package_code": "ZOM ",
+            "type": "2",
+            "dataList": [
+                {
+                    "id": 421546,
+                    "year": 2020,
+                    "volume": 1000,
+                    "carId": 421518
+                }
+            ],
+            "total": 1000,
+            "percentage": 0
+        } 
+]
+}
+```
+
+#### 15.获取保存后的数据
+
+POST /BmwVolumeMix/GetSaveVolumeDataByProfileName
+
+上送：BODY：{profileName:"XXX"}
+
+返回：
+```
+{
+    "code": 0,
+    "dataList": [
+        {
+            "id": "422490",
+            "profileName": "test1",
+            "variant": "730Li  MSP",
+            "modelCode": "7E01",
+            "packageCode": "ZOM ",
+            "itemsList": [
+                {
+                    "id": 422491,
+                    "year": 2020,
+                    "volume": 1000,
+                    "managementid": 422490
+                }
+            ]
+        }
+    ]
+}
+```
+注：
+
+#### 16. 最新版数据读取接口
+
+POST http://40.73.0.200:8762/BmwVolumeMix/GetVolumeBySeriesAndEseriesAndStartAndEnd
+
+request: {Serises :"XXX",eSerises:"XXX",start:"XXX",end:"XXX",Tpye:"XXX"}
+
+response: 
+```
+{
+    "code": 0,
+    "data": [
+        {
+            "rowId": 422853,
+            "modelLabel": null,
+            "codeLabel": null,
+            "totalValue": null,
+            "percentageValue": null,
+            "variant": "730Li  MSP",
+            "model_code": "7E01",
+            "package_code": "ZOM ",
+            "optionsList": [
+                {
+                    "optionsId": 1,
+                    "selectedTypeId": 1,
+                    "selectedValue": 1,
+                    "year": "2019",
+                    "valueList": [
+                        {
+                            "typeId": 4,
+                            "value": 1000
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
+注：
+
+#### 17. 获取library list
+
+GET http://40.73.0.200:8088/libDetail/getModel
+
+request: {Serises :"XXX",eSerises:"XXX"}
+
+返回：
+```
+{
+    "resultMsg": "成功",
+    "resultCode": 0,
+    "result": [{
+        "id": 252740,
+        "model": "730i"
+    }]}
+```
 
 
 
+#### 18. 获取车library basic blocklist
 
-#### 3.1.2.9. 上传设备 device_token
+GET http://40.73.0.200:8088/libDetail/getBasicProperty
 
-POST https://api-csl.9h-sports.com/v1/user/upload-device
+request: {Serises :"XXX",eSerises:"XXX"}
 
-request: {deviceToken:"xxxxxxxxxxxx",userId:"xxx",osType:"android",osVersion:"version"}
+返回：
+```
+resultCode  返回码 0-成功1-错误编码
 
-response:{oper_code:1}
+{
+    "resultMsg": "成功",
+    "resultCode": 0,
+    "result": [{
+        "id": 252764,
+        "systemPropertyCode": "15504698223046793122",
+        "block": "1. Passive safety",
+        "comment": "with seat occupancy detection for driver's and passenger side"
+    }]
+}
 
-
-注: 以上全部接口都是对user对象进行操作，以下是对user_info对象进行操作
------------
-
-#### 获取某个用户详细资料
-
-GET  https://api-csl.9h-sports.com/v1/user/users/{user_id}
-
-#### 更新某个用户详细资料
-
-POST  https://api-csl.9h-sports.com/v1/user/users/{user_id}
-
-request : {userId:1,nickName:"xxx",avatar:"http://xxx.png"} cookie: token
-
-response : {oper_code:1}
-
-#### 查询用户等级信息
-
-POST https://api-csl.9h-sports.com/v1/user/user-level/{user_id}
-
-#### 用户关注俱乐部
-
-POST https://api-csl.9h-sports.com/v1/user/user-club-stars/{user_id}
-
-request: {clubId:'xxxx'}
-
-response: {oper_code:1,data: clubObject}
-
-#### 用户取消关注俱乐部
-
-DELETE https://api-csl.9h-sports.com/v1/user/user-club-stars/{user_id}/{club_id}
-
-#### 获取用户关注的所有俱乐部
-
-GET https://api-csl.9h-sports.com/v1/user/user-club-stars/{user_id}
-
-response: {clubs: clubObjects}
+```
 
 
 ---------------
 
-#### 用户关注比赛
+#### 19. 获取车library basic property setting
 
-POST https://api-csl.9h-sports.com/v1/user/user-match-stars/{user_id}
+GET http://40.73.0.200:8088/libDetail/getBasicPropertySet
 
-request: {matchId:xxxx}
+request: {Serises :"XXX",eSerises:"XXX",model:"XXX",systemPropertyCode:"XXX"}
 
-#### 用户取消关注比赛
+返回：
+```
+resultCode  返回码 0-成功1-错误编码
 
-DELETE https://api-csl.9h-sports.com/v1/user/user-match-stars/{user_id}/{match_id}
+{
+    "resultMsg": "成功",
+    "resultCode": 0,
+    "result": [{
+        " systemPropertyCode
+": 15504698223046793122,
+        "propertyContent": "730i",
+"lhdOrRhd": "X",
 
-#### 用获取用户关注的所有比赛
+"commet": ""
 
-GET https://api-csl.9h-sports.com/v1/user/user-match-stars/{user_id}
+    }]
+}
+```
 
 
---------------------------------------------
-#### 用户获取相互关注列表
-GET http://user.service.9h.com/user-friends/{user_id}
+#### 20. 获取车library optionnal property
+
+GET http://40.73.0.200:8088/libDetail/getOptionalProperty
+
+request: {Serises :"XXX",eSerises:"XXX"}
+
+返回：
+```
+resultCode  返回码 0-成功1-错误编码
+
+{
+    "resultMsg": "成功",
+    "resultCode": 0,
+    "result": [{
+        "id": 256389,
+        "systemPropertyCode": "15504700767045650475",
+        "comment": "note: refer to the country specific offer",
+        "classify": "1"
+    }]
+}
+```
+
+
+#### 21. 通过property type获取sysOptions
+
+GET http://40.73.0.200:8088/libDetail/getSysOption
+
+request: {Serises :"XXX",eSerises:"XXX",propertyType:"XXX"}
+```
+propertyType : 必须传值 默认01
+```
+
+返回：
+```
+
+{
+    "resultMsg": "成功",
+    "resultCode": 0,
+    "result": [{
+        "systemPropertyCode": "15504698223046793122",
+        "propertyCode": "",
+        "propertyNameEn": "airbag for driver and front passenger"
+    }]
+}
+
+```
+
+
+#### 22. 获取 library rule list
+
+GET http://40.73.0.200:8088/libDetail/getLibraryRule
+
+request: {Serises :"XXX",eSerises:"XXX"}
+
+返回：
+```
+{
+    "resultMsg": "成功",
+    "resultCode": 0,
+    "result": [{
+        "systemPropertyCode": "15505732227133293170",
+        "relationType": "2",
+        "correlatedObj": "only with 8AA"
+    }]
+}
+
+```
+
+
+#### 23. 根据LibraryE系列获取系列
+
+GET http://40.73.0.200:8762/carConfig/getLibraryESeriseAndSerise
+
+参数：{Serises :"XXX",eSerises:"XXX"}
 
 返回JSON
 ```
 {
-    "desc":null,
-    "oper_code":"1",
-    "data":[
-        {
-            "nickName":"",   --> 昵称
-            "fansCount":"",  --> 粉丝数量
-            "avatar":"",     --> 头像
-            "userId":""
-        },
-        Object{...},
-        Object{...}
-    ],
-    "message":null
+    "code": 0,
+    "data": [{
+        "id": null,
+"message": "成功"，
+        "version": 1.0,                                          // 版本id
+        "basicFileName": "7_Series_Sedan_(G11_G12)_basic(1).xlsx",      // basicFileName
+        "optionalFileName":"7_Series_Sedan_(G11_G12)_optional(1).xlsx"   // optionalFileName
+    }]
 }
+
 ```
-例：http://123.59.84.71/v1/user/user-friends/1
 
-#### 用户获取自己的关注他人列表
+#### 24. FC上传
 
-GET http://user.service.9h.com/user-follows/{user_id}
+POST /Volume/improtVolumeFC
 
-返回JSON
+上送: BODY: {"file":"XXX",userId:"XXX"}
+
+返回: 
 ```
-{
-    "desc":null,
-    "oper_code":"1",
-    "data":[
-        {
-            "nickName":"",   --> 昵称
-            "fansCount":"",  --> 粉丝数量
-            "avatar":"",     --> 头像
-            "userId":"",
-            "status":""      --> 关注关系(1:用户关注，2:互相关注)
-        },
-        Object{...},
-        Object{...}
-    ],
-    "message":null
-}
+Code    返回码 0-成功1-错误编码
 ```
-例：http://123.59.84.71/v1/user/user-follows/1
 
-#### 用户关注其他用户
+#### 25. BP上传
 
-POST http://user.service.9h.com/user-follows/{user_id}
+POST /Volume/ improtVolumeBP
 
-上送: BODY: {"followUserId":"××"}
+上送: BODY: {"file":"XXX",userId:"XXX"}
 
-返回: {oper_code:1}
-
-#### 用户取消关注其他用户
-
-DELETE http://user.service.9h.com/user-follows/{user_id}/{user_id}
-
-返回: {oper_code:1,"message":"××××"}
-
-#### 用户获取自己的被关注列表
-
-GET http://user.service.9h.com/user-follow-bys/{user_id}
-
-返回JSON
+返回: 
 ```
-{
-    "desc":null,
-    "oper_code":"1",
-    "data":[
-        {
-            "nickName":"",   --> 昵称
-            "isBlocked":"",  --> 该用户是否屏蔽关注人(1:屏蔽 0:不屏蔽)
-            "fansCount":"",  --> 粉丝数量
-            "avatar":"",     --> 头像
-            "userId":"",
-            "status":""      --> 关注关系(1:用户关注，2:互相关注)
-        },
-        Object{...},
-        Object{...}
-    ],
-    "message":null
-}
+Code    返回码 0-成功1-错误编码
 ```
-例：http://123.59.84.71/v1/user/user-follow-bys/1
 
-#### 用户从被关注列表中屏蔽关注自己的用户
+#### 26. BU上传
 
-PUT http://user.service.9h.com/user-follow-bys/{user_id}
+POST /Volume/improtVolumeBU
 
-上送: BODY: {"isBlocked":"0","followUserId":"××"} --> 取消屏蔽<br/>
-上送: BODY: {"isBlocked":"1","followUserId":"××"} --> 屏蔽
+上送: BODY: {"file":"XXX",userId:"XXX"}
 
-返回: {oper_code:1,"message":"××××"}
+返回: 
+```
+Code    返回码 0-成功1-错误编码
+```
 
-----------------------------------------
+#### 27. LRP上传
 
-#### 用户获取自己的每日签到记录
+POST /Volume/improtVolumeLRP
 
-GET https://api-csl.9h-sports.com/v1/user/user-check-ins/{user_id}
+上送: BODY: {"file":"XXX",userId:"XXX"}
 
-#### 用户签到
-
-POST https://api-csl.9h-sports.com/v1/user/user-check-ins/{user_id}
-
-#### 获取用户今天的签到状态
-
-GET https://api-csl.9h-sports.com/v1/user/get-user-check-ins/{user_id}
-
-#### 获取用户签到排行
-
-GET https://api-csl.9h-sports.com/v1/user/user-checkin-rank/{user_id}
+返回: 
+```
+Code    返回码 0-成功1-错误编码
+```
