@@ -200,3 +200,102 @@ BODY:
 当复制的时候这些数据需要复制过去
 ```
 
+
+#### 复制profile
+
+POST /profile/{profile_id}/copy
+
+@RequestParam sourceProfileId
+@RequestParam newProfileName
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+{
+    optCode : "succcess" , ->操作code码
+    msg : "this is reason why" , ->操作信息
+    data: {} ,-> 返回数据
+}
+
+
+```
+
+
+注意
+
+```
+需要复制 profile-item change 部分
+赋值 rootId, parentId
+其他原始拷贝指向新的profile id
+```
+
+#### 导入library
+
+POST /import-library
+
+@RequestParam version
+@RequestMetadata file
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+{
+    optCode : "succcess" , ->操作code码
+    msg : "this is reason why" , ->操作信息
+    data: {} ,-> 返回数据
+}
+
+
+```
+
+
+注意
+
+```
+需要维护表 config_unique_item 
+
+```
+
+#### 导入profile
+
+POST /import-profile
+
+@RequestParam libraryVersion
+@RequestMetadata file
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+{
+    optCode : "succcess" , ->操作code码
+    msg : "this is reason why" , ->操作信息
+    data: {} ,-> 返回数据
+}
+
+
+```
+
+
+注意
+
+```
+需要维护表 config_profile_item 
+不需要维护表 config_profile_item_change
+导入前 先判断数据是否可以转换成 java 对象
+还需要比较 config_unique_item中是否覆盖所有相关item 对象，如果有不能识别的，需要报出那些item 不能识别,并且返回导入失败
+```
