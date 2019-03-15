@@ -71,18 +71,22 @@ Swagger: /swagger/index.html
    | | | |
  GET| /profile-varent/{profile_id}|所有 profile_id的 profile-varent| []|
  GET| /profile-varent/{profile_id}/{varent_id}|profile_id和varent_id匹配单个对象| {}|
+ PUT| /profile-varent/{profile_id}/{varent_id}|保存 saveOrUpdate varent对象| response-result|
+ DELETE| /profile-varent/{profile_id}/{varent_id}|删除 varent对象| response-result|
   | | | |
  GET| /profile-item/{profile_id}|所有 profile_id的 profile-item| []|
  GET| /profile-item/{profile_id}/{item_id}|所有 profile_id和item_id 确定唯一 profile-item| {}|
+ GET| /profile-item/{profile_id}/show_diff|显示和最新library的区别| {}|
   | | | |
  GET| /profile-item-change/{profile_id}|所有 profile_id的 profile-item-change| []|
  GET| /profile-item-change/{profile_id}/{item_id}|所有 profile_id和item_id 确定唯一 profile-item-change| {}|
+ POST| /profile-item-change/{profile_id}|新增 修改 删除 profile-item-change| response-result|
    | | | |
  GET| /profile-cell-setting/{profile_id}|所有 profile_id的 profile-cell-setting| []|
  GET| /profile-cell-setting/{profile_id}/item/{item_id}|所有 profile_id和item_id  profile-cell-setting| []|
  GET| /profile-cell-setting/{profile_id}/varient/{varient_id}|所有 profile_id和varient_id 相关的  profile-cell-setting| []|
  GET| /profile-cell-setting/{profile_id}/{item_id}/{varient_id}| profile_id和varient_id 和 item_id 确定唯一  profile-cell-setting| {}|
- POST| /profile-cell-setting/{profile_id}/{item_id}/{varient_id}| profile_id和varient_id 和 item_id 确定唯一  profile-cell-setting,这个post 是修改| response-result|
+ PUT| /profile-cell-setting/{profile_id}/{item_id}/{varient_id}| 这个PUT 是saveOrUpdate| response-result|
 
 
 
@@ -118,5 +122,81 @@ BODY:
     {}
 ]
 
+```
+
+#### 按profile_id获得基础的 profile item
+
+GET /profile-item/{profile_id}
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+[
+    {
+        "itemId": "1", ->配件id
+        "propertyCode": "7", -> 配件标示码
+        "nameEn": "", -> 英文名
+        "nameZh": "", -> 中文名
+        "disp_order": "", ->显示顺序
+        "classify":"", ->类型
+        "price": "", -> 价格
+        "rmbPrice": "", -> 人民币价格
+        "discount": "", -> 折扣
+    },
+    {},
+    {}
+]
+
+```
+
+
+注意
+
+```
+只有root profile 才会有 prifile item
+此方法需要先拿到 对应的 root prifile id,
+然后按这个id 获取基础profile 对应的item list 
+```
+
+#### 按profile_id获得变化的 profile item
+
+GET /profile-item-change/{profile_id}
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+[
+    {
+        "itemId": "1", ->配件id
+        "propertyCode": "7", -> 配件标示码
+        "nameEn": "", -> 英文名
+        "nameZh": "", -> 中文名
+        "disp_order": "", ->显示顺序
+        "classify":"", ->类型
+        "price": "", -> 价格
+        "rmbPrice": "", -> 人民币价格
+        "discount": "", -> 折扣
+        "changeType": "", -> 增加还是删除 + -
+    },
+    {},
+    {}
+]
+
+```
+
+
+注意
+
+```
+此方法需按profile_id 对应的item list 
+当复制的时候这些数据需要复制过去
 ```
 
