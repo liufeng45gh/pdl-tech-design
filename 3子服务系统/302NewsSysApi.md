@@ -25,11 +25,11 @@ Swagger: /swagger/index.html
  GET | /eseries/{eseries_code}/models?enabled=true | 获取e系列下所有上线的model | [] |
  GET | /all-models |所有model| [] | 
  GET | /all-models?enabled=true |所有上线的model| [] | 
- GET | /models/code |按code 获取model| {} | 
+ GET | /models/{code} |按code 获取model| {} | 
   | | | | 
  GET | /all-items|获取所有配件(分页，默认30)| [] |
  GET | /item/{item_id}|获取某个配件| {} |
- GET | /items-by-property-code/{property_code}|按property_code获取配件| [] |
+ GET | /items-by-code/{code}|按code获取配件| [] |
   | | | | 
  GET | /all-library | 所有library | []|
  GET | /all-library?status={status}   | 获取不同status 下的所有library | [] |
@@ -123,6 +123,319 @@ BODY:
 ]
 
 ```
+
+#### 按 series_code 获得系列对象
+
+GET /series/{series_code}
+
+@param enabled
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+
+{
+    "id": "1", ->唯一标示
+    "code": "7", -> 系统系列唯一标示码
+    "nameEn": "", -> 英文名
+    "nameZh": "", -> 中文名
+    "disp_order": "", ->显示顺序
+    "enabled":"", ->是否启用
+    "image_url": "", -> 大图url
+}
+
+```
+
+#### 获得所有的e系列
+
+GET /all-eseries
+
+@param enabled
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+[
+    {
+        "id": "1", ->唯一标示
+        "series_code": "7" 大系列的标示码
+        "code": "7", -> 系统系列唯一标示码
+        "nameEn": "", -> 英文名
+        "nameZh": "", -> 中文名
+        "disp_order": "", ->显示顺序
+        "enabled":"", ->是否启用
+    },
+    {},
+    {}
+]
+
+```
+
+
+#### 按大系列code获得相关的e系列对象
+
+GET  /series/{series_code}/eseries
+
+@param enabled
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+[
+    {
+        "id": "1", ->唯一标示
+        "series_code": "7" 大系列的标示码
+        "code": "7", -> 系统系列唯一标示码
+        "nameEn": "", -> 英文名
+        "nameZh": "", -> 中文名
+        "disp_order": "", ->显示顺序
+        "enabled":"", ->是否启用
+    },
+    {},
+    {}
+]
+
+```
+
+
+#### 获得所有的model车型
+
+GET /all-models
+
+@param enabled
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+[
+    {
+        "id": "1", ->唯一标示
+        "e_series_code": "7" 大系列的标示码
+        "code": "7", -> 系统系列唯一标示码
+        "nameEn": "", -> 英文名
+        "nameZh": "", -> 中文名
+        "disp_order": "", ->显示顺序
+        "enabled":"", ->是否启用
+    },
+    {},
+    {}
+]
+
+```
+
+
+#### 按大系列code获得相关的model对象
+
+GET  /series/{series_code}/models
+
+@param enabled
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+[
+    {
+        "id": "1", ->唯一标示
+        "e_series_code": "7" 大系列的标示码
+        "code": "7", -> 系统系列唯一标示码
+        "nameEn": "", -> 英文名
+        "nameZh": "", -> 中文名
+        "disp_order": "", ->显示顺序
+        "enabled":"", ->是否启用
+    },
+    {},
+    {}
+]
+
+```
+
+#### 按小系列code获得相关的model对象
+
+GET  /eseries/{eseries_code}/models
+
+@param enabled
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+[
+    {
+        "id": "1", ->唯一标示
+        "e_series_code": "7" 大系列的标示码
+        "code": "7", -> 系统系列唯一标示码
+        "nameEn": "", -> 英文名
+        "nameZh": "", -> 中文名
+        "disp_order": "", ->显示顺序
+        "enabled":"", ->是否启用
+    },
+    {},
+    {}
+]
+
+```
+
+
+#### 按小系列code获得相关的model对象
+
+GET  /models/{code}
+
+@param enabled
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+{
+    "id": "1", ->唯一标示
+    "e_series_code": "7" 大系列的标示码
+    "code": "7", -> 系统系列唯一标示码
+    "nameEn": "", -> 英文名
+    "nameZh": "", -> 中文名
+    "disp_order": "", ->显示顺序
+    "enabled":"", ->是否启用
+}
+
+```
+
+
+#### 所有配件对象
+
+GET  /all-items
+@param pageNo
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+[
+    {
+        "id": "1", ->唯一标示
+        "e_series_code": "G38" 小系列对应code
+        "code": "300", -> bmw 系统内代码
+        "nameEn": "", -> 英文名
+        "nameZh": "", -> 中文名
+        "type": "", -> 类型 basic| optional
+        "classfy":"", ->类型 系统分类
+    },
+    {},
+    {}
+]
+
+```
+
+#### 获取单个配件
+
+GET  /item/{item_id}
+
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+{
+    "id": "1", ->唯一标示
+    "e_series_code": "G38" 小系列对应code
+    "code": "300", -> bmw 系统内代码
+    "nameEn": "", -> 英文名
+    "nameZh": "", -> 中文名
+    "type": "", -> 类型 basic| optional
+    "classfy":"", ->类型 系统分类
+}
+
+```
+
+#### 按code获取配件对象
+
+GET  /items-by-code/{code}
+
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+[
+    {
+        "id": "1", ->唯一标示
+        "e_series_code": "G38" 小系列对应code
+        "code": "300", -> bmw 系统内代码
+        "nameEn": "", -> 英文名
+        "nameZh": "", -> 中文名
+        "type": "", -> 类型 basic| optional
+        "classfy":"", ->类型 系统分类
+    },
+    {},
+    {}
+]
+
+```
+
+
+#### 按所有library
+
+GET  /all-library
+
+@RequestParam status
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+[
+    {
+        "id": "1", ->唯一标示
+        "e_series_code": "G38" 小系列对应code
+        "code": "300", -> bmw 系统内代码
+        "import_date": "", -> 导入时间
+        "basic_file_name": "", -> 文件名
+        "basic_file_url": "", -> 导入文件路径
+        "optional_file_name":"", ->可操作文件名
+        "optional_file_url":"", ->可操作文
+    },
+    {},
+    {}
+]
+
+```
+
+
+
+
+
 
 #### 按profile_id获得基础的 profile item
 

@@ -91,10 +91,10 @@ updated_by     			|	更新人
  :-- | :-- 
 id						| 主键(自增)
 e_series_code       	|	小系列对应code
-property_code    		|	bmw 系统内代码
-property_name_en     	|	英文名
-property_name_cn      	|	中文名
-property_type		  	|	配件类型 basic/optional
+code    				|	bmw 系统内代码
+name_en     			|	英文名
+name_cn      			|	中文名
+type		  			|	配件类型 basic/optional
 created_at     			|	创建时间
 updated_at     			|	更新时间
 created_by     			|	创建人
@@ -104,8 +104,8 @@ updated_by     			|	更新人
 注: 
 
 ```
-唯一约束 -> property_name_en + property_code 
-索引->property_type
+唯一约束 -> name_en + code 
+索引->type
 ```
 
 
