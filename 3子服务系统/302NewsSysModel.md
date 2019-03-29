@@ -146,7 +146,7 @@ updated_by     			|	更新人
  :-- | :-- 
 id 						| 主键(自增)
 library_id         		|	对应 config_library->id
-option_id    				|	配件唯一id ,对应 unique_item -> id
+option_id    				|	配件唯一id ,对应 unique_option -> id
 classify     			|	分类 
 comment      			|	注释
 created_at     			|	创建时间
@@ -181,7 +181,7 @@ library里会用到前5个状态
  :-- | :-- 
 id 						| 主键(自增)
 library_id         		|	对应 config_library->id
-option_id    				|	配件唯一id ,对应 unique_item -> id
+option_id    				|	配件唯一id ,对应 unique_option -> id
 model_code    			|	model唯一代码 对应 config_model -> code
 property_content     	|	设置内容
 lhd_or_rhd      		|	左驾车右驾车 L/R/X
@@ -204,7 +204,7 @@ updated_by     			|	更新人
  :-- | :-- 
 id 						| 主键(自增)
 library_id         		|	对应 config_library->id
-option_id    				|	配件唯一id ,对应 unique_item -> id
+option_id    				|	配件唯一id ,对应 unique_option -> id
 classify     			|	分类 
 comment      			|	注释
 created_at     			|	创建时间
@@ -238,7 +238,7 @@ library里会用到前5个状态
  :-- | :-- 
 id 						| 主键(自增)
 library_id         		|	对应 config_library->id
-option_id    				|	配件唯一id ,对应 unique_item -> id
+option_id    				|	配件唯一id ,对应 unique_option -> id
 model_code    			|	model唯一代码 对应 config_model -> code
 property_content     	|	设置内容
 lhd_or_rhd      		|	左驾车右驾车 L/R/X
@@ -254,13 +254,13 @@ updated_by     			|	更新人
 ```
 
 
-#### 库配件规则表 config_library_item_rule(原bmw_library_rule)
+#### 库配件规则表 config_library_option_rule(原bmw_library_rule)
 
  字段名 | 解释 
  :-- | :-- 
 id 						| 主键(自增)
 library_id         		|	对应 config_library->id
-option_id    				|	配件唯一id ,对应 unique_item -> id
+option_id    				|	配件唯一id ,对应 unique_option -> id
 model_code    			|	model唯一代码 对应 config_model -> code
 property_content     	|	设置内容
 relation_type      		|	关系类型
@@ -377,7 +377,7 @@ updated_by     			|	更新人
 ```
 
 
-#### profile配件列表 config_profile_item(后加)
+#### profile配件列表 config_profile_option(后加)
 
 
  字段名 | 解释 
@@ -399,7 +399,7 @@ updated_by     			|	更新人
 唯一约束 ->profile_id + option_id + classify
 ```
 
-#### profile配件列表 config_profile_item_change(后加)
+#### profile配件列表 config_profile_option_change(后加)
 
 
  字段名 | 解释 
