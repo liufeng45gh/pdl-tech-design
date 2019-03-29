@@ -84,7 +84,7 @@ updated_by     			|	更新人
 
 
 
-####  配件汇总表  Table config_unique_item (原sys_option_lib)
+####  配件汇总表  Table config_unique_option (原sys_option_lib)
 
 
  字段名 | 解释 
@@ -146,7 +146,7 @@ updated_by     			|	更新人
  :-- | :-- 
 id 						| 主键(自增)
 library_id         		|	对应 config_library->id
-item_id    				|	配件唯一id ,对应 unique_item -> id
+option_id    				|	配件唯一id ,对应 unique_item -> id
 classify     			|	分类 
 comment      			|	注释
 created_at     			|	创建时间
@@ -156,7 +156,7 @@ updated_by     			|	更新人
 
 注释
 ```
-唯一约束 ->library_id + item_id
+唯一约束 ->library_id + option_id
 索引->classify
 ```
 
@@ -181,7 +181,7 @@ library里会用到前5个状态
  :-- | :-- 
 id 						| 主键(自增)
 library_id         		|	对应 config_library->id
-item_id    				|	配件唯一id ,对应 unique_item -> id
+option_id    				|	配件唯一id ,对应 unique_item -> id
 model_code    			|	model唯一代码 对应 config_model -> code
 property_content     	|	设置内容
 lhd_or_rhd      		|	左驾车右驾车 L/R/X
@@ -193,7 +193,7 @@ updated_by     			|	更新人
 
 注释
 ```
-唯一约束 ->library_id + item_id + model_code
+唯一约束 ->library_id + option_id + model_code
 ```
 
 
@@ -204,7 +204,7 @@ updated_by     			|	更新人
  :-- | :-- 
 id 						| 主键(自增)
 library_id         		|	对应 config_library->id
-item_id    				|	配件唯一id ,对应 unique_item -> id
+option_id    				|	配件唯一id ,对应 unique_item -> id
 classify     			|	分类 
 comment      			|	注释
 created_at     			|	创建时间
@@ -214,7 +214,7 @@ updated_by     			|	更新人
 
 注释
 ```
-唯一约束 ->library_id + item_id
+唯一约束 ->library_id + option_id
 索引->classify
 ```
 
@@ -238,7 +238,7 @@ library里会用到前5个状态
  :-- | :-- 
 id 						| 主键(自增)
 library_id         		|	对应 config_library->id
-item_id    				|	配件唯一id ,对应 unique_item -> id
+option_id    				|	配件唯一id ,对应 unique_item -> id
 model_code    			|	model唯一代码 对应 config_model -> code
 property_content     	|	设置内容
 lhd_or_rhd      		|	左驾车右驾车 L/R/X
@@ -250,7 +250,7 @@ updated_by     			|	更新人
 
 注释
 ```
-唯一约束 ->library_id + item_id + model_code
+唯一约束 ->library_id + option_id + model_code
 ```
 
 
@@ -260,7 +260,7 @@ updated_by     			|	更新人
  :-- | :-- 
 id 						| 主键(自增)
 library_id         		|	对应 config_library->id
-item_id    				|	配件唯一id ,对应 unique_item -> id
+option_id    				|	配件唯一id ,对应 unique_item -> id
 model_code    			|	model唯一代码 对应 config_model -> code
 property_content     	|	设置内容
 relation_type      		|	关系类型
@@ -278,7 +278,7 @@ updated_by     			|	更新人
 
 注释
 ```
-唯一约束 ->library_id + item_id + model_code
+唯一约束 ->library_id + option_id + model_code
 ```
 
 
@@ -363,7 +363,7 @@ updated_by     			|	更新人
 id 						| 主键( 自增)
 profile_id         		|	对应config_profile-> id
 varient_id    			|	config_profile_varent->varient_id
-item_id    				|	配件id
+option_id    				|	配件id
 setting_content     	|	设置值
 show_content   			|	显示值
 created_at     			|	创建时间
@@ -373,7 +373,7 @@ updated_by     			|	更新人
 
 注释
 ```
-唯一约束 ->profile_id + varient_id + item_id
+唯一约束 ->profile_id + varient_id + option_id
 ```
 
 
@@ -384,7 +384,7 @@ updated_by     			|	更新人
  :-- | :-- 
 id 						| 主键( 自增)
 profile_id         		|	对应config_profile-> id
-item_id    				|	配件id
+option_id    				|	配件id
 classify     			|	类型
 price   				|	价格
 rmb_price				| 	人民币价格
@@ -396,7 +396,7 @@ updated_by     			|	更新人
 
 注释
 ```
-唯一约束 ->profile_id + item_id + classify
+唯一约束 ->profile_id + option_id + classify
 ```
 
 #### profile配件列表 config_profile_item_change(后加)
@@ -406,7 +406,7 @@ updated_by     			|	更新人
  :-- | :-- 
 id 						| 主键( 自增)
 profile_id         		|	对应config_profile-> id
-item_id    				|	配件id
+option_id    				|	配件id
 classify     			|	类型
 price   				|	价格
 rmb_price				| 	人民币价格
@@ -419,7 +419,7 @@ updated_by     			|	更新人
 
 注释
 ```
-唯一约束 ->profile_id + item_id + classify
+唯一约束 ->profile_id + option_id + classify
 ```
 
 
