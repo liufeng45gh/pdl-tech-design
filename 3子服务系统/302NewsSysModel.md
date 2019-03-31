@@ -314,7 +314,7 @@ updated_by     			|	更新人
 索引 ->status
 ```
 
-#### profile变种车型表 config_profile_varent(原 bmw_profile_generation_information)
+#### profile变种车型表 config_profile_varient(原 bmw_profile_generation_information)
 
  字段名 | 解释 
  :-- | :-- 
@@ -421,5 +421,147 @@ updated_by     			|	更新人
 ```
 唯一约束 ->profile_id + option_id + classify
 ```
+
+
+
+
+
+
+#### package 大包表 config_package_lv1(原bmw_profile_flexible_package_files)
+
+
+ 字段名 | 解释 
+ :-- | :-- 
+id 						| 主键( 自增)
+profile_id         		|	对应config_profile-> id
+file_name    			|	文件名
+name_cn     			|	中文名
+name_en   				|	英文名
+status					| 	状态
+current_status			| 	担当状态
+work_status				| 工作状态
+is_base					|是否基础
+is_check				|是否选择
+sort_date				|   排序时间
+created_at     			|	创建时间
+updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
+
+注释
+```
+索引 ->profile_id 
+索引 ->is_check
+索引 ->is_base
+索引 -> sort_date
+索引 -> status
+索引 -> work_status
+```
+
+
+#### package 小包表 config_package_lv2(原bmw_profile_flexible_packages_management)
+
+
+ 字段名 | 解释 
+ :-- | :-- 
+id 						| 主键( 自增)
+package_lv1_id         	|	对应 config_package_lv1 -> id
+package_code    		|	包代码
+package_name_cn     	|	中文名
+package_name_en   		|	英文名
+created_at     			|	创建时间
+updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
+
+注释
+```
+索引 ->package_lv1_id 
+索引 ->package_code
+索引 ->package_name_cn
+```
+
+
+
+
+#### package 包中车信息表 config_package_varient(原bmw_profile_flexible_packages_management)
+
+
+ 字段名 | 解释 
+ :-- | :-- 
+id 						| 主键( 自增)
+package_lv2_id         	|	对应 config_package_lv2 -> id
+varient_id				|  model_code_varient + "-" + package_code_varient
+model    				|车代码
+model_code_varient		| mw 车代码(model_code_varient+package_code_varient构成唯一车变种)
+package_code_varient    | bmw包代码
+package_price     		|	包价格
+off_price   			|	off价格(更新中)
+bv_price				| bv 价格	(更新中)
+tr_forcast				| --(更新中)
+eff_date				| 生效时间
+created_at     			|	创建时间
+updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
+
+注释
+```
+索引 ->package_lv2_id 
+索引 ->model
+索引 ->bmw_model_code
+索引 ->bmw_package_code
+```
+
+#### package 包中配件列表 config_package_lv2_option(新加表)
+
+
+ 字段名 | 解释 
+ :-- | :-- 
+id 						| 主键( 自增)
+package_lv2_id         	|	对应 config_package_lv2 -> id
+option_id 				|   config_unique_option ->id
+created_at     			|	创建时间
+updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
+
+注释
+```
+唯一约束 ->package_lv2_id  + option_id
+```
+
+#### package 包中配件车变种设置表	config_package__option_varient(原bmw_profile_flexible_package_option_setting)
+
+
+ 字段名 | 解释 
+ :-- | :-- 
+id 						| 主键( 自增)
+package_lv2_id         	|	对应 config_package_lv2 -> id
+option_id 				|   config_unique_option ->id
+varient_id				|	变种车代码 config_package_varient -> varient_id
+setting_content			| 设置值
+type_f					| --(更新中)
+value					| --(更新中)
+label 					| --(更新中)
+rmb_price 				| --(更新中)
+is_change 				| --(更新中)
+rmb_price0 				| --(更新中)
+price_option 			| --(更新中)
+price_change_type 		| --(更新中)
+created_at     			|	创建时间
+updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
+
+注释
+```
+索引 ->package_lv2_id  
+索引 ->option_id  
+索引 ->varient_id 
+```
+
+
+
 
 
