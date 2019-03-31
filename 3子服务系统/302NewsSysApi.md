@@ -74,9 +74,11 @@ Swagger: /swagger/index.html
  PUT| /profile-varient/{profile_id}/{varient_id}|保存 saveOrUpdate varient对象| response-result|
  DELETE| /profile-varient/{profile_id}/{varient_id}|删除 varient对象| response-result|
   | | | |
- GET| /profile-option/{profile_id}|所有 profile_id的 profile-option| []|
+ GET| /profile-option/{profile_id}/show_self|所有 profile_id的 profile-option| []|
  GET| /profile-option/{profile_id}/{option_id}|所有 profile_id和option_id 确定唯一 profile-option| {}|
  GET| /profile-option/{profile_id}/show_diff|显示和最新library的区别| {}|
+ GET| /profile-option/{profile_id}/show_library|显示最新library的设置| {}|
+ GET| /profile-option/{profile_id}/show_result|显示最后需要显示的数据 profile 中的数据 + library 中定义为标配的数据| {}|
   | | | |
  GET| /profile-option-change/{profile_id}|所有 profile_id的 profile-option-change| []|
  GET| /profile-option-change/{profile_id}/{option_id}|所有 profile_id和option_id 确定唯一 profile-option-change| {}|
