@@ -27,9 +27,9 @@ Swagger: /swagger/index.html
  GET | /all-models?enabled=true |所有上线的model| [] | 
  GET | /models/{code} |按code 获取model| {} | 
   | | | | 
- GET | /all-items|获取所有配件(分页，默认30)| [] |
- GET | /item/{item_id}|获取某个配件| {} |
- GET | /items-by-code/{code}|按code获取配件| [] |
+ GET | /all-options|获取所有配件(分页，默认30)| [] |
+ GET | /option/{option_id}|获取某个配件| {} |
+ GET | /options-by-code/{code}|按code获取配件| [] |
   | | | | 
  GET | /all-library | 所有library | []|
  GET | /all-library?status={status}   | 获取不同status 下的所有library | [] |
@@ -39,26 +39,26 @@ Swagger: /swagger/index.html
  POST | /import-library | 导入library 需要显示导入进度 | response-result | 
   | | | |
  GET| /library-basic-property/{library_id}|按library_id获取所有 library-basic-property| []|
- GET| /library-basic-property/{library_id}/{item_id}|按library_id 和 item_id获取 library-basic-property| {}|
+ GET| /library-basic-property/{library_id}/{option_id}|按library_id 和 option_id获取 library-basic-property| {}|
  GET| /library-basic-property/{library_id}/classify/{classify_id}|按library_id 和 classify获取 library-basic-property| []|
   | | | |
  GET| /library-basic-property-setting/{library_id}|按library_id获取所有 library-basic-property-setting| []|
- GET| /library-basic-property-setting/{library_id}/{item_id}|按library_id 和 item_id获取 library-basic-property-setting| []|
-  GET| /library-basic-property-setting/{library_id}/{item_id}/{model_code}|按library_id 和 item_id和 model_code获取 library-basic-property-setting| {}|
+ GET| /library-basic-property-setting/{library_id}/{option_id}|按library_id 和 option_id获取 library-basic-property-setting| []|
+  GET| /library-basic-property-setting/{library_id}/{option_id}/{model_code}|按library_id 和 option_id和 model_code获取 library-basic-property-setting| {}|
  GET| /library-basic-property-setting/{library_id}/classify/{classify_id}|按library_id 和 classify获取 library-basic-property-setting| []|
    | | | |
  GET| /library-optional-property/{library_id}|按library_id获取所有 library-optional-property| []|
- GET| /library-optional-property/{library_id}/{item_id}|按library_id 和 item_id获取 library-optional-property| {}|
+ GET| /library-optional-property/{library_id}/{option_id}|按library_id 和 option_id获取 library-optional-property| {}|
  GET| /library-optional-property/{library_id}/classify/{classify_id}|按library_id 和 classify获取 library-optional-property| []|
   | | | |
  GET| /library-optional-property-setting/{library_id}|按library_id获取所有 library-optional-property-setting| []|
- GET| /library-optional-property-setting/{library_id}/{item_id}|按library_id 和 item_id获取 library-optional-property-setting| []|
-  GET| /library-optional-property-setting/{library_id}/{item_id}/{model_code}|按library_id 和 item_id和 model_code获取 library-optional-property-setting| {}|
+ GET| /library-optional-property-setting/{library_id}/{option_id}|按library_id 和 option_id获取 library-optional-property-setting| []|
+  GET| /library-optional-property-setting/{library_id}/{option_id}/{model_code}|按library_id 和 option_id和 model_code获取 library-optional-property-setting| {}|
  GET| /library-optional-property-setting/{library_id}/classify/{classify_id}|按library_id 和 classify获取 library-optional-property-setting| []|
   | | | |
- GET| /library-item-rule/{library_id}|按library_id获取所有 library-item-rule| []|
- GET| /library-item-rule/{library_id}/{item_id}|按library_id 和 item_id获取 library-item-rule| []|
- GET| /library-item-rule/{library_id}/{item_id}/{model_code}|按library_id 和 item_id和 model_code获取 library-item-rule| []|
+ GET| /library-option-rule/{library_id}|按library_id获取所有 library-option-rule| []|
+ GET| /library-option-rule/{library_id}/{option_id}|按library_id 和 option_id获取 library-option-rule| []|
+ GET| /library-option-rule/{library_id}/{option_id}/{model_code}|按library_id 和 option_id和 model_code获取 library-option-rule| []|
   | | | |
  GET| /all-profile|所有 profile| []|
  GET| /all-profile?status={status}|所有 profile中匹配status| []|
@@ -69,24 +69,24 @@ Swagger: /swagger/index.html
  POST| /profile/{profile_id}/copy|复制一个profile| response-result|
  POST| /import-profile|上传profile| response-result|
    | | | |
- GET| /profile-varent/{profile_id}|所有 profile_id的 profile-varent| []|
- GET| /profile-varent/{profile_id}/{varent_id}|profile_id和varent_id匹配单个对象| {}|
- PUT| /profile-varent/{profile_id}/{varent_id}|保存 saveOrUpdate varent对象| response-result|
- DELETE| /profile-varent/{profile_id}/{varent_id}|删除 varent对象| response-result|
+ GET| /profile-varient/{profile_id}|所有 profile_id的 profile-varient| []|
+ GET| /profile-varient/{profile_id}/{varient_id}|profile_id和varient_id匹配单个对象| {}|
+ PUT| /profile-varient/{profile_id}/{varient_id}|保存 saveOrUpdate varient对象| response-result|
+ DELETE| /profile-varient/{profile_id}/{varient_id}|删除 varient对象| response-result|
   | | | |
- GET| /profile-item/{profile_id}|所有 profile_id的 profile-item| []|
- GET| /profile-item/{profile_id}/{item_id}|所有 profile_id和item_id 确定唯一 profile-item| {}|
- GET| /profile-item/{profile_id}/show_diff|显示和最新library的区别| {}|
+ GET| /profile-option/{profile_id}|所有 profile_id的 profile-option| []|
+ GET| /profile-option/{profile_id}/{option_id}|所有 profile_id和option_id 确定唯一 profile-option| {}|
+ GET| /profile-option/{profile_id}/show_diff|显示和最新library的区别| {}|
   | | | |
- GET| /profile-item-change/{profile_id}|所有 profile_id的 profile-item-change| []|
- GET| /profile-item-change/{profile_id}/{item_id}|所有 profile_id和item_id 确定唯一 profile-item-change| {}|
- POST| /profile-item-change/{profile_id}|新增 修改 删除 profile-item-change| response-result|
+ GET| /profile-option-change/{profile_id}|所有 profile_id的 profile-option-change| []|
+ GET| /profile-option-change/{profile_id}/{option_id}|所有 profile_id和option_id 确定唯一 profile-option-change| {}|
+ POST| /profile-option-change/{profile_id}|新增 修改 删除 profile-option-change| response-result|
    | | | |
  GET| /profile-cell-setting/{profile_id}|所有 profile_id的 profile-cell-setting| []|
- GET| /profile-cell-setting/{profile_id}/item/{item_id}|所有 profile_id和item_id  profile-cell-setting| []|
+ GET| /profile-cell-setting/{profile_id}/option/{option_id}|所有 profile_id和option_id  profile-cell-setting| []|
  GET| /profile-cell-setting/{profile_id}/varient/{varient_id}|所有 profile_id和varient_id 相关的  profile-cell-setting| []|
- GET| /profile-cell-setting/{profile_id}/{item_id}/{varient_id}| profile_id和varient_id 和 item_id 确定唯一  profile-cell-setting| {}|
- PUT| /profile-cell-setting/{profile_id}/{item_id}/{varient_id}| 这个PUT 是saveOrUpdate| response-result|
+ GET| /profile-cell-setting/{profile_id}/{option_id}/{varient_id}| profile_id和varient_id 和 option_id 确定唯一  profile-cell-setting| {}|
+ PUT| /profile-cell-setting/{profile_id}/{option_id}/{varient_id}| 这个PUT 是saveOrUpdate| response-result|
 
 
 
@@ -320,7 +320,7 @@ BODY:
 
 #### 所有配件对象
 
-GET  /all-items
+GET  /all-options
 @param pageNo
 
 
@@ -349,7 +349,7 @@ BODY:
 
 #### 获取单个配件
 
-GET  /item/{item_id}
+GET  /option/{option_id}
 
 
 
@@ -374,7 +374,7 @@ BODY:
 
 #### 按code获取配件对象
 
-GET  /items-by-code/{code}
+GET  /options-by-code/{code}
 
 
 
@@ -437,9 +437,9 @@ BODY:
 
 
 
-#### 按profile_id获得基础的 profile item
+#### 按profile_id获得基础的 profile option
 
-GET /profile-item/{profile_id}
+GET /profile-option/{profile_id}
 
 
 返回格式:
@@ -450,7 +450,7 @@ HTTP Stauts Code: 200
 BODY:
 [
     {
-        "itemId": "1", ->配件id
+        "optionId": "1", ->配件id
         "propertyCode": "7", -> 配件标示码
         "nameEn": "", -> 英文名
         "nameZh": "", -> 中文名
@@ -470,14 +470,14 @@ BODY:
 注意
 
 ```
-只有root profile 才会有 prifile item
+只有root profile 才会有 prifile option
 此方法需要先拿到 对应的 root prifile id,
-然后按这个id 获取基础profile 对应的item list 
+然后按这个id 获取基础profile 对应的option list 
 ```
 
-#### 按profile_id获得变化的 profile item
+#### 按profile_id获得变化的 profile option
 
-GET /profile-item-change/{profile_id}
+GET /profile-option-change/{profile_id}
 
 
 返回格式:
@@ -488,7 +488,7 @@ HTTP Stauts Code: 200
 BODY:
 [
     {
-        "itemId": "1", ->配件id
+        "optionId": "1", ->配件id
         "propertyCode": "7", -> 配件标示码
         "nameEn": "", -> 英文名
         "nameZh": "", -> 中文名
@@ -509,7 +509,7 @@ BODY:
 注意
 
 ```
-此方法需按profile_id 对应的item list 
+此方法需按profile_id 对应的option list 
 当复制的时候这些数据需要复制过去
 ```
 
@@ -542,7 +542,7 @@ BODY:
 注意
 
 ```
-需要复制 profile-item change 部分
+需要复制 profile-option change 部分
 赋值 rootId, parentId
 其他原始拷贝指向新的profile id
 ```
@@ -575,7 +575,7 @@ BODY:
 注意
 
 ```
-需要维护表 config_unique_item 
+需要维护表 config_unique_option 
 
 ```
 
@@ -607,8 +607,8 @@ BODY:
 注意
 
 ```
-需要维护表 config_profile_item 
-不需要维护表 config_profile_item_change
+需要维护表 config_profile_option 
+不需要维护表 config_profile_option_change
 导入前 先判断数据是否可以转换成 java 对象
-还需要比较 config_unique_item中是否覆盖所有相关item 对象，如果有不能识别的，需要报出那些item 不能识别,并且返回导入失败
+还需要比较 config_unique_option中是否覆盖所有相关option 对象，如果有不能识别的，需要报出那些option 不能识别,并且返回导入失败
 ```

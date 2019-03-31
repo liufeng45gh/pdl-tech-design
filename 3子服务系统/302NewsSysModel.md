@@ -320,10 +320,10 @@ updated_by     			|	更新人
  :-- | :-- 
 id 						| 主键( 自增)
 profile_id         		|	对应config_profile-> id
-varient_id         		|	model_code_varent + "-" + package_code_varent
+varient_id         		|	model_code_varient + "-" + package_code_varient
 model_code    			|	model唯一代码 对应 config_model -> code
-model_code_varent    	|	确定唯一列的标志因子,原model_code
-package_code_varent     |	确定唯一列的标志因子,原package_code
+model_code_varient    	|	确定唯一列的标志因子,原model_code
+package_code_varient     |	确定唯一列的标志因子,原package_code
 model_name_cn   		|	原 cn_model (model 中文显示名称)
 variant_name			|	原 variant (variant 项显示内容)
 variant_name_cn	     	|	原 cn_variant
@@ -351,7 +351,7 @@ updated_by     			|	更新人
 索引 ->model_code
 索引 ->varient_id
 唯一约束 ->profile_id + varient_id
-唯一约束 -> profile_id + model_code_varent + package_code_varent
+唯一约束 -> profile_id + model_code_varient + package_code_varient
 ```
 
 
@@ -362,7 +362,7 @@ updated_by     			|	更新人
  :-- | :-- 
 id 						| 主键( 自增)
 profile_id         		|	对应config_profile-> id
-varient_id    			|	config_profile_varent->varient_id
+varient_id    			|	config_profile_varient->varient_id
 option_id    				|	配件id
 setting_content     	|	设置值
 show_content   			|	显示值
