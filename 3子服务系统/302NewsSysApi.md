@@ -78,8 +78,8 @@ Swagger: /swagger/index.html
  GET| /profile-option/{profile_id}/show_self|所有 profile_id的 profile-option| []|
  GET| /profile-option/{profile_id}/{option_id}|所有 profile_id和option_id 确定唯一 profile-option| {}|
  GET| /profile-option/{profile_id}/show_diff|显示和最新library的区别| {}|
- GET| /profile-option/{profile_id}/show_library|显示最新library的设置| {}|
- GET| /profile-option/{profile_id}/show_result|显示最后需要显示的数据 profile 中的数据 + library 中定义为标配的数据| {}|
+ GET| /profile-option/{profile_id}/show_library|显示最新library的设置| []|
+ GET| /profile-option/{profile_id}/show_result|显示最后需要显示的数据 profile 中的数据 + library 中定义为标配的数据| []|
   | | | |
  GET| /profile-option-change/{profile_id}|所有 profile_id的 profile-option-change| []|
  GET| /profile-option-change/{profile_id}/{option_id}|所有 profile_id和option_id 确定唯一 profile-option-change| {}|
@@ -1322,11 +1322,142 @@ BODY:
 
 
 
+#### 所有 profile_id的 profile-varient
+
+GET /profile-varient/{profile_id}
 
 
-#### 按profile_id获得基础的 profile option
+返回格式:
 
-GET /profile-option/{profile_id}
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+[
+    {
+        "id": "1", ->唯一标示
+        "profileId": "" profile id
+        "varientId": "", -> 车变种id
+        "modelCode": "", -> model唯一代码 对应 config_model -> code
+		"modelCodeVarient": "", ->确定唯一列的标志因子,原model_code
+		"packageCodeVarient": "",-> 确定唯一列的标志因子,原package_code
+        "modelNameCn": "", -> 原 cn_model (model 中文显示名称)
+		"variantName": "", -> 变种名称
+		"variantNameCn": "", -> 变种中文名称
+		"lineCode": "", -> Line Package Code
+		"aditionalOptions": "", -> Aditional Options
+		"engineOutput": "", -> Engine Output
+		"volumeMixPlanning": "" , -> Volume Mix planning
+		"dofForModell": "" , -> DOF for Modell
+		"index": "" , -> 顺序
+		"sop": "", -> SOP 开始时间
+		"eop": "", -> EOP 结束时间
+		"optionCodeInIvsr": "", -> option code in ivsr
+		"priceTransitionResult": "", -> Detail Price transition result
+		"priceIncreaseAbs": "", -> Nominal price increase abs.
+		"monetaryDdjustment": "", -> Monetary adjustment
+		"price": "", -> price
+    },
+    {},
+    {}
+]
+
+```
+
+
+
+####  profile_id和varient_id匹配单个profile-varient对象
+
+GET /profile-varient/{profile_id}/{varient_id}
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+
+{
+	"id": "1", ->唯一标示
+	"profileId": "" profile id
+	"varientId": "", -> 车变种id
+	"modelCode": "", -> model唯一代码 对应 config_model -> code
+	"modelCodeVarient": "", ->确定唯一列的标志因子,原model_code
+	"packageCodeVarient": "",-> 确定唯一列的标志因子,原package_code
+	"modelNameCn": "", -> 原 cn_model (model 中文显示名称)
+	"variantName": "", -> 变种名称
+	"variantNameCn": "", -> 变种中文名称
+	"lineCode": "", -> Line Package Code
+	"aditionalOptions": "", -> Aditional Options
+	"engineOutput": "", -> Engine Output
+	"volumeMixPlanning": "" , -> Volume Mix planning
+	"dofForModell": "" , -> DOF for Modell
+	"index": "" , -> 顺序
+	"sop": "", -> SOP 开始时间
+	"eop": "", -> EOP 结束时间
+	"optionCodeInIvsr": "", -> option code in ivsr
+	"priceTransitionResult": "", -> Detail Price transition result
+	"priceIncreaseAbs": "", -> Nominal price increase abs.
+	"monetaryDdjustment": "", -> Monetary adjustment
+	"price": "", -> price
+}
+
+```
+
+
+#### 保存 saveOrUpdate varient对象
+
+PUT /profile-varient/{profile_id}/{varient_id}
+
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+{
+    optCode : "succcess" , ->操作code码
+    msg : "this is reason why" , ->操作信息
+    data: {} ,-> 返回数据
+}
+
+
+```
+
+#### 删除 varient对象
+
+DELETE /profile-varient/{profile_id}/{varient_id}
+
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+{
+    optCode : "succcess" , ->操作code码
+    msg : "this is reason why" , ->操作信息
+    data: {} ,-> 返回数据
+}
+
+
+```
+
+
+
+
+#### 按profile_id获得基础的 profile option 
+
+GET /profile-option/{profile_id}/show_self
 
 
 返回格式:
@@ -1362,6 +1493,161 @@ BODY:
 然后按这个id 获取基础profile 对应的option list 
 ```
 
+#### 所有 profile_id和option_id 确定唯一 profile-option 
+
+GET /profile-option/{profile_id}/{option_id}
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+[
+    {
+        "optionId": "1", ->配件id
+        "propertyCode": "7", -> 配件标示码
+        "nameEn": "", -> 英文名
+        "nameZh": "", -> 中文名
+        "disp_order": "", ->显示顺序
+        "classify":"", ->类型
+        "price": "", -> 价格
+        "rmbPrice": "", -> 人民币价格
+        "discount": "", -> 折扣
+    },
+    {},
+    {}
+]
+
+```
+
+
+注意
+
+```
+只有root profile 才会有 prifile option
+此方法需要先拿到 对应的 root prifile id,
+然后按这个id 获取基础profile 对应的option list 
+```
+
+
+
+#### 显示和最新library的区别
+
+GET /profile-option/{profile_id}/show_diff
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+{
+	onlyInProfile: [
+		{
+			"optionId": "1", ->配件id
+			"propertyCode": "7", -> 配件标示码
+			"nameEn": "", -> 英文名
+			"nameZh": "", -> 中文名
+			"disp_order": "", ->显示顺序
+			"classify":"", ->类型
+			"price": "", -> 价格
+			"rmbPrice": "", -> 人民币价格
+			"discount": "", -> 折扣
+		},
+		{},
+		{}
+	]
+	onlyInNewLibrary: [
+		{
+			"optionId": "1", ->配件id
+			"propertyCode": "7", -> 配件标示码
+			"nameEn": "", -> 英文名
+			"nameZh": "", -> 中文名
+			"disp_order": "", ->显示顺序
+			"classify":"", ->类型
+			"price": "", -> 价格
+			"rmbPrice": "", -> 人民币价格
+			"discount": "", -> 折扣
+		},
+		{},
+		{}
+	]
+}
+
+
+```
+
+
+
+#### 显示最新library的设置 
+
+GET /profile-option/{profile_id}/show_library
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+[
+    {
+        "optionId": "1", ->配件id
+        "propertyCode": "7", -> 配件标示码
+        "nameEn": "", -> 英文名
+        "nameZh": "", -> 中文名
+        "disp_order": "", ->显示顺序
+        "classify":"", ->类型
+        "price": "", -> 价格
+        "rmbPrice": "", -> 人民币价格
+        "discount": "", -> 折扣
+    },
+    {},
+    {}
+]
+
+```
+
+#### 显示最后需要显示的数据 profile 中的数据 + library 中定义为标配的数据 
+
+GET /profile-option/{profile_id}/show_result
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+[
+    {
+        "optionId": "1", ->配件id
+        "propertyCode": "7", -> 配件标示码
+        "nameEn": "", -> 英文名
+        "nameZh": "", -> 中文名
+        "disp_order": "", ->显示顺序
+        "classify":"", ->类型
+        "price": "", -> 价格
+        "rmbPrice": "", -> 人民币价格
+        "discount": "", -> 折扣
+		"isInProfile": false, -> 是否在profile中存在
+		"isInNewLibrary": false, -> 是否在new Library中存在
+    },
+    {},
+    {}
+]
+
+```
+
+
+
+
+
+
 #### 按profile_id获得变化的 profile option
 
 GET /profile-option-change/{profile_id}
@@ -1396,8 +1682,213 @@ BODY:
 注意
 
 ```
+用户增加或减少profile中的option 的数据，会在这个接口里体现,
 此方法需按profile_id 对应的option list 
 当复制的时候这些数据需要复制过去
+不同的 changeType 需要显示不同的颜色
 ```
 
+
+
+#### 所有 profile_id和option_id 查询相关的 profile-option-change
+
+GET /profile-option-change/{profile_id}/{option_id}
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+[
+    {
+        "optionId": "1", ->配件id
+        "propertyCode": "7", -> 配件标示码
+        "nameEn": "", -> 英文名
+        "nameZh": "", -> 中文名
+        "disp_order": "", ->显示顺序
+        "classify":"", ->类型
+        "price": "", -> 价格
+        "rmbPrice": "", -> 人民币价格
+        "discount": "", -> 折扣
+        "changeType": "", -> 增加还是删除 + -
+    },
+    {},
+    {}
+]
+
+```
+
+
+注意
+
+```
+用户增加或减少profile中的option 的数据，会在这个接口里体现,
+此方法需按profile_id 对应的option list 
+当复制的时候这些数据需要复制过去
+不同的 changeType 需要显示不同的颜色
+```
+
+#### 新增 修改 删除 profile-option-change
+
+POST /profile-option-change/{profile_id}
+
+上送数据
+
+{
+	"optionId": "1", ->配件id
+	"classify":"", ->类型
+    "changeType": "", -> 增加还是删除 + -
+}
+
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+{
+    optCode : "succcess" , ->操作code码
+    msg : "this is reason why" , ->操作信息
+    data: {} ,-> 返回数据
+}
+
+
+```
+
+
+#### 所有 profile_id的 profile-cell-setting
+
+GET /profile-cell-setting/{profile_id}
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+[
+    {
+        "id": "1", ->主键
+        "profileId": "7", -> profile id
+        "varientId": "", -> config_profile_varient-> id
+        "optionId": "", -> 配件id
+        "settingContent": "", ->设置值
+        "showContent":"", ->显示值
+    },
+    {},
+    {}
+]
+
+```
+
+#### 所有 profile_id和option_id profile-cell-setting
+
+GET /profile-cell-setting/{profile_id}/option/{option_id}
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+[
+    {
+        "id": "1", ->主键
+        "profileId": "7", -> profile id
+        "varientId": "", -> config_profile_varient-> id
+        "optionId": "", -> 配件id
+        "settingContent": "", ->设置值
+        "showContent":"", ->显示值
+    },
+    {},
+    {}
+]
+
+```
+
+
+#### 所有 profile_id和varient_id 相关的 profile-cell-setting
+
+GET /profile-cell-setting/{profile_id}/varient/{varient_id}
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+[
+    {
+        "id": "1", ->主键
+        "profileId": "7", -> profile id
+        "varientId": "", -> config_profile_varient-> id
+        "optionId": "", -> 配件id
+        "settingContent": "", ->设置值
+        "showContent":"", ->显示值
+    },
+    {},
+    {}
+]
+
+```
+
+
+#### profile_id和varient_id 和 option_id 确定唯一 profile-cell-setting
+
+GET /profile-cell-setting/{profile_id}/{option_id}/{varient_id}
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+{
+	"id": "1", ->主键
+	"profileId": "7", -> profile id
+	"varientId": "", -> config_profile_varient-> id
+	"optionId": "", -> 配件id
+	"settingContent": "", ->设置值
+	"showContent":"", ->显示值
+}
+
+```
+
+#### 修改 cell-setting 这个PUT 是saveOrUpdate
+
+PUT /profile-cell-setting/{profile_id}/{option_id}/{varient_id}
+
+上送数据
+{
+	"settingContent": "", ->设置值
+	"showContent":"", ->显示值
+}
+
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+{
+    optCode : "succcess" , ->操作code码
+    msg : "this is reason why" , ->操作信息
+    data: {} ,-> 返回数据
+}
+
+
+```
 
