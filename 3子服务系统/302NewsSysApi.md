@@ -436,6 +436,155 @@ BODY:
 ```
 
 
+#### 获取不同e系列下不同status 下的所有library
+
+GET  /eseries/eseries_code/library?status={status}
+
+@RequestParam status
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+[
+    {
+        "id": "1", ->唯一标示
+        "e_series_code": "G38" 小系列对应code
+        "code": "300", -> bmw 系统内代码
+        "import_date": "", -> 导入时间
+        "basic_file_name": "", -> 文件名
+        "basic_file_url": "", -> 导入文件路径
+        "optional_file_name":"", ->可操作文件名
+        "optional_file_url":"", ->可操作文
+    },
+    {},
+    {}
+]
+
+```
+
+
+#### 获取一个library
+
+GET  /library/{id}
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+
+{
+	"id": "1", ->唯一标示
+	"e_series_code": "G38" 小系列对应code
+	"code": "300", -> bmw 系统内代码
+	"import_date": "", -> 导入时间
+	"basic_file_name": "", -> 文件名
+	"basic_file_url": "", -> 导入文件路径
+	"optional_file_name":"", ->可操作文件名
+	"optional_file_url":"", ->可操作文
+}
+
+```
+
+#### 按version获取一个library
+
+GET  /library-by-version/{version}
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+
+{
+	"id": "1", ->唯一标示
+	"e_series_code": "G38" 小系列对应code
+	"code": "300", -> bmw 系统内代码
+	"import_date": "", -> 导入时间
+	"basic_file_name": "", -> 文件名
+	"basic_file_url": "", -> 导入文件路径
+	"optional_file_name":"", ->可操作文件名
+	"optional_file_url":"", ->可操作文
+}
+
+```
+
+
+#### 导入library 需要显示导入进度
+
+POST /import-library
+
+@RequestParam version
+@RequestMetadata file
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+{
+    optCode : "succcess" , ->操作code码
+    msg : "this is reason why" , ->操作信息
+    data: {} ,-> 返回数据
+}
+
+
+```
+
+
+注意
+
+```
+需要维护表 config_unique_option 
+
+```
+
+
+
+
+#### 按library_id获取所有 library-basic-property
+
+GET /library-basic-property/{library_id}
+
+
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+[
+    {
+        "id": "1", ->唯一标示
+        "libraryId": "" 对应library表id
+        "optionId": "", -> 配件Id
+        "classify": "", -> 分类
+        "comment": "", -> 注释
+    },
+    {},
+    {}
+]
+
+```
+
+
+
 
 
 
@@ -550,37 +699,7 @@ BODY:
 其他原始拷贝指向新的profile id
 ```
 
-#### 导入library
 
-POST /import-library
-
-@RequestParam version
-@RequestMetadata file
-
-
-返回格式:
-
-```
-HTTP Stauts Code: 200
-
-BODY:
-
-{
-    optCode : "succcess" , ->操作code码
-    msg : "this is reason why" , ->操作信息
-    data: {} ,-> 返回数据
-}
-
-
-```
-
-
-注意
-
-```
-需要维护表 config_unique_option 
-
-```
 
 #### 导入profile
 
