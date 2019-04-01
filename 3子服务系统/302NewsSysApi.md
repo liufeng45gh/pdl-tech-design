@@ -737,9 +737,6 @@ BODY:
 
 GET /library-basic-property-setting/{library_id}/classify/{classify_id}
 
-
-
-
 返回格式:
 
 ```
@@ -768,8 +765,53 @@ BODY:
 
 GET /library-optional-property/{library_id}
 
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+[
+    {
+         "id": "1", ->唯一标示
+        "libraryId": "" 对应library表id
+        "optionId": "", -> 配件Id
+        "classify": "", -> 分类
+        "comment": "", -> 注释
+    },
+    {},
+    {}
+]
+
+```
+
+#### 按library_id 和 option_id获取 library-optional-property
+
+GET /library-optional-property/{library_id}/{option_id}
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
 
 
+{
+	 "id": "1", ->唯一标示
+	"libraryId": "" 对应library表id
+	"optionId": "", -> 配件Id
+	"classify": "", -> 分类
+	"comment": "", -> 注释
+}
+
+```
+
+
+#### 按library_id 和 classify获取 library-optional-property
+
+GET /library-optional-property/{library_id}/classify/{classify_id}
 
 返回格式:
 
@@ -794,6 +836,276 @@ BODY:
 
 
 
+#### 按library_id获取所有 library-optional-property-setting
+
+GET /library-optional-property-setting/{library_id}
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+[
+    {
+        "id": "1", ->唯一标示
+        "libraryId": "" 对应library表id
+        "optionId": "", -> 配件Id
+        "modelCode": "", -> model唯一代码
+		"property_content": "", ->设置值
+		"lhd_or_rhd": "",-> 左驾车右驾车 L/R/X
+        "comment": "", -> 注释
+    },
+    {},
+    {}
+]
+
+```
+
+
+#### 按library_id 和 option_id获取 library-optional-property-setting
+
+GET /library-optional-property-setting/{library_id}/{option_id}
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+[
+    {
+        "id": "1", ->唯一标示
+        "libraryId": "" 对应library表id
+        "optionId": "", -> 配件Id
+        "modelCode": "", -> model唯一代码
+		"property_content": "", ->设置值
+		"lhd_or_rhd": "",-> 左驾车右驾车 L/R/X
+        "comment": "", -> 注释
+    },
+    {},
+    {}
+]
+
+```
+
+
+#### 按library_id 和 option_id和 model_code获取 library-optional-property-setting
+
+GET /library-optional-property-setting/{library_id}/{option_id}/{model_code}
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+[
+    {
+        "id": "1", ->唯一标示
+        "libraryId": "" 对应library表id
+        "optionId": "", -> 配件Id
+        "modelCode": "", -> model唯一代码
+		"property_content": "", ->设置值
+		"lhd_or_rhd": "",-> 左驾车右驾车 L/R/X
+        "comment": "", -> 注释
+    },
+    {},
+    {}
+]
+
+```
+
+
+#### 按library_id 和 option_id和 model_code获取 library-optional-property-setting
+
+GET /library-optional-property-setting/{library_id}/{option_id}/{model_code}
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+
+{
+	"id": "1", ->唯一标示
+	"libraryId": "" 对应library表id
+	"optionId": "", -> 配件Id
+	"modelCode": "", -> model唯一代码
+	"property_content": "", ->设置值
+	"lhd_or_rhd": "",-> 左驾车右驾车 L/R/X
+	"comment": "", -> 注释
+}
+
+```
+
+
+
+#### 按library_id 和 classify获取 library-optional-property-setting
+
+GET /library-optional-property-setting/{library_id}/classify/{classify_id}
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+[
+    {
+        "id": "1", ->唯一标示
+        "libraryId": "" 对应library表id
+        "optionId": "", -> 配件Id
+        "modelCode": "", -> model唯一代码
+		"property_content": "", ->设置值
+		"lhd_or_rhd": "",-> 左驾车右驾车 L/R/X
+        "comment": "", -> 注释
+    },
+    {},
+    {}
+]
+
+```
+
+
+#### 按library_id获取所有 library-option-rule
+
+GET /library-option-rule/{library_id}
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+[
+    {
+        "id": "1", ->唯一标示
+        "libraryId": "" 对应library表id
+        "optionId": "", -> 配件Id
+        "modelCode": "", -> model唯一代码
+		"propertyContent": "", ->设置值
+		"relationType": "",-> 关系类型
+        "correlatedObj": "", -> 复杂关系内容
+		"lhdOrRhd": "", -> 复杂关系内容
+		"rrpWithVat": "", -> 价格,只有combine关系的时候被设定
+		"rrpWithoutVat": "", -> 价格,只有combine关系的时候被设定
+		"efpImp": "", -> 价格,只有combine关系的时候被设定
+		"efpSubs": "", -> 价格,只有combine关系的时候被设定
+		"comment": "", -> 注释
+    },
+    {},
+    {}
+]
+
+```
+
+#### 按library_id 和 option_id获取 library-option-rule
+
+GET /library-option-rule/{library_id}/{option_id}
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+[
+    {
+        "id": "1", ->唯一标示
+        "libraryId": "" 对应library表id
+        "optionId": "", -> 配件Id
+        "modelCode": "", -> model唯一代码
+		"propertyContent": "", ->设置值
+		"relationType": "",-> 关系类型
+        "correlatedObj": "", -> 复杂关系内容
+		"lhdOrRhd": "", -> 复杂关系内容
+		"rrpWithVat": "", -> 价格,只有combine关系的时候被设定
+		"rrpWithoutVat": "", -> 价格,只有combine关系的时候被设定
+		"efpImp": "", -> 价格,只有combine关系的时候被设定
+		"efpSubs": "", -> 价格,只有combine关系的时候被设定
+		"comment": "", -> 注释
+    },
+    {},
+    {}
+]
+
+```
+
+#### 按library_id 和 option_id获取 library-option-rule
+
+GET /library-option-rule/{library_id}/{option_id}
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+[
+    {
+        "id": "1", ->唯一标示
+        "libraryId": "" 对应library表id
+        "optionId": "", -> 配件Id
+        "modelCode": "", -> model唯一代码
+		"propertyContent": "", ->设置值
+		"relationType": "",-> 关系类型
+        "correlatedObj": "", -> 复杂关系内容
+		"lhdOrRhd": "", -> 复杂关系内容
+		"rrpWithVat": "", -> 价格,只有combine关系的时候被设定
+		"rrpWithoutVat": "", -> 价格,只有combine关系的时候被设定
+		"efpImp": "", -> 价格,只有combine关系的时候被设定
+		"efpSubs": "", -> 价格,只有combine关系的时候被设定
+		"comment": "", -> 注释
+    },
+    {},
+    {}
+]
+
+```
+
+
+#### 按library_id 和 option_id和 model_code获取 library-option-rule
+
+GET /library-option-rule/{library_id}/{option_id}/{model_code}
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+[
+    {
+        "id": "1", ->唯一标示
+        "libraryId": "" 对应library表id
+        "optionId": "", -> 配件Id
+        "modelCode": "", -> model唯一代码
+		"propertyContent": "", ->设置值
+		"relationType": "",-> 关系类型
+        "correlatedObj": "", -> 复杂关系内容
+		"lhdOrRhd": "", -> 复杂关系内容
+		"rrpWithVat": "", -> 价格,只有combine关系的时候被设定
+		"rrpWithoutVat": "", -> 价格,只有combine关系的时候被设定
+		"efpImp": "", -> 价格,只有combine关系的时候被设定
+		"efpSubs": "", -> 价格,只有combine关系的时候被设定
+		"comment": "", -> 注释
+    },
+    {},
+    {}
+]
+
+```
 
 
 
