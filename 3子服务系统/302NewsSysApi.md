@@ -65,6 +65,7 @@ Swagger: /swagger/index.html
  GET| /profile/{profile_id}|按profile_id获取 profile| {}|
  GET| /profile/by-eseries/{eseries_code}|按eseries_code 获取 profile| []|
  GET| /profile/by-eseries/{eseries_code}?status={status}|按eseries_code 和 status 获取 profile| []|
+ GET| /profile/by-eseries/{eseries_code}?isLaunched={isLaunched}|按eseries_code 和 isLaunched 获取 profile| []|
  POST| /profile/{profile_id}/change-status|改变profile status| response-result|
  POST| /profile/{profile_id}/copy|复制一个profile| response-result|
  POST| /import-profile|上传profile| response-result|
