@@ -117,9 +117,9 @@ BODY:
         "code": "7", -> 系统系列唯一标示码
         "nameEn": "", -> 英文名
         "nameZh": "", -> 中文名
-        "disp_order": "", ->显示顺序
+        "dispOrder": "", ->显示顺序
         "enabled":"", ->是否启用
-        "image_url": "", -> 大图url
+        "imageUrl": "", -> 大图url
     },
     {},
     {}
@@ -144,9 +144,9 @@ HTTP Stauts Code: 200
     "code": "7", -> 系统系列唯一标示码
     "nameEn": "", -> 英文名
     "nameZh": "", -> 中文名
-    "disp_order": "", ->显示顺序
+    "dispOrder": "", ->显示顺序
     "enabled":"", ->是否启用
-    "image_url": "", -> 大图url
+    "imageUrl": "", -> 大图url
 }
 
 ```
@@ -166,11 +166,11 @@ BODY:
 [
     {
         "id": "1", ->唯一标示
-        "series_code": "7" 大系列的标示码
+        "seriesCode": "7" 大系列的标示码
         "code": "7", -> 系统系列唯一标示码
         "nameEn": "", -> 英文名
         "nameZh": "", -> 中文名
-        "disp_order": "", ->显示顺序
+        "dispOrder": "", ->显示顺序
         "enabled":"", ->是否启用
     },
     {},
@@ -195,7 +195,7 @@ BODY:
 [
     {
         "id": "1", ->唯一标示
-        "series_code": "7" 大系列的标示码
+        "seriesCode": "7" 大系列的标示码
         "code": "7", -> 系统系列唯一标示码
         "nameEn": "", -> 英文名
         "nameZh": "", -> 中文名
@@ -224,7 +224,7 @@ BODY:
 [
     {
         "id": "1", ->唯一标示
-        "e_series_code": "7" 大系列的标示码
+        "eSeriesCode": "7" 大系列的标示码
         "code": "7", -> 系统系列唯一标示码
         "nameEn": "", -> 英文名
         "nameZh": "", -> 中文名
@@ -253,7 +253,7 @@ BODY:
 [
     {
         "id": "1", ->唯一标示
-        "e_series_code": "7" 大系列的标示码
+        "eSeriesCode": "7" 大系列的标示码
         "code": "7", -> 系统系列唯一标示码
         "nameEn": "", -> 英文名
         "nameZh": "", -> 中文名
@@ -281,7 +281,7 @@ BODY:
 [
     {
         "id": "1", ->唯一标示
-        "e_series_code": "7" 大系列的标示码
+        "eSeriesCode": "7" 大系列的标示码
         "code": "7", -> 系统系列唯一标示码
         "nameEn": "", -> 英文名
         "nameZh": "", -> 中文名
@@ -310,7 +310,7 @@ BODY:
 
 {
     "id": "1", ->唯一标示
-    "e_series_code": "7" 大系列的标示码
+    "eSeriesCode": "7" 大系列的标示码
     "code": "7", -> 系统系列唯一标示码
     "nameEn": "", -> 英文名
     "nameZh": "", -> 中文名
@@ -337,7 +337,7 @@ BODY:
 [
     {
         "id": "1", ->唯一标示
-        "e_series_code": "G38" 小系列对应code
+        "eSeriesCode": "G38" 小系列对应code
         "code": "300", -> bmw 系统内代码
         "nameEn": "", -> 英文名
         "nameZh": "", -> 中文名
@@ -365,7 +365,7 @@ BODY:
 
 {
     "id": "1", ->唯一标示
-    "e_series_code": "G38" 小系列对应code
+    "eSeriesCode": "G38" 小系列对应code
     "code": "300", -> bmw 系统内代码
     "nameEn": "", -> 英文名
     "nameZh": "", -> 中文名
@@ -421,13 +421,13 @@ BODY:
 [
     {
         "id": "1", ->唯一标示
-        "e_series_code": "G38" 小系列对应code
+        "eSeriesCode": "G38" 小系列对应code
         "code": "300", -> bmw 系统内代码
-        "import_date": "", -> 导入时间
-        "basic_file_name": "", -> 文件名
-        "basic_file_url": "", -> 导入文件路径
-        "optional_file_name":"", ->可操作文件名
-        "optional_file_url":"", ->可操作文
+        "importDate": "", -> 导入时间
+        "basicFileName": "", -> 文件名
+        "basicFileUrl": "", -> 导入文件路径
+        "optionalFileName":"", ->可操作文件名
+        "optionalFileUrl":"", ->可操作文
     },
     {},
     {}
@@ -454,11 +454,11 @@ BODY:
         "id": "1", ->唯一标示
         "e_series_code": "G38" 小系列对应code
         "code": "300", -> bmw 系统内代码
-        "import_date": "", -> 导入时间
-        "basic_file_name": "", -> 文件名
-        "basic_file_url": "", -> 导入文件路径
-        "optional_file_name":"", ->可操作文件名
-        "optional_file_url":"", ->可操作文
+        "importDate": "", -> 导入时间
+        "basicFileName": "", -> 文件名
+        "basicFileUrl": "", -> 导入文件路径
+        "optionalFileName":"", ->可操作文件名
+        "optionalFileUrl":"", ->可操作文
     },
     {},
     {}
@@ -482,13 +482,13 @@ BODY:
 
 {
 	"id": "1", ->唯一标示
-	"e_series_code": "G38" 小系列对应code
+	"eSeriesCode": "G38" 小系列对应code
 	"code": "300", -> bmw 系统内代码
-	"import_date": "", -> 导入时间
-	"basic_file_name": "", -> 文件名
-	"basic_file_url": "", -> 导入文件路径
-	"optional_file_name":"", ->可操作文件名
-	"optional_file_url":"", ->可操作文
+	"importDate": "", -> 导入时间
+	"basicFileName": "", -> 文件名
+	"basicFileUrl": "", -> 导入文件路径
+	"optionalFileName":"", ->可操作文件名
+	"optionalFileUrl":"", ->可操作文
 }
 
 ```
@@ -508,13 +508,13 @@ BODY:
 
 {
 	"id": "1", ->唯一标示
-	"e_series_code": "G38" 小系列对应code
+	"eSeriesCode": "G38" 小系列对应code
 	"code": "300", -> bmw 系统内代码
-	"import_date": "", -> 导入时间
-	"basic_file_name": "", -> 文件名
-	"basic_file_url": "", -> 导入文件路径
-	"optional_file_name":"", ->可操作文件名
-	"optional_file_url":"", ->可操作文
+	"importDate": "", -> 导入时间
+	"basicFileName": "", -> 文件名
+	"basicFileUrl": "", -> 导入文件路径
+	"optionalFileName":"", ->可操作文件名
+	"optionalFileUrl":"", ->可操作文
 }
 
 ```
@@ -663,8 +663,8 @@ BODY:
         "libraryId": "" 对应library表id
         "optionId": "", -> 配件Id
         "modelCode": "", -> model唯一代码
-		"property_content": "", ->设置值
-		"lhd_or_rhd": "",-> 左驾车右驾车 L/R/X
+		"propertyContent": "", ->设置值
+		"lhdOrRhd": "",-> 左驾车右驾车 L/R/X
         "comment": "", -> 注释
     },
     {},
@@ -694,8 +694,8 @@ BODY:
         "libraryId": "" 对应library表id
         "optionId": "", -> 配件Id
         "modelCode": "", -> model唯一代码
-		"property_content": "", ->设置值
-		"lhd_or_rhd": "",-> 左驾车右驾车 L/R/X
+		"propertyContent": "", ->设置值
+		"lhdOrRhd": "",-> 左驾车右驾车 L/R/X
         "comment": "", -> 注释
     },
     {},
@@ -725,8 +725,8 @@ BODY:
 	"libraryId": "" 对应library表id
 	"optionId": "", -> 配件Id
 	"modelCode": "", -> model唯一代码
-	"property_content": "", ->设置值
-	"lhd_or_rhd": "",-> 左驾车右驾车 L/R/X
+	"propertyContent": "", ->设置值
+	"lhdOrRhd": "",-> 左驾车右驾车 L/R/X
 	"comment": "", -> 注释
 }
 
@@ -750,8 +750,8 @@ BODY:
         "libraryId": "" 对应library表id
         "optionId": "", -> 配件Id
         "modelCode": "", -> model唯一代码
-		"property_content": "", ->设置值
-		"lhd_or_rhd": "",-> 左驾车右驾车 L/R/X
+		"propertyContent": "", ->设置值
+		"lhdOrRhd": "",-> 左驾车右驾车 L/R/X
         "comment": "", -> 注释
     },
     {},
@@ -853,8 +853,8 @@ BODY:
         "libraryId": "" 对应library表id
         "optionId": "", -> 配件Id
         "modelCode": "", -> model唯一代码
-		"property_content": "", ->设置值
-		"lhd_or_rhd": "",-> 左驾车右驾车 L/R/X
+		"propertyContent": "", ->设置值
+		"lhdOrRhd": "",-> 左驾车右驾车 L/R/X
         "comment": "", -> 注释
     },
     {},
@@ -881,8 +881,8 @@ BODY:
         "libraryId": "" 对应library表id
         "optionId": "", -> 配件Id
         "modelCode": "", -> model唯一代码
-		"property_content": "", ->设置值
-		"lhd_or_rhd": "",-> 左驾车右驾车 L/R/X
+		"propertyContent": "", ->设置值
+		"lhdOrRhd": "",-> 左驾车右驾车 L/R/X
         "comment": "", -> 注释
     },
     {},
@@ -909,8 +909,8 @@ BODY:
         "libraryId": "" 对应library表id
         "optionId": "", -> 配件Id
         "modelCode": "", -> model唯一代码
-		"property_content": "", ->设置值
-		"lhd_or_rhd": "",-> 左驾车右驾车 L/R/X
+		"propertyContent": "", ->设置值
+		"lhdOrRhd": "",-> 左驾车右驾车 L/R/X
         "comment": "", -> 注释
     },
     {},
@@ -937,8 +937,8 @@ BODY:
 	"libraryId": "" 对应library表id
 	"optionId": "", -> 配件Id
 	"modelCode": "", -> model唯一代码
-	"property_content": "", ->设置值
-	"lhd_or_rhd": "",-> 左驾车右驾车 L/R/X
+	"propertyContent": "", ->设置值
+	"lhdOrRhd": "",-> 左驾车右驾车 L/R/X
 	"comment": "", -> 注释
 }
 
@@ -963,8 +963,8 @@ BODY:
         "libraryId": "" 对应library表id
         "optionId": "", -> 配件Id
         "modelCode": "", -> model唯一代码
-		"property_content": "", ->设置值
-		"lhd_or_rhd": "",-> 左驾车右驾车 L/R/X
+		"propertyContent": "", ->设置值
+		"lhdOrRhd": "",-> 左驾车右驾车 L/R/X
         "comment": "", -> 注释
     },
     {},
