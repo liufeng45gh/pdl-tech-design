@@ -1108,6 +1108,219 @@ BODY:
 ```
 
 
+#### 所有 profile
+
+GET /all-profile
+@RequestParam status
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+[
+    {
+        "id": "1", ->唯一标示
+        "eseriesCode": "" eseries_code
+        "profileName": "", -> profile 名称
+        "profileUrl": "", -> 上传url
+		"importDate": "", ->导入时间
+		"basedLibraryId": "",-> 基于libarary id
+        "newLibraryId": "", -> 新库id
+		"sortDate": "", -> 排序时间
+		"isResponsible": "", -> 是否可以响应
+		"bmwProfileCode": "", -> 导入时excel 表中响应的code
+		"rootProfileId": "", -> 根profile id
+		"parentProfileId": "", -> 父级 profile id
+		"content": "" , -> 内容
+		"profileFlag": "" , -> 标签
+		"status": "" , -> 状态
+		"previousStatus": "", -> 前一个状态
+    },
+    {},
+    {}
+]
+
+```
+
+#### 按profile_id获取 profile
+
+GET /profile/{profile_id}
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+
+{
+	"id": "1", ->唯一标示
+	"eseriesCode": "" eseries_code
+	"profileName": "", -> profile 名称
+	"profileUrl": "", -> 上传url
+	"importDate": "", ->导入时间
+	"basedLibraryId": "",-> 基于libarary id
+	"newLibraryId": "", -> 新库id
+	"sortDate": "", -> 排序时间
+	"isResponsible": "", -> 是否可以响应
+	"bmwProfileCode": "", -> 导入时excel 表中响应的code
+	"rootProfileId": "", -> 根profile id
+	"parentProfileId": "", -> 父级 profile id
+	"content": "" , -> 内容
+	"profileFlag": "" , -> 标签
+	"status": "" , -> 状态
+	"previousStatus": "", -> 前一个状态
+}
+
+```
+
+
+
+#### 按eseries_code 获取 profile
+
+GET /profile/by-eseries/{eseries_code}
+@RequestParam status
+@RequestParam isLaunched
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+[
+    {
+        "id": "1", ->唯一标示
+        "eseriesCode": "" eseries_code
+        "profileName": "", -> profile 名称
+        "profileUrl": "", -> 上传url
+		"importDate": "", ->导入时间
+		"basedLibraryId": "",-> 基于libarary id
+        "newLibraryId": "", -> 新库id
+		"sortDate": "", -> 排序时间
+		"isResponsible": "", -> 是否可以响应
+		"bmwProfileCode": "", -> 导入时excel 表中响应的code
+		"rootProfileId": "", -> 根profile id
+		"parentProfileId": "", -> 父级 profile id
+		"content": "" , -> 内容
+		"profileFlag": "" , -> 标签
+		"status": "" , -> 状态
+		"previousStatus": "", -> 前一个状态
+    },
+    {},
+    {}
+]
+
+```
+
+注意
+
+```
+如果传入isLaunched, status 将不起作用
+	
+```
+
+
+#### 改变profile status
+
+POST /profile/{profile_id}/change-status
+
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+{
+    optCode : "succcess" , ->操作code码
+    msg : "this is reason why" , ->操作信息
+    data: {} ,-> 返回数据
+}
+
+
+```
+
+
+#### 复制profile
+
+POST /profile/{profile_id}/copy
+
+@RequestParam sourceProfileId
+@RequestParam newProfileName
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+{
+    optCode : "succcess" , ->操作code码
+    msg : "this is reason why" , ->操作信息
+    data: {} ,-> 返回数据
+}
+
+
+```
+
+
+注意
+
+```
+需要复制 profile-option change 部分
+赋值 rootId, parentId
+其他原始拷贝指向新的profile id
+```
+
+
+
+#### 导入profile
+
+POST /import-profile
+
+@RequestParam libraryVersion
+@RequestMetadata file
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+{
+    optCode : "succcess" , ->操作code码
+    msg : "this is reason why" , ->操作信息
+    data: {} ,-> 返回数据
+}
+
+
+```
+
+
+注意
+
+```
+需要维护表 config_profile_option 
+不需要维护表 config_profile_option_change
+导入前 先判断数据是否可以转换成 java 对象
+还需要比较 config_unique_option中是否覆盖所有相关option 对象，如果有不能识别的，需要报出那些option 不能识别,并且返回导入失败
+```
+
+
+
+
 
 
 
@@ -1188,71 +1401,3 @@ BODY:
 ```
 
 
-#### 复制profile
-
-POST /profile/{profile_id}/copy
-
-@RequestParam sourceProfileId
-@RequestParam newProfileName
-
-
-返回格式:
-
-```
-HTTP Stauts Code: 200
-
-BODY:
-
-{
-    optCode : "succcess" , ->操作code码
-    msg : "this is reason why" , ->操作信息
-    data: {} ,-> 返回数据
-}
-
-
-```
-
-
-注意
-
-```
-需要复制 profile-option change 部分
-赋值 rootId, parentId
-其他原始拷贝指向新的profile id
-```
-
-
-
-#### 导入profile
-
-POST /import-profile
-
-@RequestParam libraryVersion
-@RequestMetadata file
-
-
-返回格式:
-
-```
-HTTP Stauts Code: 200
-
-BODY:
-
-{
-    optCode : "succcess" , ->操作code码
-    msg : "this is reason why" , ->操作信息
-    data: {} ,-> 返回数据
-}
-
-
-```
-
-
-注意
-
-```
-需要维护表 config_profile_option 
-不需要维护表 config_profile_option_change
-导入前 先判断数据是否可以转换成 java 对象
-还需要比较 config_unique_option中是否覆盖所有相关option 对象，如果有不能识别的，需要报出那些option 不能识别,并且返回导入失败
-```
