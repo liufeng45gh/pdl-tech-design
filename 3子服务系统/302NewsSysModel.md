@@ -301,6 +301,7 @@ parent_profile_id      	|	父级 profile id
 content      			|	内容
 profile_flag      		|	标签
 status      			|	当前状态
+is_launched      		|	是否启用
 previous_status      	|	前状态
 created_at     			|	创建时间
 updated_at     			|	更新时间

@@ -7,89 +7,89 @@ Swagger: /swagger/index.html
 
 ### 3.5.3.1. 所有服务接口清单
 
- 方法 | 接口 | 用途 | 返回 | 是否走网关 
- :-- | :--  | :-- | :-- | :--
- GET | /all-series | 获取所有的系列对象 | [] |
- GET | /all-series?enabled=true | 获取所有的已上线系列对象 | [] | 
- GET | /series/{series_code} | 获取某个系列的详细资料 | {} | 
-     |  |  |  |  
- GET | /series/{series_code}/eseries | 获取某个系列下的所有e系列对象 | [] |
- GET | /series/{series_code}/eseries?enabled=true | 获取某个系列下的e系列上线对象 | [] | 
- GET | /eseries/{eseries_code} | 获取单个e系列对象| {}|
- GET | /all-eseries|所有eseries| [] |
- GET | /all-eseries?enabled=true|所有上线的eseries| [] |
-     |  |  |  |
- GET | /series/{series_code}/models | 获取系列下所有的model | [] |
- GET | /series/{series_code}/models?enabled=true | 获取系列下所有上线的model | [] |
- GET | /eseries/{eseries_code}/models | 获取e系列下所有的model | [] |
- GET | /eseries/{eseries_code}/models?enabled=true | 获取e系列下所有上线的model | [] |
- GET | /all-models |所有model| [] | 
- GET | /all-models?enabled=true |所有上线的model| [] | 
- GET | /models/{code} |按code 获取model| {} | 
-  | | | | 
- GET | /all-options|获取所有配件(分页，默认30)| [] |
- GET | /option/{option_id}|获取某个配件| {} |
- GET | /options-by-code/{code}|按code获取配件| [] |
-  | | | | 
- GET | /all-library | 所有library | []|
- GET | /all-library?status={status}   | 获取不同status 下的所有library | [] |
- GET | /eseries/eseries_code/library?status={status}   | 获取不同e系列下不同status 下的所有library | [] |
- GET | /library/{id}  | 获取一个library |{} |
- GET | /library-by-version/{version}  | 按version获取一个library| {}|
- POST | /import-library | 导入library 需要显示导入进度 | response-result | 
-  | | | |
- GET| /library-basic-property/{library_id}|按library_id获取所有 library-basic-property| []|
- GET| /library-basic-property/{library_id}/{option_id}|按library_id 和 option_id获取 library-basic-property| {}|
- GET| /library-basic-property/{library_id}/classify/{classify_id}|按library_id 和 classify获取 library-basic-property| []|
-  | | | |
- GET| /library-basic-property-setting/{library_id}|按library_id获取所有 library-basic-property-setting| []|
- GET| /library-basic-property-setting/{library_id}/{option_id}|按library_id 和 option_id获取 library-basic-property-setting| []|
-  GET| /library-basic-property-setting/{library_id}/{option_id}/{model_code}|按library_id 和 option_id和 model_code获取 library-basic-property-setting| {}|
- GET| /library-basic-property-setting/{library_id}/classify/{classify_id}|按library_id 和 classify获取 library-basic-property-setting| []|
-   | | | |
- GET| /library-optional-property/{library_id}|按library_id获取所有 library-optional-property| []|
- GET| /library-optional-property/{library_id}/{option_id}|按library_id 和 option_id获取 library-optional-property| {}|
- GET| /library-optional-property/{library_id}/classify/{classify_id}|按library_id 和 classify获取 library-optional-property| []|
-  | | | |
- GET| /library-optional-property-setting/{library_id}|按library_id获取所有 library-optional-property-setting| []|
- GET| /library-optional-property-setting/{library_id}/{option_id}|按library_id 和 option_id获取 library-optional-property-setting| []|
-  GET| /library-optional-property-setting/{library_id}/{option_id}/{model_code}|按library_id 和 option_id和 model_code获取 library-optional-property-setting| {}|
- GET| /library-optional-property-setting/{library_id}/classify/{classify_id}|按library_id 和 classify获取 library-optional-property-setting| []|
-  | | | |
- GET| /library-option-rule/{library_id}|按library_id获取所有 library-option-rule| []|
- GET| /library-option-rule/{library_id}/{option_id}|按library_id 和 option_id获取 library-option-rule| []|
- GET| /library-option-rule/{library_id}/{option_id}/{model_code}|按library_id 和 option_id和 model_code获取 library-option-rule| []|
-  | | | |
- GET| /all-profile|所有 profile| []|
- GET| /all-profile?status={status}|所有 profile中匹配status| []|
- GET| /profile/{profile_id}|按profile_id获取 profile| {}|
- GET| /profile/by-eseries/{eseries_code}|按eseries_code 获取 profile| []|
- GET| /profile/by-eseries/{eseries_code}?status={status}|按eseries_code 和 status 获取 profile| []|
- GET| /profile/by-eseries/{eseries_code}?isLaunched={isLaunched}|按eseries_code 和 isLaunched 获取 profile| []|
- POST| /profile/{profile_id}/change-status|改变profile status| response-result|
- POST| /profile/{profile_id}/copy|复制一个profile| response-result|
+ 方法 | 接口 | 用途 | 返回 | 调用页面|是否走网关 
+ :-- | :--  | :-- | :-- | :-- | :--
+ GET | /all-series | 获取所有的系列对象 | [] | |
+ GET | /all-series?enabled=true | 获取所有的已上线系列对象 | [] | 车型车系一览页|
+ GET | /series/{series_code} | 获取某个系列的详细资料 | {} | |
+     |  |  |  |  |
+ GET | /series/{series_code}/eseries | 获取某个系列下的所有e系列对象 | [] | |
+ GET | /series/{series_code}/eseries?enabled=true | 获取某个系列下的e系列上线对象 | [] | 车型车系一览页|
+ GET | /eseries/{eseries_code} | 获取单个e系列对象| {}| |
+ GET | /all-eseries|所有eseries| [] | |
+ GET | /all-eseries?enabled=true|所有上线的eseries| [] | |
+     |  |  |  | |
+ GET | /series/{series_code}/models | 获取系列下所有的model | [] | |
+ GET | /series/{series_code}/models?enabled=true | 获取系列下所有上线的model | [] | |
+ GET | /eseries/{eseries_code}/models | 获取e系列下所有的model | [] | |
+ GET | /eseries/{eseries_code}/models?enabled=true | 获取e系列下所有上线的model | [] | |
+ GET | /all-models |所有model| [] | |
+ GET | /all-models?enabled=true |所有上线的model| [] | |
+ GET | /models/{code} |按code 获取model| {} | |
+  | | | | |
+ GET | /all-options|获取所有配件(分页，默认30)| [] | |
+ GET | /option/{option_id}|获取某个配件| {} | |
+ GET | /options-by-code/{code}|按code获取配件| [] | |
+  | | | | |
+ GET | /all-library | 所有library | []| |
+ GET | /all-library?status={status}   | 获取不同status 下的所有library | [] | |
+ GET | /eseries/eseries_code/library?status={status}   | 获取不同e系列下不同status 下的所有library | [] | |
+ GET | /library/{id}  | 获取一个library |{} | |
+ GET | /library-by-version/{version}  | 按version获取一个library| {}| |
+ POST | /import-library | 导入library 需要显示导入进度 | response-result |  |
+  | | | | |
+ GET| /library-basic-property/{library_id}|按library_id获取所有 library-basic-property| []| |
+ GET| /library-basic-property/{library_id}/{option_id}|按library_id 和 option_id获取 library-basic-property| {}| |
+ GET| /library-basic-property/{library_id}/classify/{classify_id}|按library_id 和 classify获取 library-basic-property| []| |
+  | | | | |
+ GET| /library-basic-property-setting/{library_id}|按library_id获取所有 library-basic-property-setting| []| |
+ GET| /library-basic-property-setting/{library_id}/{option_id}|按library_id 和 option_id获取 library-basic-property-setting| []| |
+  GET| /library-basic-property-setting/{library_id}/{option_id}/{model_code}|按library_id 和 option_id和 model_code获取 library-basic-property-setting| {}| |
+ GET| /library-basic-property-setting/{library_id}/classify/{classify_id}|按library_id 和 classify获取 library-basic-property-setting| []| |
+   | | | | |
+ GET| /library-optional-property/{library_id}|按library_id获取所有 library-optional-property| []| |
+ GET| /library-optional-property/{library_id}/{option_id}|按library_id 和 option_id获取 library-optional-property| {}| |
+ GET| /library-optional-property/{library_id}/classify/{classify_id}|按library_id 和 classify获取 library-optional-property| []| |
+  | | | | |
+ GET| /library-optional-property-setting/{library_id}|按library_id获取所有 library-optional-property-setting| []| |
+ GET| /library-optional-property-setting/{library_id}/{option_id}|按library_id 和 option_id获取 library-optional-property-setting| []| |
+  GET| /library-optional-property-setting/{library_id}/{option_id}/{model_code}|按library_id 和 option_id和 model_code获取 library-optional-property-setting| {}| |
+ GET| /library-optional-property-setting/{library_id}/classify/{classify_id}|按library_id 和 classify获取 library-optional-property-setting| []| |
+  | | | | |
+ GET| /library-option-rule/{library_id}|按library_id获取所有 library-option-rule| []| |
+ GET| /library-option-rule/{library_id}/{option_id}|按library_id 和 option_id获取 library-option-rule| []| |
+ GET| /library-option-rule/{library_id}/{option_id}/{model_code}|按library_id 和 option_id和 model_code获取 library-option-rule| []| |
+  | | | | |
+ GET| /all-profile|所有 profile| []| |
+ GET| /all-profile?status={status}|所有 profile中匹配status| []| |
+ GET| /profile/{profile_id}|按profile_id获取 profile| {}| 配车页面 |
+ GET| /profile/by-eseries/{eseries_code}|按eseries_code 获取 profile| []| 车系 profile一览页|
+ GET| /profile/by-eseries/{eseries_code}?status={status}|按eseries_code 和 status 获取 profile| []| 车系 profile一览页|
+ GET| /profile/by-eseries/{eseries_code}?isLaunched={isLaunched}|按eseries_code 和 isLaunched 获取 profile| []| 车系 profile一览页|
+ POST| /profile/{profile_id}/change-status|改变profile status| response-result| 车系 profile一览页|
+ POST| /profile/{profile_id}/copy|复制一个profile| response-result|  车系 profile一览页|
  POST| /import-profile|上传profile| response-result|
-   | | | |
- GET| /profile-varient/{profile_id}|所有 profile_id的 profile-varient| []|
- GET| /profile-varient/{profile_id}/{varient_id}|profile_id和varient_id匹配单个对象| {}|
- PUT| /profile-varient/{profile_id}/{varient_id}|保存 saveOrUpdate varient对象| response-result|
- DELETE| /profile-varient/{profile_id}/{varient_id}|删除 varient对象| response-result|
+   | | | | |
+ GET| /profile-varient/{profile_id}|所有 profile_id的 profile-varient| []|  配车页面 |
+ GET| /profile-varient/{profile_id}/{varient_id}|profile_id和varient_id匹配单个对象| {}| |
+ PUT| /profile-varient/{profile_id}/{varient_id}|保存 saveOrUpdate varient对象| response-result| 配车页面 |
+ DELETE| /profile-varient/{profile_id}/{varient_id}|删除 varient对象| response-result| 配车页面 |
   | | | |
- GET| /profile-option/{profile_id}/show_self|所有 profile_id的 profile-option| []|
- GET| /profile-option/{profile_id}/{option_id}|所有 profile_id和option_id 确定唯一 profile-option| {}|
- GET| /profile-option/{profile_id}/show_diff|显示和最新library的区别| {}|
- GET| /profile-option/{profile_id}/show_library|显示最新library的设置| []|
- GET| /profile-option/{profile_id}/show_result|显示最后需要显示的数据 profile 中的数据 + library 中定义为标配的数据| []|
-  | | | |
- GET| /profile-option-change/{profile_id}|所有 profile_id的 profile-option-change| []|
- GET| /profile-option-change/{profile_id}/{option_id}|所有 profile_id和option_id 确定唯一 profile-option-change| {}|
- POST| /profile-option-change/{profile_id}|新增 修改 删除 profile-option-change| response-result|
-   | | | |
- GET| /profile-cell-setting/{profile_id}|所有 profile_id的 profile-cell-setting| []|
- GET| /profile-cell-setting/{profile_id}/option/{option_id}|所有 profile_id和option_id  profile-cell-setting| []|
- GET| /profile-cell-setting/{profile_id}/varient/{varient_id}|所有 profile_id和varient_id 相关的  profile-cell-setting| []|
- GET| /profile-cell-setting/{profile_id}/{option_id}/{varient_id}| profile_id和varient_id 和 option_id 确定唯一  profile-cell-setting| {}|
- PUT| /profile-cell-setting/{profile_id}/{option_id}/{varient_id}| 这个PUT 是saveOrUpdate| response-result|
+ GET| /profile-option/{profile_id}/show_self|所有 profile_id的 profile-option| []| |
+ GET| /profile-option/{profile_id}/{option_id}|所有 profile_id和option_id 确定唯一 profile-option| {}| |
+ GET| /profile-option/{profile_id}/show_diff|显示和最新library的区别| {}| |
+ GET| /profile-option/{profile_id}/show_library|显示最新library的设置| []| |
+ GET| /profile-option/{profile_id}/show_result|显示最后需要显示的数据 profile 中的数据 + library 中定义为标配的数据| []|  配车页面 |
+  | | | | |
+ GET| /profile-option-change/{profile_id}|所有 profile_id的 profile-option-change| []| 配车页面 |
+ GET| /profile-option-change/{profile_id}/{option_id}|所有 profile_id和option_id 确定唯一 profile-option-change| {}| |
+ POST| /profile-option-change/{profile_id}|新增 修改 删除 profile-option-change| response-result|  配车页面 |
+   | | | | |
+ GET| /profile-cell-setting/{profile_id}|所有 profile_id的 profile-cell-setting| []|  配车页面 |
+ GET| /profile-cell-setting/{profile_id}/option/{option_id}|所有 profile_id和option_id  profile-cell-setting| []| |
+ GET| /profile-cell-setting/{profile_id}/varient/{varient_id}|所有 profile_id和varient_id 相关的  profile-cell-setting| []|  配车页面 |
+ GET| /profile-cell-setting/{profile_id}/{option_id}/{varient_id}| profile_id和varient_id 和 option_id 确定唯一  profile-cell-setting| {}| |
+ PUT| /profile-cell-setting/{profile_id}/{option_id}/{varient_id}| 这个PUT 是saveOrUpdate| response-result|  配车页面 |
 
 
 
