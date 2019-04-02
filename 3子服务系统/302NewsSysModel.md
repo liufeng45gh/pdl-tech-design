@@ -92,6 +92,7 @@ updated_by     			|	更新人
 id						| 主键(自增)
 e_series_code       	|	小系列对应code
 code    				|	bmw 系统内代码
+name_trans				| 	英文名去空格专小写
 name_en     			|	英文名
 name_cn      			|	中文名
 type		  			|	配件类型 basic/optional
@@ -321,7 +322,6 @@ updated_by     			|	更新人
  :-- | :-- 
 id 						| 主键( 自增)
 profile_id         		|	对应config_profile-> id
-varient_id         		|	model_code_varient + "-" + package_code_varient
 model_code    			|	model唯一代码 对应 config_model -> code
 model_code_varient    	|	确定唯一列的标志因子,原model_code
 package_code_varient     |	确定唯一列的标志因子,原package_code
@@ -492,10 +492,7 @@ updated_by     			|	更新人
  :-- | :-- 
 id 						| 主键( 自增)
 package_lv2_id         	|	对应 config_package_lv2 -> id
-varient_id				|  model_code_varient + "-" + package_code_varient
-model    				|车代码
-model_code_varient		| mw 车代码(model_code_varient+package_code_varient构成唯一车变种)
-package_code_varient    | bmw包代码
+varient_id				|  对应 config_profile_varient -> id
 package_price     		|	包价格
 off_price   			|	off价格(更新中)
 bv_price				| bv 价格	(更新中)
@@ -540,7 +537,7 @@ updated_by     			|	更新人
 id 						| 主键( 自增)
 package_lv2_id         	|	对应 config_package_lv2 -> id
 option_id 				|   config_unique_option ->id
-varient_id				|	变种车代码 config_package_varient -> varient_id
+varient_id				|	变种车代码 config_profile_varient -> id
 setting_content			| 设置值
 type_f					| --(更新中)
 value					| --(更新中)
