@@ -91,9 +91,11 @@ Swagger: /swagger/index.html
  GET| /profile-cell-setting/{profile_id}/{option_id}/{varient_id}| profile_id和varient_id 和 option_id 确定唯一  profile-cell-setting| {}| |
  PUT| /profile-cell-setting/{profile_id}/{option_id}/{varient_id}| 这个PUT 是saveOrUpdate| response-result|  配车页面 |
     | | | | |
- GET| /package/show-integration-data/{profile_id}|package对应profile_id 应该返回的展示数据| []|  配车页面 ,配包页面 |
- GET| /package/show-version/{profile_id}|package对应profile_id 对应的历史数据| []| |
- GET| /package/lv2-data/{lv1_id}|package对应lv1_id 对应的 lv2 数据列表| []|   |
+GET| /package/{e_series_code}/all-package?isLaunched={isLaunched}|package 一览页需要展示| []|  package 一览页需要展示 	
+ GET| /package/show-integration-data/by-profile/{profile_id}|package对应profile_id 应该返回的展示数据| []|  配车页面 ,配包页面 |
+ GET| /package/show-history/by-profile/{profile_id}|package对应profile_id 对应的历史数据| []| |
+ POST | /package/set-use/{profile_id}/{lv1_id}|设置profile选择历史配置包| []|  配包界面 |
+ GET| /package/show-integration-data/by-lv1/{lv1_id}|package对应lv1_id 对应的 lv2 数据列表| []|   |
  POST | /package/{lv1_id}/add-package-lv2|给大包下添加小包| []|  配包界面 |
  DELETE | /package/{lv2_id}/delete|删除小包| []| 配包界面|
  GET| /package/{lv2_id}/options |package对应lv2_id 对应的 配件列表| []|   |
