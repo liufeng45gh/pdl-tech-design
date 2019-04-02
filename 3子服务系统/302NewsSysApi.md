@@ -9,34 +9,34 @@ Swagger: /swagger/index.html
 
  方法 | 接口 | 用途 | 返回 | 调用页面|是否走网关 
  :-- | :--  | :-- | :-- | :-- | :--
- GET | /all-series | 获取所有的系列对象 | [] | |
- GET | /all-series?enabled=true | 获取所有的已上线系列对象 | [] | 车型车系一览页|
+ GET | /series/all-series | 获取所有的系列对象 | [] | |
+ GET | /series/all-series?enabled=true | 获取所有的已上线系列对象 | [] | 车型车系一览页|
  GET | /series/{series_code} | 获取某个系列的详细资料 | {} | |
      |  |  |  |  |
- GET | /series/{series_code}/eseries | 获取某个系列下的所有e系列对象 | [] | |
- GET | /series/{series_code}/eseries?enabled=true | 获取某个系列下的e系列上线对象 | [] | 车型车系一览页|
+ GET | /eseries/by-series/{series_code} | 获取某个系列下的所有e系列对象 | [] | |
+ GET | /eseries/by-series/{series_code}?enabled=true | 获取某个系列下的e系列上线对象 | [] | 车型车系一览页|
  GET | /eseries/{eseries_code} | 获取单个e系列对象| {}| |
- GET | /all-eseries|所有eseries| [] | |
- GET | /all-eseries?enabled=true|所有上线的eseries| [] | |
+ GET | /eseries/all-eseries|所有eseries| [] | |
+ GET | /eseries/all-eseries?enabled=true|所有上线的eseries| [] | |
      |  |  |  | |
- GET | /series/{series_code}/models | 获取系列下所有的model | [] | |
- GET | /series/{series_code}/models?enabled=true | 获取系列下所有上线的model | [] | |
- GET | /eseries/{eseries_code}/models | 获取e系列下所有的model | [] | |
- GET | /eseries/{eseries_code}/models?enabled=true | 获取e系列下所有上线的model | [] | |
- GET | /all-models |所有model| [] | |
- GET | /all-models?enabled=true |所有上线的model| [] | |
+ GET | /models/by-series/{series_code} | 获取系列下所有的model | [] | |
+ GET | /models/by-series/{series_code}?enabled=true | 获取系列下所有上线的model | [] | |
+ GET | /models/by-eseries/{eseries_code} | 获取e系列下所有的model | [] | |
+ GET | /models/by-eseries/{eseries_code}?enabled=true | 获取e系列下所有上线的model | [] | |
+ GET | /models /all-models |所有model| [] | |
+ GET | /models /all-models?enabled=true |所有上线的model| [] | |
  GET | /models/{code} |按code 获取model| {} | |
   | | | | |
- GET | /all-options|获取所有配件(分页，默认30)| [] | |
+ GET | /option/all-options|获取所有配件(分页，默认30)| [] | |
  GET | /option/{option_id}|获取某个配件| {} | |
- GET | /options-by-code/{code}|按code获取配件| [] | |
+ GET | /options/by-code/{code}|按code获取配件| [] | |
   | | | | |
- GET | /all-library | 所有library | []| |
- GET | /all-library?status={status}   | 获取不同status 下的所有library | [] | |
- GET | /eseries/eseries_code/library?status={status}   | 获取不同e系列下不同status 下的所有library | [] | |
+ GET | /library/all-library | 所有library | []| |
+ GET | /library/all-library?status={status}   | 获取不同status 下的所有library | [] | |
+ GET | /library/by-eseries/{eseries_code}?status={status}   | 获取不同e系列下不同status 下的所有library | [] | |
  GET | /library/{id}  | 获取一个library |{} | |
- GET | /library-by-version/{version}  | 按version获取一个library| {}| |
- POST | /import-library | 导入library 需要显示导入进度 | response-result |  |
+ GET | /library/by-version/{version}  | 按version获取一个library| {}| |
+ POST | /library/import-library | 导入library 需要显示导入进度 | response-result |  |
   | | | | |
  GET| /library-basic-property/{library_id}|按library_id获取所有 library-basic-property| []| |
  GET| /library-basic-property/{library_id}/{option_id}|按library_id 和 option_id获取 library-basic-property| {}| |
@@ -60,15 +60,15 @@ Swagger: /swagger/index.html
  GET| /library-option-rule/{library_id}/{option_id}|按library_id 和 option_id获取 library-option-rule| []| |
  GET| /library-option-rule/{library_id}/{option_id}/{model_code}|按library_id 和 option_id和 model_code获取 library-option-rule| []| |
   | | | | |
- GET| /all-profile|所有 profile| []| |
- GET| /all-profile?status={status}|所有 profile中匹配status| []| |
+ GET| /profile/all-profile|所有 profile| []| |
+ GET| /profile/all-profile?status={status}|所有 profile中匹配status| []| |
  GET| /profile/{profile_id}|按profile_id获取 profile| {}| 配车页面 |
  GET| /profile/by-eseries/{eseries_code}|按eseries_code 获取 profile| []| 车系 profile一览页|
  GET| /profile/by-eseries/{eseries_code}?status={status}|按eseries_code 和 status 获取 profile| []| 车系 profile一览页|
  GET| /profile/by-eseries/{eseries_code}?isLaunched={isLaunched}|按eseries_code 和 isLaunched 获取 profile| []| 车系 profile一览页|
  POST| /profile/{profile_id}/change-status|改变profile status| response-result| 车系 profile一览页|
  POST| /profile/{profile_id}/copy|复制一个profile| response-result|  车系 profile一览页|
- POST| /import-profile|上传profile| response-result|
+ POST| /profile/import-profile|上传profile| response-result|
    | | | | |
  GET| /profile-varient/{profile_id}|所有 profile_id的 profile-varient| []|  配车页面 |
  GET| /profile-varient/{profile_id}/{varient_id}|profile_id和varient_id匹配单个对象| {}| |
