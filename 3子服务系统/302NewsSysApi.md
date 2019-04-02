@@ -90,6 +90,19 @@ Swagger: /swagger/index.html
  GET| /profile-cell-setting/{profile_id}/varient/{varient_id}|所有 profile_id和varient_id 相关的  profile-cell-setting| []|  配车页面 |
  GET| /profile-cell-setting/{profile_id}/{option_id}/{varient_id}| profile_id和varient_id 和 option_id 确定唯一  profile-cell-setting| {}| |
  PUT| /profile-cell-setting/{profile_id}/{option_id}/{varient_id}| 这个PUT 是saveOrUpdate| response-result|  配车页面 |
+    | | | | |
+ GET| /package/show-integration-data/{profile_id}|package对应profile_id 应该返回的展示数据| []|  配车页面 ,配包页面 |
+ GET| /package/show-version/{profile_id}|package对应profile_id 对应的历史数据| []| |
+ GET| /package/lv2-data/{lv1_id}|package对应lv1_id 对应的 lv2 数据列表| []|   |
+ POST | /package/{lv1_id}/add-package-lv2|给大包下添加小包| []|  配包界面 |
+ DELETE | /package/{lv2_id}/delete|删除小包| []| 配包界面|
+ GET| /package/{lv2_id}/options |package对应lv2_id 对应的 配件列表| []|   |
+ DELETE | /package/{lv2_id}/{option_id}/delete|删除小包中的配件| []| 配包界面|
+ POST | /package/{lv2_id}/{option_id}/add-option|给小包下添加配件| []|  配包界面 |
+ PUT| /package/{lv2_id}/{option_id}/{varient_id}/setting| 这个PUT 是saveOrUpdate,设置对应格子中的值| response-result|  配包页面 |
+ GET| /package/{lv2_id}/varient| 获取包下 varent 数据列表| []|  配包页面 |
+ PUT| /package/{lv2_id}/{varient_id}/set-varient| 这个PUT 是saveOrUpdate,设置对应格子中的值| response-result|  配包页面 |
+ DELETE| /package/{lv2_id}/{varient_id}/del-varient| 删除 varient| response-result|  配包页面 |
 
 
 
