@@ -101,7 +101,7 @@ Swagger: /swagger/index.html
 
 #### 获得所有的系列
 
-GET /all-series
+GET /series/all-series
 
 @param enabled
 
@@ -153,7 +153,7 @@ HTTP Stauts Code: 200
 
 #### 获得所有的e系列
 
-GET /all-eseries
+GET /eseries/all-eseries
 
 @param enabled
 
@@ -182,7 +182,7 @@ BODY:
 
 #### 按大系列code获得相关的e系列对象
 
-GET  /series/{series_code}/eseries
+GET  /eseries/by-series/{series_code}
 
 @param enabled
 
@@ -211,7 +211,7 @@ BODY:
 
 #### 获得所有的model车型
 
-GET /all-models
+GET /models/all-models
 
 @param enabled
 
@@ -240,7 +240,7 @@ BODY:
 
 #### 按大系列code获得相关的model对象
 
-GET  /series/{series_code}/models
+GET  /models/by-series/{series_code}
 
 @param enabled
 
@@ -268,7 +268,7 @@ BODY:
 
 #### 按小系列code获得相关的model对象
 
-GET  /eseries/{eseries_code}/models
+GET  /models/by-eseries/{eseries_code}
 
 @param enabled
 
@@ -323,7 +323,7 @@ BODY:
 
 #### 所有配件对象
 
-GET  /all-options
+GET  /option/all-options
 @param pageNo
 
 
@@ -377,7 +377,7 @@ BODY:
 
 #### 按code获取配件对象
 
-GET  /options-by-code/{code}
+GET  /options/by-code/{code}
 
 
 
@@ -407,7 +407,7 @@ BODY:
 
 #### 按所有library
 
-GET  /all-library
+GET  /library/all-library
 
 @RequestParam status
 
@@ -438,7 +438,7 @@ BODY:
 
 #### 获取不同e系列下不同status 下的所有library
 
-GET  /eseries/eseries_code/library?status={status}
+GET  /library/by-eseries/{eseries_code}?status={status}
 
 @RequestParam status
 
@@ -495,7 +495,7 @@ BODY:
 
 #### 按version获取一个library
 
-GET  /library-by-version/{version}
+GET  /library/by-version/{version}
 
 
 返回格式:
@@ -522,7 +522,7 @@ BODY:
 
 #### 导入library 需要显示导入进度
 
-POST /import-library
+POST /library/import-library
 
 @RequestParam version
 @RequestMetadata file
@@ -1110,7 +1110,7 @@ BODY:
 
 #### 所有 profile
 
-GET /all-profile
+GET /profile/all-profile
 @RequestParam status
 
 返回格式:
@@ -1286,7 +1286,7 @@ BODY:
 
 #### 导入profile
 
-POST /import-profile
+POST /profile/import-profile
 
 @RequestParam libraryVersion
 @RequestMetadata file
