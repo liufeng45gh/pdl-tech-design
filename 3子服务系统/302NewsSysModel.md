@@ -304,7 +304,7 @@ profile_flag      		|	标签
 status      			|	当前状态
 is_launched      		|	是否启用
 previous_status      	|	前状态
-up_verion_id            |   对应 config_profile_version_history -> id每次更新会产生一个全新的Id用来做数据关联,这块要留意
+up_version_id            |   对应 config_profile_version_history -> id每次更新会产生一个全新的Id用来做数据关联,这块要留意
 created_at     			|	创建时间
 updated_at     			|	更新时间
 created_by     			|	创建人
@@ -332,7 +332,7 @@ updated_by     			|	更新人
 注释
 ```
 索引 ->profile_id
-索引 ->up_verion_id
+索引 ->up_version_id
 ```
 
 #### profile变种车型表 config_profile_varient(原 bmw_profile_generation_information)
@@ -340,7 +340,7 @@ updated_by     			|	更新人
  字段名 | 解释 
  :-- | :-- 
 id 						| 主键( 自增)
-profile_up_verion_id    |	对应config_profile-> up_verion_id
+profile_up_version_id    |	对应config_profile-> up_version_id
 model_code    			|	model唯一代码 对应 config_model -> code
 model_code_varient    	|	确定唯一列的标志因子,原model_code
 package_code_varient     |	确定唯一列的标志因子,原package_code
@@ -367,7 +367,7 @@ updated_by     			|	更新人
 
 注释
 ```
-索引 ->profile_up_verion_id
+索引 ->profile_up_version_id
 索引 ->model_code
 索引 ->varient_id
 唯一约束 ->profile_id + varient_id
@@ -381,7 +381,7 @@ updated_by     			|	更新人
  字段名 | 解释 
  :-- | :-- 
 id 						| 主键( 自增)
-profile_up_verion_id    |	对应config_profile-> up_verion_id
+profile_up_version_id    |	对应config_profile-> up_version_id
 varient_id    			|	config_profile_varient->varient_id
 option_id    				|	配件id
 setting_content     	|	设置值
@@ -393,7 +393,7 @@ updated_by     			|	更新人
 
 注释
 ```
-唯一约束 ->profile_up_verion_id + varient_id + option_id
+唯一约束 ->profile_up_version_id + varient_id + option_id
 ```
 
 
@@ -403,7 +403,7 @@ updated_by     			|	更新人
  字段名 | 解释 
  :-- | :-- 
 id 						| 主键( 自增)
-profile_up_verion_id    |	对应config_profile-> id
+profile_up_verion_id    |	对应config_profile-> up_version_id
 option_id    				|	配件id
 classify     			|	类型
 created_at     			|	创建时间
@@ -413,7 +413,7 @@ updated_by     			|	更新人
 
 注释
 ```
-唯一约束 ->profile_up_verion_id + option_id + classify
+唯一约束 ->profile_up_version_id + option_id + classify
 ```
 
 #### profile配件列表 config_profile_option_change(后加)
@@ -422,7 +422,7 @@ updated_by     			|	更新人
  字段名 | 解释 
  :-- | :-- 
 id 						| 主键( 自增)
-profile_up_verion_id    |	对应config_profile-> id
+profile_up_version_id    |	对应config_profile-> up_version_id
 option_id    			|	配件id
 classify     			|	类型
 
@@ -443,7 +443,7 @@ updated_by     			|	更新人
  字段名 | 解释 
  :-- | :-- 
 id 						| 主键( 自增)
-profile_up_verion_id    |	对应config_profile-> id
+profile_up_version_id    |	对应config_profile-> up_version_id
 option_id    				|	配件id
 price   				|	价格
 rmb_price				| 	人民币价格
@@ -455,7 +455,7 @@ updated_by     			|	更新人
 
 注释
 ```
-唯一约束 ->profile_up_verion_id + option_id
+唯一约束 ->profile_up_version_id + option_id
 ```
 
 
@@ -479,7 +479,7 @@ work_status				| 工作状态
 is_base					|是否基础
 is_check				|是否选择
 sort_date				|   排序时间
-up_verion_id            | package_version_history -> id
+up_version_id            | package_version_history -> id
 created_at     			|	创建时间
 updated_at     			|	更新时间
 created_by     			|	创建人
@@ -523,7 +523,7 @@ updated_by     			|	更新人
  字段名 | 解释 
  :-- | :-- 
 id 						| 主键( 自增)
-package_lv1_up_verion_id   |	对应 config_package_lv1 -> up_verion_id
+package_lv1_up_version_id   |	对应 config_package_lv1 -> up_version_id
 package_code    		|	包代码
 package_name_cn     	|	中文名
 package_name_en   		|	英文名
@@ -534,7 +534,7 @@ updated_by     			|	更新人
 
 注释
 ```
-索引 ->package_lv1_up_verion_id 
+索引 ->package_lv1_up_version_id 
 索引 ->package_code
 索引 ->package_name_cn
 ```
