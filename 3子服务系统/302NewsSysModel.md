@@ -383,6 +383,7 @@ id 						| 主键( 自增)
 profile_up_version_id    |	对应config_profile-> up_version_id
 varient_id    			|	config_profile_varient->varient_id
 option_id    				|	配件id
+classify				| basic/optional
 setting_content     	|	设置值
 show_content   			|	显示值
 created_at     			|	创建时间
