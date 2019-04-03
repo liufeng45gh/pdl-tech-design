@@ -564,9 +564,7 @@ updated_by     			|	更新人
 注释
 ```
 索引 ->package_lv2_id 
-索引 ->model
-索引 ->bmw_model_code
-索引 ->bmw_package_code
+索引 ->varient_id
 ```
 
 #### package 包中配件列表 config_package_lv2_option(新加表)
