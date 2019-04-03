@@ -369,9 +369,7 @@ updated_by     			|	更新人
 ```
 索引 ->profile_up_version_id
 索引 ->model_code
-索引 ->varient_id
-唯一约束 ->profile_id + varient_id
-唯一约束 -> profile_id + model_code_varient + package_code_varient
+唯一约束 -> profile_up_version_id + model_code_varient + package_code_varient
 ```
 
 
@@ -403,7 +401,7 @@ updated_by     			|	更新人
  字段名 | 解释 
  :-- | :-- 
 id 						| 主键( 自增)
-profile_up_verion_id    |	对应config_profile-> up_version_id
+profile_up_version_id    |	对应config_profile-> up_version_id
 option_id    				|	配件id
 classify     			|	类型
 created_at     			|	创建时间
@@ -434,7 +432,7 @@ updated_by     			|	更新人
 
 注释
 ```
-唯一约束 ->profile_id + option_id + classify
+唯一约束 ->profile_up_version_id + option_id + classify
 ```
 
 #### profile配件折扣表 config_profile_option_discount(后加)
@@ -493,7 +491,7 @@ updated_by     			|	更新人
 索引 -> sort_date
 索引 -> status
 索引 -> work_status
-索引 -> up_verion_id
+索引 -> up_version_id
 ```
 
 
