@@ -125,6 +125,8 @@ optional_file_url   	|	可选数据导入路径
 library_output_date     |	文件导出时间
 libarary_data_date      |	数据日期
 version         		|	版本号
+sop             		| 	有效开始时间
+eop  					| 	有效结束时间
 created_at     			|	创建时间
 updated_at     			|	更新时间
 created_by     			|	创建人
@@ -585,7 +587,7 @@ updated_by     			|	更新人
 唯一约束 ->package_lv2_id  + option_id
 ```
 
-#### package 包中配件车变种设置表	config_package__option_varient(原bmw_profile_flexible_package_option_setting)
+#### package 包中配件车变种设置表	config_package_option_varient_setting(原bmw_profile_flexible_package_option_setting)
 
 
  字段名 | 解释 
