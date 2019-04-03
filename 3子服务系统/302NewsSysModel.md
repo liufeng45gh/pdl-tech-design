@@ -304,7 +304,8 @@ profile_flag      		|	标签
 status      			|	当前状态
 is_launched      		|	是否启用
 previous_status      	|	前状态
-up_version_id            |   对应 config_profile_version_history -> id每次更新会产生一个全新的Id用来做数据关联,这块要留意
+up_version_id           |   对应 config_profile_version_history -> id每次更新会产生一个全新的Id用来做数据关联,这块要留意
+is_deleted				| 	是否删除
 created_at     			|	创建时间
 updated_at     			|	更新时间
 created_by     			|	创建人
@@ -472,12 +473,13 @@ file_name    			|	文件名
 name_cn     			|	中文名
 name_en   				|	英文名
 status					| 	状态
-current_status			| 	担当状态
+current_status			| 	当前状态
 work_status				| 工作状态
 is_base					|是否基础
 is_check				|是否选择
 sort_date				|   排序时间
-up_version_id            | package_version_history -> id
+up_version_id           | package_version_history -> id
+is_deleted				| 	是否删除
 created_at     			|	创建时间
 updated_at     			|	更新时间
 created_by     			|	创建人
