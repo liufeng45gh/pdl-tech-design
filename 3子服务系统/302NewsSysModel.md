@@ -55,7 +55,7 @@ updated_by     			|	更新人
 索引 -> enabled
 ```
 
-####  model表  Table config_model (原bmw_eseries)
+####  model表  Table config_model (新表)
 
 
  字段名 | 解释 
@@ -80,6 +80,33 @@ updated_by     			|	更新人
 索引 -> eseries_code
 索引 -> disp_order
 索引 -> enabled
+```
+
+
+
+####  varient表  Table config_varient (新表)
+
+
+ 字段名 | 解释 
+ :-- | :-- 
+id 						| 主键(自增)
+model_code         		|	对应 config_model->code
+bmw_model_code         	|	bmw 内部model 代码
+bmw_package_code       	|	bmw 内部package 代码
+name_en    				|	英文名
+name_zh    				|	中文名
+disp_order      		|	显示顺序
+enabled         		|	是否启用
+created_at     			|	创建时间
+updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
+
+
+注: 
+
+```
+唯一约束 -> bmw_model_code +  bmw_package_code
 ```
 
 
