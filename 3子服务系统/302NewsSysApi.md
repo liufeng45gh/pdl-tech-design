@@ -3,7 +3,7 @@
 正式地址:   
 Swagger:  
 测试地址:  
-Swagger: /swagger/index.html  
+Swagger: http://40.73.0.200:8888/swagger/index.html 
 
 ### 3.5.3.1. 所有服务接口清单
 
