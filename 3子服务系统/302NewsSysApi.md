@@ -14,7 +14,7 @@ Swagger: http://40.73.0.200:8888/swagger/index.html
  GET | /series/{series_code} | 获取某个系列的详细资料 | {} | |
      |  |  |  |  |
  GET | /eseries/by-series/{series_code} | 获取某个系列下的所有e系列对象 | [] | |
- GET | /eseries/by-series/{series_code}?enabled=true | 获取某个系列下的e系列上线对象 | [] | 车型车系一览页|
+ GET | /eseries/by-series/{series_code}?enabled=true | 获取某个系列下的e系列上线对象 | [] | |
  GET | /eseries/{eseries_code} | 获取单个e系列对象| {}| |
  GET | /eseries/all-eseries|所有eseries| [] | |
  GET | /eseries/all-eseries?enabled=true|所有上线的eseries| [] | |
@@ -64,8 +64,8 @@ Swagger: http://40.73.0.200:8888/swagger/index.html
  GET| /profile/all-profile?status={status}|所有 profile中匹配status| []| |
  GET| /profile/{profile_id}|按profile_id获取 profile| {}| 配车页面 |
  GET| /profile/by-eseries/{eseries_code}|按eseries_code 获取 profile| []| 车系 profile一览页|
- GET| /profile/by-eseries/{eseries_code}?status={status}|按eseries_code 和 status 获取 profile| []| 车系 profile一览页|
- GET| /profile/by-eseries/{eseries_code}?isLaunched={isLaunched}|按eseries_code 和 isLaunched 获取 profile| []| 车系 profile一览页|
+ GET| /profile/by-eseries/{eseries_code}?status={status}|按eseries_code 和 status 获取 profile| []| |
+ GET| /profile/by-eseries/{eseries_code}?isLaunched={isLaunched}|按eseries_code 和 isLaunched 获取 profile| []| |
  POST| /profile/{profile_id}/change-status|改变profile status| response-result| 车系 profile一览页|
  POST| /profile/{profile_id}/copy|复制一个profile| response-result|  车系 profile一览页|
  POST| /profile/import-profile|上传profile| response-result|
@@ -1212,6 +1212,26 @@ HTTP Stauts Code: 200
 
 BODY:
 
+{
+	yearLunchedLeft:[
+		{
+			"showYearText" :"2019 profile",
+			"profileVoList" : ->profiles
+		},
+		{}
+	]
+	yearUnLunchedRight: [
+		{
+			"showYearText" :"2019 profile",
+			"profileVoList" : ->profiles
+		},
+		{}
+	]
+}
+
+
+
+profiles: 
 [
     {
         "id": "1", ->唯一标示
@@ -1237,12 +1257,7 @@ BODY:
 
 ```
 
-注意
 
-```
-如果传入isLaunched, status 将不起作用
-	
-```
 
 
 #### 改变profile status
