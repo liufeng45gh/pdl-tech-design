@@ -412,7 +412,7 @@ id 						| 主键( 自增)
 profile_up_version_id   |	对应config_profile-> up_version_id
 varient_id    			|	config_profile_varient->varient_id
 option_id    			|	配件id
-classify				| basic/optional
+is_flexable				| 是否灵活选配
 setting_content     	|	设置值
 show_content   			|	显示值
 cellType				| int 单元格类型(默认null)(前端需要)
@@ -446,6 +446,7 @@ id 						| 主键( 自增)
 profile_up_version_id    |	对应config_profile-> up_version_id
 option_id    				|	配件id
 classify     			|	类型
+is_flexable             | 是否灵活选配
 created_at     			|	创建时间
 updated_at     			|	更新时间
 created_by     			|	创建人
@@ -465,7 +466,6 @@ id 						| 主键( 自增)
 profile_up_version_id    |	对应config_profile-> up_version_id
 option_id    			|	配件id
 classify     			|	类型
-
 change_type				|   + / -
 created_at     			|	创建时间
 updated_at     			|	更新时间
@@ -488,6 +488,7 @@ option_id    				|	配件id
 price   				|	价格
 rmb_price				| 	人民币价格
 discount				| 	折扣
+is_flexable             | 是否灵活选配
 created_at     			|	创建时间
 updated_at     			|	更新时间
 created_by     			|	创建人
