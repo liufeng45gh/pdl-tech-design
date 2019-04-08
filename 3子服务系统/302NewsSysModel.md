@@ -390,6 +390,8 @@ price_transition_result |	Detail Price transition result
 price_increase_abs      |	Nominal price increase abs.
 monetary_adjustment     |	Monetary adjustment
 price     				|	price
+root_price              | 根profile 中价格
+varient_type 			| 类型 1： root profile 中的值，2：系统运算跟新library 比对后的模板  3: 当前修改
 created_at     			|	创建时间
 updated_at     			|	更新时间
 created_by     			|	创建人
@@ -447,6 +449,8 @@ profile_up_version_id    |	对应config_profile-> up_version_id
 option_id    				|	配件id
 classify     			|	类型
 is_flexable             | 是否灵活选配
+is_in_root             	| 是否在root profile中
+is_in_new_lib 			| 是否在新 library中
 created_at     			|	创建时间
 updated_at     			|	更新时间
 created_by     			|	创建人
@@ -467,6 +471,7 @@ profile_up_version_id    |	对应config_profile-> up_version_id
 option_id    			|	配件id
 classify     			|	类型
 change_type				|   + / -
+is_flexable 			| 是否灵活选配
 created_at     			|	创建时间
 updated_at     			|	更新时间
 created_by     			|	创建人
@@ -486,6 +491,7 @@ id 						| 主键( 自增)
 profile_up_version_id    |	对应config_profile-> up_version_id
 option_id    				|	配件id
 price   				|	价格
+root_price  			| root profile 价格
 rmb_price				| 	人民币价格
 discount				| 	折扣
 is_flexable             | 是否灵活选配
