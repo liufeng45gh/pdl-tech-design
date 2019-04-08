@@ -321,8 +321,8 @@ eseries_code         	|	对应config_eseries-> code
 profile_name    		|	profile 名称
 profile_url    			|	profile url
 import_date     		|	导入时间
-based_library_id   		|	对应library id
-new_library_id			|	新库id
+based_library_version   |	对应library id
+new_library_version		|	新库id
 sort_date      			|	排序时间
 is_responsible      	|	是否可以响应
 bmw_profile_code      	|	导入时excel 表中响应的code
