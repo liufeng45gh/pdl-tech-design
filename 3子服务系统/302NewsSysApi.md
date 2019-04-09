@@ -98,19 +98,20 @@ Swagger: http://40.73.0.200:8888/swagger/index.html
  POST| /package/{lv1_id}/set-status |设置package状态| []|  package一览页需要调用| 
  POST| /package/{lv1_id}/set-check |设置package check状态| []|  package一览页需要调用| 
    | | | | |
- GET| /package/show-integration-data/by-profile/{profile_id}|package对应profile_id 应该返回的展示数据| []|  配车页面 ,配包页面 |
- GET| /package/show-history/by-profile/{profile_id}|package对应profile_id 对应的历史数据| []| |
- POST | /package/set-use/{profile_id}/{lv1_id}|设置profile选择历史配置包| []|  配包界面 |
- GET| /package/show-integration-data/by-lv1/{lv1_id}|package对应lv1_id 对应的 lv2 数据列表| []|   |
- POST | /package/{lv1_id}/add-package-lv2|给大包下添加小包| []|  配包界面 |
- DELETE | /package/{lv2_id}/delete|删除小包| []| 配包界面|
+ GET| /package/by-profile/{profile_id}|package对应profile_id 应该返回的展示数据| []|  配车页面 ,配包页面 |
+ GET| /package/show-history/by-profile/{profile_id}|package对应profile_id 对应的历史数据| []| 配车界面选择包数据|
+ POST | /package/set-use/{profile_id}/{lv1_id}|设置profile选择历史配置包| []|  配车界面选择包数据 |
+ GET| /package/by-lv1/{lv1_id}|package对应lv1_id 对应的 lv2 数据列表| []|   |
+ POST | /package/{lv1_id}/add-package-lv2|给大包下添加小包| []|   |
+ POST | /package/{lv1_id}/save|保存包数据| []|  配包界面 |
+ DELETE | /package/{lv2_id}/delete|删除小包| []| |
  GET| /package/{lv2_id}/options |package对应lv2_id 对应的 配件列表| []|   |
- DELETE | /package/{lv2_id}/{option_id}/delete|删除小包中的配件| []| 配包界面|
- POST | /package/{lv2_id}/{option_id}/add-option|给小包下添加配件| []|  配包界面 |
- PUT| /package/{lv2_id}/{option_id}/{varient_id}/setting| 这个PUT 是saveOrUpdate,设置对应格子中的值| response-result|  配包页面 |
- GET| /package/{lv2_id}/varient| 获取包下 varent 数据列表| []|  配包页面 |
- PUT| /package/{lv2_id}/{varient_id}/set-varient| 这个PUT 是saveOrUpdate,设置对应格子中的值| response-result|  配包页面 |
- DELETE| /package/{lv2_id}/{varient_id}/del-varient| 删除 varient| response-result|  配包页面 |
+ DELETE | /package/{lv2_id}/{option_id}/delete|删除小包中的配件| []| |
+ POST | /package/{lv2_id}/{option_id}/add-option|给小包下添加配件| []|   |
+ PUT| /package/{lv2_id}/{option_id}/{varient_id}/setting| 这个PUT 是saveOrUpdate,设置对应格子中的值| response-result|   |
+ GET| /package/{lv2_id}/varient| 获取包下 varent 数据列表| []|   |
+ PUT| /package/{lv2_id}/{varient_id}/set-varient| 这个PUT 是saveOrUpdate,设置对应格子中的值| response-result|   |
+ DELETE| /package/{lv2_id}/{varient_id}/del-varient| 删除 varient| response-result|   |
 
 
 
