@@ -70,6 +70,7 @@ Swagger: http://40.73.0.200:8888/swagger/index.html
  POST| /profile/{profile_id}/copy|复制一个profile| response-result|  车系 profile一览页|
  POST| /profile/{profile_id}/save|profile 保存，这个接口比较关键，因为之前的代码缘故，先按一起save,如果时间太长，再考虑拆修改变化的| response-result|  profile 编辑页|
  POST| /profile/import-profile|上传profile| response-result|
+ DELETE| /profile/delete?ids={ids}|删除profile| response-result|
    | | | | |
  GET| /profile-option-discount/by-profile/{profile_id}|所有 profile_id的 profile-option-discount| []|  配车页面 |
     | | | | |
@@ -114,6 +115,7 @@ Swagger: http://40.73.0.200:8888/swagger/index.html
  GET| /package/{lv2_id}/varient| 获取包下 varent 数据列表| []|   |
  PUT| /package/{lv2_id}/{varient_id}/set-varient| 这个PUT 是saveOrUpdate,设置对应格子中的值| response-result|   |
  DELETE| /package/{lv2_id}/{varient_id}/del-varient| 删除 varient| response-result|   |
+ DELETE | /package/delete?lv1ids={lv1ids}|删除大包| []| package 一览页|
 
 
 
