@@ -68,6 +68,7 @@ Swagger: http://40.73.0.200:8888/swagger/index.html
  GET| /profile/by-eseries/{eseries_code}?isLaunched={isLaunched}|按eseries_code 和 isLaunched 获取 profile| []| |
  POST| /profile/{profile_id}/change-status|改变profile status| response-result| 车系 profile一览页|
  POST| /profile/{profile_id}/copy|复制一个profile| response-result|  车系 profile一览页|
+ POST| /profile/{profile_id}/save|profile 保存，这个接口比较关键，因为之前的代码缘故，先按一起save,如果时间太长，再考虑拆修改变化的| response-result|  profile 编辑页|
  POST| /profile/import-profile|上传profile| response-result|
    | | | | |
  GET| /profile-varient/{profile_id}|所有 profile_id的 profile-varient| []|  配车页面 |
