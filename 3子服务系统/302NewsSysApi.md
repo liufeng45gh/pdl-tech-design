@@ -26,7 +26,11 @@ Swagger: http://40.73.0.200:8888/swagger/index.html
  GET | /models /all-models |所有model| [] | |
  GET | /models /all-models?enabled=true |所有上线的model| [] | |
  GET | /models/{code} |按code 获取model| {} | |
-  | | | | |
+ 
+
+
+ 方法 | 接口 | 用途 | 返回 | 调用页面|是否走网关 
+ :-- | :--  | :-- | :-- | :-- | :--
  GET | /option/all-options|获取所有配件(分页，默认30)| [] | |
  GET | /option/{option_id}|获取某个配件| {} | |
  GET | /options/by-code/{code}|按code获取配件| [] | |
@@ -59,7 +63,11 @@ Swagger: http://40.73.0.200:8888/swagger/index.html
  GET| /library-option-rule/{library_id}|按library_id获取所有 library-option-rule| []| |
  GET| /library-option-rule/{library_id}/{option_id}|按library_id 和 option_id获取 library-option-rule| []| |
  GET| /library-option-rule/{library_id}/{option_id}/{model_code}|按library_id 和 option_id和 model_code获取 library-option-rule| []| |
-  | | | | |
+
+
+
+ 方法 | 接口 | 用途 | 返回 | 调用页面|是否走网关 
+ :-- | :--  | :-- | :-- | :-- | :--
  GET| /profile/all-profile|所有 profile| []| |
  GET| /profile/all-profile?status={status}|所有 profile中匹配status| []| |
  GET| /profile/{profile_id}|按profile_id获取 profile| {}| 配车页面 |
@@ -69,11 +77,9 @@ Swagger: http://40.73.0.200:8888/swagger/index.html
  POST| /profile/{profile_id}/change-status|改变profile status| response-result| 车系 profile一览页|
  POST| /profile/{profile_id}/copy|复制一个profile| response-result|  车系 profile一览页|
  POST| /profile/{profile_id}/save|profile 保存，这个接口比较关键，因为之前的代码缘故，先按一起save,如果时间太长，再考虑拆修改变化的| response-result|  profile 编辑页|
- POST| /profile/import-profile|上传profile| response-result|
- DELETE| /profile/delete?ids={ids}|删除profile| response-result|
+ POST| /profile/import-profile|上传profile| response-result| |
+ DELETE| /profile/delete?ids={ids}|删除profile| response-result| profile 一览页 |
    | | | | |
- GET| /profile-option-discount/by-profile/{profile_id}|所有 profile_id的 profile-option-discount| []|  配车页面 |
-    | | | | |
  GET| /profile-varient/{profile_id}|所有 profile_id的 profile-varient| []|  配车页面 |
  GET| /profile-varient/{profile_id}/{varient_id}|profile_id和varient_id匹配单个对象| {}| |
  PUT| /profile-varient/{profile_id}/{varient_id}|保存 saveOrUpdate varient对象| response-result|  |
@@ -89,14 +95,20 @@ Swagger: http://40.73.0.200:8888/swagger/index.html
  GET| /profile-option-change/{profile_id}|所有 profile_id的 profile-option-change| []| 配车页面 |
  GET| /profile-option-change/{profile_id}/{option_id}|所有 profile_id和option_id 确定唯一 profile-option-change| {}| |
  POST| /profile-option-change/{profile_id}|新增 修改 删除 profile-option-change| response-result|  配车页面 |
+| | | | |
+ GET | /profile-option-discount/by-profile/{profile_id} | 所有 profile_id的profile-option-discount | [] | 配车页面 |
    | | | | |
  GET| /profile-cell-setting/{profile_id}|所有 profile_id的 profile-cell-setting| []|  配车页面 |
  GET| /profile-cell-setting/{profile_id}/option/{option_id}|所有 profile_id和option_id  profile-cell-setting| []| |
  GET| /profile-cell-setting/{profile_id}/varient/{varient_id}|所有 profile_id和varient_id 相关的  profile-cell-setting| []|  配车页面 |
  GET| /profile-cell-setting/{profile_id}/{option_id}/{varient_id}| profile_id和varient_id 和 option_id 确定唯一  profile-cell-setting| {}| |
  PUT| /profile-cell-setting/{profile_id}/{option_id}/{varient_id}| 这个PUT 是saveOrUpdate| response-result|  配车页面 |
-    | | | | |
- GET| /package/{e_series_code}/all-package?isLaunched={isLaunched}|package 一览页需要展示| []|  package 一览页需要展示| 	
+
+
+
+  方法 | 接口 | 用途 | 返回 | 调用页面|是否走网关 
+ :-- | :--  | :-- | :-- | :-- | :--
+ GET| /package/{e_series_code}/all-package |package 一览页需要展示| []|  package 一览页需要展示| 	
  POST| /package/{lv1_id}/copy |复制package | []|  package一览页需要调用| 
  POST| /package/{lv1_id}/set-status |设置package状态| []|  package一览页需要调用| 
  POST| /package/{lv1_id}/set-check |设置package check状态| []|  package一览页需要调用| 
@@ -107,15 +119,19 @@ Swagger: http://40.73.0.200:8888/swagger/index.html
  GET| /package/by-lv1/{lv1_id}|package对应lv1_id 对应的 lv2 数据列表| []|   |
  POST | /package/{lv1_id}/add-package-lv2|给大包下添加小包| []|   |
  POST | /package/{lv1_id}/save|保存包数据| []|  配包界面 |
+ DELETE | /package/delete?lv1ids={lv1ids}|删除大包| []| package 一览页|
+
+  方法 | 接口 | 用途 | 返回 | 调用页面|是否走网关 
+ :-- | :--  | :-- | :-- | :-- | :--
  DELETE | /package/{lv2_id}/delete|删除小包| []| |
  GET| /package/{lv2_id}/options |package对应lv2_id 对应的 配件列表| []|   |
  DELETE | /package/{lv2_id}/{option_id}/delete|删除小包中的配件| []| |
  POST | /package/{lv2_id}/{option_id}/add-option|给小包下添加配件| []|   |
- PUT| /package/{lv2_id}/{option_id}/{varient_id}/setting| 这个PUT 是saveOrUpdate,设置对应格子中的值| response-result|   |
+ PUT | /package/{lv2_id}/{option_id}/{varient_id}/setting|设置对应格子中的值| response-result|   |
  GET| /package/{lv2_id}/varient| 获取包下 varent 数据列表| []|   |
- PUT| /package/{lv2_id}/{varient_id}/set-varient| 这个PUT 是saveOrUpdate,设置对应格子中的值| response-result|   |
+ PUT| /package/{lv2_id}/{varient_id}/set-varient |设置对应格子中的值| response-result|   |
  DELETE| /package/{lv2_id}/{varient_id}/del-varient| 删除 varient| response-result|   |
- DELETE | /package/delete?lv1ids={lv1ids}|删除大包| []| package 一览页|
+ 
 
 
 
