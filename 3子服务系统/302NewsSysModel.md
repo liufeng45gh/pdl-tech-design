@@ -371,9 +371,10 @@ updated_by     			|	更新人
  :-- | :-- 
 id 						| 主键( 自增)
 profile_up_version_id    |	对应config_profile-> up_version_id
+varient_id    			| 同profile 下 model_code_varient与package_code_varient 相同 则varient_id 相同
 model_code    			|	model唯一代码 对应 config_model -> code
 model_code_varient    	|	确定唯一列的标志因子,原model_code
-package_code_varient     |	确定唯一列的标志因子,原package_code
+package_code_varient    |	确定唯一列的标志因子,原package_code
 model_name_cn   		|	原 cn_model (model 中文显示名称)
 variant_name			|	原 variant (variant 项显示内容)
 variant_name_cn	     	|	原 cn_variant
@@ -391,7 +392,7 @@ price_increase_abs      |	Nominal price increase abs.
 monetary_adjustment     |	Monetary adjustment
 price     				|	price
 root_price              | 根profile 中价格
-varient_type 			| 类型 1： root profile 中的值，2：系统运算跟新library 比对后的模板  3: 当前修改
+column_type 			| 类型 1： root profile 中的值，2：系统运算跟新library 比对后的模板  3: 当前修改
 created_at     			|	创建时间
 updated_at     			|	更新时间
 created_by     			|	创建人
@@ -401,7 +402,7 @@ updated_by     			|	更新人
 ```
 索引 ->profile_up_version_id
 索引 ->model_code
-唯一约束 -> profile_up_version_id + model_code_varient + package_code_varient
+唯一约束 -> profile_up_version_id + model_code_varient + package_code_varient + column_type
 ```
 
 
@@ -414,10 +415,11 @@ id 						| 主键( 自增)
 profile_up_version_id   |	对应config_profile-> up_version_id
 varient_id    			|	config_profile_varient->varient_id
 option_id    			|	配件id
+column_type  			| 单元格类型 1 旧profile 2 新Lib 3 用户setting
 is_flexable				| 是否灵活选配
 setting_content     	|	设置值
 show_content   			|	显示值
-cellType				| int 单元格类型(默认null)(前端需要)
+cell_type				| int 单元格类型(默认null)(前端需要)
 value					| "S",//值 "X","-"",'',"null","?"(前端需要)
 label					| 页面显示内容 (前端需要)
 rmbPrice 				| float 当前价格-系统自动计算或手动修改 (前端需要)
@@ -435,7 +437,7 @@ updated_by     			|	更新人
 
 注释
 ```
-唯一约束 ->profile_up_version_id + varient_id + option_id
+唯一约束 ->profile_up_version_id + varient_id + option_id + column_type + is_flexable
 ```
 
 
@@ -449,6 +451,7 @@ profile_up_version_id    |	对应config_profile-> up_version_id
 option_id    				|	配件id
 classify     			|	类型
 is_flexable             | 是否灵活选配
+index                   | 顺序
 is_in_root             	| 是否在root profile中
 is_in_new_lib 			| 是否在新 library中
 created_at     			|	创建时间
@@ -502,7 +505,7 @@ updated_by     			|	更新人
 
 注释
 ```
-唯一约束 ->profile_up_version_id + option_id
+唯一约束 ->profile_up_version_id + option_id + is_flexable
 ```
 
 
