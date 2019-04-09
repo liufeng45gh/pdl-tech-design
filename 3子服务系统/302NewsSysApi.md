@@ -79,7 +79,8 @@ Swagger: http://40.73.0.200:8888/swagger/index.html
  GET| /profile-option/{profile_id}/{option_id}|所有 profile_id和option_id 确定唯一 profile-option| {}| |
  GET| /profile-option/{profile_id}/show_diff|显示和最新library的区别| {}| |
  GET| /profile-option/{profile_id}/show_library|显示最新library的设置| []| |
- GET| /profile-option/{profile_id}/show_result|显示最后需要显示的数据 profile 中的数据 + library 中定义为标配的数据| []|  配车页面 |
+ GET| /profile-option/{profile_id}/show_result|显示最后需要显示的数据 profile 中的数据 + library 中定义为标配的数据| []|   |
+ GET| /profile-option/{profile_id} |显示最后需要显示的数据 profile 中的数据 + library 中定义为标配的数据| []|  配车页面 |
   | | | | |
  GET| /profile-option-change/{profile_id}|所有 profile_id的 profile-option-change| []| 配车页面 |
  GET| /profile-option-change/{profile_id}/{option_id}|所有 profile_id和option_id 确定唯一 profile-option-change| {}| |
@@ -1676,6 +1677,54 @@ BODY:
 ]
 
 ```
+
+#### 显示最后需要显示的数据 profile 中的数据 + library 中定义为标配的数据,封装给前端程序员调用 
+
+GET /profile-option/{profile_id}
+
+
+返回格式:
+
+```
+HTTP Stauts Code: 200
+
+BODY:
+
+[
+    {
+        "showText": "100% Options", ->分组名称
+        "classify": "1", -> 分类标识
+        "isFlexable": "0", -> 是否灵活选配
+        "optionList": ->optionList
+    },
+    {},
+    {}
+]
+
+
+
+optionList:
+[
+    {
+        "optionId": "1", ->配件id
+        "propertyCode": "7", -> 配件标示码
+        "nameEn": "", -> 英文名
+        "nameZh": "", -> 中文名
+        "disp_order": "", ->显示顺序
+        "classify":"", ->类型
+        "price": "", -> 价格
+        "rmbPrice": "", -> 人民币价格
+        "discount": "", -> 折扣
+		"isInProfile": false, -> 是否在profile中存在
+		"isInNewLibrary": false, -> 是否在new Library中存在
+    },
+    {},
+    {}
+]
+
+```
+
+
 
 
 
