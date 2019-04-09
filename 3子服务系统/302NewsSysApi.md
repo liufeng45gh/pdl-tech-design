@@ -71,10 +71,12 @@ Swagger: http://40.73.0.200:8888/swagger/index.html
  POST| /profile/{profile_id}/save|profile 保存，这个接口比较关键，因为之前的代码缘故，先按一起save,如果时间太长，再考虑拆修改变化的| response-result|  profile 编辑页|
  POST| /profile/import-profile|上传profile| response-result|
    | | | | |
+ GET| /profile-option-discount/by-profile/{profile_id}|所有 profile_id的 profile-option-discount| []|  配车页面 |
+    | | | | |
  GET| /profile-varient/{profile_id}|所有 profile_id的 profile-varient| []|  配车页面 |
  GET| /profile-varient/{profile_id}/{varient_id}|profile_id和varient_id匹配单个对象| {}| |
- PUT| /profile-varient/{profile_id}/{varient_id}|保存 saveOrUpdate varient对象| response-result| 配车页面 |
- DELETE| /profile-varient/{profile_id}/{varient_id}|删除 varient对象| response-result| 配车页面 |
+ PUT| /profile-varient/{profile_id}/{varient_id}|保存 saveOrUpdate varient对象| response-result|  |
+ DELETE| /profile-varient/{profile_id}/{varient_id}|删除 varient对象| response-result|  |
   | | | |
  GET| /profile-option/{profile_id}/show_self|所有 profile_id的 profile-option| []| |
  GET| /profile-option/{profile_id}/{option_id}|所有 profile_id和option_id 确定唯一 profile-option| {}| |
