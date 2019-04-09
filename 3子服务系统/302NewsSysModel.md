@@ -601,6 +601,7 @@ updated_by     			|	更新人
 id 						| 主键( 自增)
 package_lv2_id         	|	对应 config_package_lv2 -> id
 varient_id				|  对应 config_profile_varient -> id
+column_type             | 类型 1： root profile 中的值，2：系统运算跟新library 比对后的模板  3: 当前修改
 package_price     		|	包价格
 off_price   			|	off价格(更新中)
 bv_price				| bv 价格	(更新中)
@@ -625,6 +626,8 @@ updated_by     			|	更新人
 id 						| 主键( 自增)
 package_lv2_id         	|	对应 config_package_lv2 -> id
 option_id 				|   config_unique_option ->id
+price         			| 价格
+discount         		| 折扣
 created_at     			|	创建时间
 updated_at     			|	更新时间
 created_by     			|	创建人
@@ -644,6 +647,7 @@ id 						| 主键( 自增)
 package_lv2_id         	|	对应 config_package_lv2 -> id
 option_id 				|   config_unique_option ->id
 varient_id				|	变种车代码 config_profile_varient -> id
+column_type             | 类型 1： root profile 中的值，2：系统运算跟新library 比对后的模板  3: 当前修改
 setting_content			| 设置值
 type_f					| --(更新中)
 value					| --(更新中)
