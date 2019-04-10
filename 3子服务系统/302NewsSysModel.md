@@ -84,7 +84,7 @@ updated_by     			|	更新人
 
 
 
-####  varient表  Table config_varient (新表)
+####  variant表  Table config_variant (新表)
 
 
  字段名 | 解释 
@@ -365,17 +365,17 @@ updated_by     			|	更新人
 索引 ->up_version_id
 ```
 
-#### profile变种车型表 config_profile_varient(原 bmw_profile_generation_information)
+#### profile变种车型表 config_profile_variant(原 bmw_profile_generation_information)
 
  字段名 | 解释 
  :-- | :-- 
 id 						| 主键( 自增)
 profile_up_version_id    |	对应config_profile-> up_version_id
-varient_id    			| 同profile 下 model_code_varient与package_code_varient 相同 则varient_id 相同
+variant_id    			| 同profile 下 model_code_variant与package_code_variant 相同 则variant_id 相同
 origin_id   			| 数据原始来源id
 model_code    			|	model唯一代码 对应 config_model -> code
-model_code_varient    	|	确定唯一列的标志因子,原model_code
-package_code_varient    |	确定唯一列的标志因子,原package_code
+model_code_variant    	|	确定唯一列的标志因子,原model_code
+package_code_variant    |	确定唯一列的标志因子,原package_code
 model_name_cn   		|	原 cn_model (model 中文显示名称)
 variant_name			|	原 variant (variant 项显示内容)
 variant_name_cn	     	|	原 cn_variant
@@ -403,7 +403,7 @@ updated_by     			|	更新人
 ```
 索引 ->profile_up_version_id
 索引 ->model_code
-唯一约束 -> profile_up_version_id + model_code_varient + package_code_varient + column_type
+唯一约束 -> profile_up_version_id + model_code_variant + package_code_variant + column_type
 ```
 
 
@@ -414,7 +414,7 @@ updated_by     			|	更新人
  :-- | :-- 
 id 						| 主键( 自增)
 profile_up_version_id   |	对应config_profile-> up_version_id
-varient_id    			|	config_profile_varient->varient_id
+variant_id    			|	config_profile_variant->variant_id
 option_id    			|	配件id
 column_type  			| 单元格类型 1 旧profile 2 新Lib 3 用户setting
 is_flexable				| 是否灵活选配
@@ -438,7 +438,7 @@ updated_by     			|	更新人
 
 注释
 ```
-唯一约束 ->profile_up_version_id + varient_id + option_id + column_type + is_flexable
+唯一约束 ->profile_up_version_id + variant_id + option_id + column_type + is_flexable
 ```
 
 
@@ -594,14 +594,14 @@ updated_by     			|	更新人
 
 
 
-#### package 包中车信息表 config_package_varient(原bmw_profile_flexible_packages_management)
+#### package 包中车信息表 config_package_variant(原bmw_profile_flexible_packages_management)
 
 
  字段名 | 解释 
  :-- | :-- 
 id 						| 主键( 自增)
 package_lv2_id         	|	对应 config_package_lv2 -> id
-varient_id				|  对应 config_profile_varient -> id
+variant_id				|  对应 config_profile_variant -> id
 column_type             | 类型 1： root profile 中的值，2：系统运算跟新library 比对后的模板  3: 当前修改
 package_price     		|	包价格
 off_price   			|	off价格(更新中)
@@ -616,7 +616,7 @@ updated_by     			|	更新人
 注释
 ```
 索引 ->package_lv2_id 
-索引 ->varient_id
+索引 ->variant_id
 ```
 
 #### package 包中配件列表 config_package_lv2_option(新加表)
@@ -639,7 +639,7 @@ updated_by     			|	更新人
 唯一约束 ->package_lv2_id  + option_id
 ```
 
-#### package 包中配件车变种设置表	config_package_option_varient_setting(原bmw_profile_flexible_package_option_setting)
+#### package 包中配件车变种设置表	config_package_option_variant_setting(原bmw_profile_flexible_package_option_setting)
 
 
  字段名 | 解释 
@@ -647,7 +647,7 @@ updated_by     			|	更新人
 id 						| 主键( 自增)
 package_lv2_id         	|	对应 config_package_lv2 -> id
 option_id 				|   config_unique_option ->id
-varient_id				|	变种车代码 config_profile_varient -> id
+variant_id				|	变种车代码 config_profile_variant -> id
 column_type             | 类型 1： root profile 中的值，2：系统运算跟新library 比对后的模板  3: 当前修改
 setting_content			| 设置值
 cell_type				| int 单元格类型(默认null)(前端需要)
@@ -670,7 +670,7 @@ updated_by     			|	更新人
 ```
 索引 ->package_lv2_id  
 索引 ->option_id  
-索引 ->varient_id 
+索引 ->variant_id 
 ```
 
 

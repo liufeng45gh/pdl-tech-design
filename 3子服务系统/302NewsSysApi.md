@@ -81,10 +81,10 @@ Swagger: http://40.73.0.200:8888/swagger/index.html
  POST| /profile/import-profile|上传profile| response-result| |
  DELETE| /profile/delete?ids={ids}|删除profile| response-result| profile 一览页 |
    | | | | |
- GET| /profile-varient/{profile_id}|所有 profile_id的 profile-varient| []|  配车页面 |
- GET| /profile-varient/{profile_id}/{varient_id}|profile_id和varient_id匹配单个对象| {}| |
- PUT| /profile-varient/{profile_id}/{varient_id}|保存 saveOrUpdate varient对象| response-result|  |
- DELETE| /profile-varient/{profile_id}/{varient_id}|删除 varient对象| response-result|  |
+ GET| /profile-variant/{profile_id}|所有 profile_id的 profile-variant| []|  配车页面 |
+ GET| /profile-variant/{profile_id}/{variant_id}|profile_id和variant_id匹配单个对象| {}| |
+ PUT| /profile-variant/{profile_id}/{variant_id}|保存 saveOrUpdate variant对象| response-result|  |
+ DELETE| /profile-variant/{profile_id}/{variant_id}|删除 variant对象| response-result|  |
   | | | |
  GET| /profile-option/{profile_id}/show_self|所有 profile_id的 profile-option| []| |
  GET| /profile-option/{profile_id}/{option_id}|所有 profile_id和option_id 确定唯一 profile-option| {}| |
@@ -101,9 +101,9 @@ Swagger: http://40.73.0.200:8888/swagger/index.html
    | | | | |
  GET| /profile-cell-setting/{profile_id}|所有 profile_id的 profile-cell-setting| []|  配车页面 |
  GET| /profile-cell-setting/{profile_id}/option/{option_id}|所有 profile_id和option_id  profile-cell-setting| []| |
- GET| /profile-cell-setting/{profile_id}/varient/{varient_id}|所有 profile_id和varient_id 相关的  profile-cell-setting| []|  配车页面 |
- GET| /profile-cell-setting/{profile_id}/{option_id}/{varient_id}| profile_id和varient_id 和 option_id 确定唯一  profile-cell-setting| {}| |
- PUT| /profile-cell-setting/{profile_id}/{option_id}/{varient_id}| 这个PUT 是saveOrUpdate| response-result|  配车页面 |
+ GET| /profile-cell-setting/{profile_id}/variant/{variant_id}|所有 profile_id和variant_id 相关的  profile-cell-setting| []|  配车页面 |
+ GET| /profile-cell-setting/{profile_id}/{option_id}/{variant_id}| profile_id和variant_id 和 option_id 确定唯一  profile-cell-setting| {}| |
+ PUT| /profile-cell-setting/{profile_id}/{option_id}/{variant_id}| 这个PUT 是saveOrUpdate| response-result|  配车页面 |
 
 
 
@@ -130,10 +130,10 @@ Swagger: http://40.73.0.200:8888/swagger/index.html
  GET| /package/{lv2_id}/options |package对应lv2_id 对应的 配件列表| []|   |
  DELETE | /package/{lv2_id}/{option_id}/delete|删除小包中的配件| []| |
  POST | /package/{lv2_id}/{option_id}/add-option|给小包下添加配件| []|   |
- PUT | /package/{lv2_id}/{option_id}/{varient_id}/setting|设置对应格子中的值| response-result|   |
- GET| /package/{lv2_id}/varient| 获取包下 varent 数据列表| []|   |
- PUT| /package/{lv2_id}/{varient_id}/set-varient |设置对应格子中的值| response-result|   |
- DELETE| /package/{lv2_id}/{varient_id}/del-varient| 删除 varient| response-result|   |
+ PUT | /package/{lv2_id}/{option_id}/{variant_id}/setting|设置对应格子中的值| response-result|   |
+ GET| /package/{lv2_id}/variant| 获取包下 varent 数据列表| []|   |
+ PUT| /package/{lv2_id}/{variant_id}/set-variant |设置对应格子中的值| response-result|   |
+ DELETE| /package/{lv2_id}/{variant_id}/del-variant| 删除 variant| response-result|   |
  
 
 
@@ -1382,9 +1382,9 @@ BODY:
 
 
 
-#### 所有 profile_id的 profile-varient
+#### 所有 profile_id的 profile-variant
 
-GET /profile-varient/{profile_id}
+GET /profile-variant/{profile_id}
 
 
 返回格式:
@@ -1398,10 +1398,10 @@ BODY:
     {
         "id": "1", ->唯一标示
         "profileId": "" profile id
-        "varientId": "", -> 车变种id
+        "variantId": "", -> 车变种id
         "modelCode": "", -> model唯一代码 对应 config_model -> code
-		"modelCodeVarient": "", ->确定唯一列的标志因子,原model_code
-		"packageCodeVarient": "",-> 确定唯一列的标志因子,原package_code
+		"modelCodevariant": "", ->确定唯一列的标志因子,原model_code
+		"packageCodevariant": "",-> 确定唯一列的标志因子,原package_code
         "modelNameCn": "", -> 原 cn_model (model 中文显示名称)
 		"variantName": "", -> 变种名称
 		"variantNameCn": "", -> 变种中文名称
@@ -1427,9 +1427,9 @@ BODY:
 
 
 
-####  profile_id和varient_id匹配单个profile-varient对象
+####  profile_id和variant_id匹配单个profile-variant对象
 
-GET /profile-varient/{profile_id}/{varient_id}
+GET /profile-variant/{profile_id}/{variant_id}
 
 
 返回格式:
@@ -1443,10 +1443,10 @@ BODY:
 {
 	"id": "1", ->唯一标示
 	"profileId": "" profile id
-	"varientId": "", -> 车变种id
+	"variantId": "", -> 车变种id
 	"modelCode": "", -> model唯一代码 对应 config_model -> code
-	"modelCodeVarient": "", ->确定唯一列的标志因子,原model_code
-	"packageCodeVarient": "",-> 确定唯一列的标志因子,原package_code
+	"modelCodevariant": "", ->确定唯一列的标志因子,原model_code
+	"packageCodevariant": "",-> 确定唯一列的标志因子,原package_code
 	"modelNameCn": "", -> 原 cn_model (model 中文显示名称)
 	"variantName": "", -> 变种名称
 	"variantNameCn": "", -> 变种中文名称
@@ -1468,9 +1468,9 @@ BODY:
 ```
 
 
-#### 保存 saveOrUpdate varient对象
+#### 保存 saveOrUpdate variant对象
 
-PUT /profile-varient/{profile_id}/{varient_id}
+PUT /profile-variant/{profile_id}/{variant_id}
 
 
 
@@ -1490,9 +1490,9 @@ BODY:
 
 ```
 
-#### 删除 varient对象
+#### 删除 variant对象
 
-DELETE /profile-varient/{profile_id}/{varient_id}
+DELETE /profile-variant/{profile_id}/{variant_id}
 
 
 
@@ -1884,7 +1884,7 @@ BODY:
     {
         "id": "1", ->主键
         "profileId": "7", -> profile id
-        "varientId": "", -> config_profile_varient-> id
+        "variantId": "", -> config_profile_variant-> id
         "optionId": "", -> 配件id
         "settingContent": "", ->设置值
         "showContent":"", ->显示值
@@ -1910,7 +1910,7 @@ BODY:
     {
         "id": "1", ->主键
         "profileId": "7", -> profile id
-        "varientId": "", -> config_profile_varient-> id
+        "variantId": "", -> config_profile_variant-> id
         "optionId": "", -> 配件id
         "settingContent": "", ->设置值
         "showContent":"", ->显示值
@@ -1922,9 +1922,9 @@ BODY:
 ```
 
 
-#### 所有 profile_id和varient_id 相关的 profile-cell-setting
+#### 所有 profile_id和variant_id 相关的 profile-cell-setting
 
-GET /profile-cell-setting/{profile_id}/varient/{varient_id}
+GET /profile-cell-setting/{profile_id}/variant/{variant_id}
 
 
 返回格式:
@@ -1937,7 +1937,7 @@ BODY:
     {
         "id": "1", ->主键
         "profileId": "7", -> profile id
-        "varientId": "", -> config_profile_varient-> id
+        "variantId": "", -> config_profile_variant-> id
         "optionId": "", -> 配件id
         "settingContent": "", ->设置值
         "showContent":"", ->显示值
@@ -1949,9 +1949,9 @@ BODY:
 ```
 
 
-#### profile_id和varient_id 和 option_id 确定唯一 profile-cell-setting
+#### profile_id和variant_id 和 option_id 确定唯一 profile-cell-setting
 
-GET /profile-cell-setting/{profile_id}/{option_id}/{varient_id}
+GET /profile-cell-setting/{profile_id}/{option_id}/{variant_id}
 
 
 返回格式:
@@ -1964,7 +1964,7 @@ BODY:
 {
 	"id": "1", ->主键
 	"profileId": "7", -> profile id
-	"varientId": "", -> config_profile_varient-> id
+	"variantId": "", -> config_profile_variant-> id
 	"optionId": "", -> 配件id
 	"settingContent": "", ->设置值
 	"showContent":"", ->显示值
@@ -1974,7 +1974,7 @@ BODY:
 
 #### 修改 cell-setting 这个PUT 是saveOrUpdate
 
-PUT /profile-cell-setting/{profile_id}/{option_id}/{varient_id}
+PUT /profile-cell-setting/{profile_id}/{option_id}/{variant_id}
 
 上送数据
 {
