@@ -650,14 +650,17 @@ option_id 				|   config_unique_option ->id
 varient_id				|	变种车代码 config_profile_varient -> id
 column_type             | 类型 1： root profile 中的值，2：系统运算跟新library 比对后的模板  3: 当前修改
 setting_content			| 设置值
-type_f					| --(更新中)
-value					| --(更新中)
-label 					| --(更新中)
-rmb_price 				| --(更新中)
-is_change 				| --(更新中)
-rmb_price0 				| --(更新中)
-price_option 			| --(更新中)
-price_change_type 		| --(更新中)
+cell_type				| int 单元格类型(默认null)(前端需要)
+value					| "S",//值 "X","-"",'',"null","?"(前端需要)
+label					| 页面显示内容 (前端需要)
+rmbPrice 				| float 当前价格-系统自动计算或手动修改 (前端需要)
+rmbPriceAuto			| float 当前价格-系统自动计算 (前端需要)
+rmbPriceOldLib  		| float 旧库价格
+rmbPriceNewLib			| float 新库价格
+isChange				| 单元格选项是否改变
+priceOption				| int 价格计算操作 0,默认(不处理),1,增加当前价格(配件选中,新增配件)(cellType:4,6生效),2,减去当前价格(配件取消,作废配件)(cellType:2,7,8,9生效),3,增加/减少差异价格(cellType:1,3,5生效)
+ruleLabel				| 规则内容,通过每次规则表自动生成
+ruleMsg					| 规则描述,,通过每次规则表自动生成
 created_at     			|	创建时间
 updated_at     			|	更新时间
 created_by     			|	创建人
