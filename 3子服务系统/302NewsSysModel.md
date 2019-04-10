@@ -372,6 +372,7 @@ updated_by     			|	更新人
 id 						| 主键( 自增)
 profile_up_version_id    |	对应config_profile-> up_version_id
 varient_id    			| 同profile 下 model_code_varient与package_code_varient 相同 则varient_id 相同
+origin_id   			| 数据原始来源id
 model_code    			|	model唯一代码 对应 config_model -> code
 model_code_varient    	|	确定唯一列的标志因子,原model_code
 package_code_varient    |	确定唯一列的标志因子,原package_code
