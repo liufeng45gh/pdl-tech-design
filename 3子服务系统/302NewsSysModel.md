@@ -671,6 +671,27 @@ updated_by     			|	更新人
 ```
 
 
+#### 汇率表	config_sys_exchange
+
+
+ 字段名 | 解释 
+ :-- | :-- 
+id 						| 主键( 自增)
+from_date         	|	开始时间
+to_date 				|   结束时间
+exchange				|	汇率
+created_at     			|	创建时间
+updated_at     			|	更新时间
+created_by     			|	创建人
+updated_by     			|	更新人
+
+注释
+```
+索引 ->from_date  
+索引 ->to_date  
+```
+
+
 
 
 
