@@ -71,6 +71,8 @@ Swagger: http://40.73.0.200:8888/swagger/index.html
  GET| /profile/all-profile|所有 profile| []| |
  GET| /profile/all-profile?status={status}|所有 profile中匹配status| []| |
  GET| /profile/{profile_id}|按profile_id获取 profile| {}| 配车页面 |
+ GET| /profile/{profile_id}/rule-list|按profile_id获取 规则集合| []| 配车页面 |
+ GET| /profile/{profile_id}/show-add-option|按profile_id获取 可以添加的option| []| 配车页面添加option |
  GET| /profile/by-eseries/{eseries_code}|按eseries_code 获取 profile| []| 车系 profile一览页|
  GET| /profile/by-eseries/{eseries_code}?status={status}|按eseries_code 和 status 获取 profile| []| |
  GET| /profile/by-eseries/{eseries_code}?isLaunched={isLaunched}|按eseries_code 和 isLaunched 获取 profile| []| |
@@ -116,6 +118,7 @@ Swagger: http://40.73.0.200:8888/swagger/index.html
    | | | | |
  GET| /package/by-profile/{profile_id}|package对应profile_id 应该返回的展示数据| []|  配车页面 ,配包页面 |
  GET| /package/by-lv1/{lv1_id}| lv1_id 应该返回的展示数据| []|  配车页面 ,配包页面 |
+ GET| /package/{lv1_id}/show-add-option| 配包界面添加option| []|  配包界面添加option |
  GET| /package/show-history/by-profile/{profile_id}|package对应profile_id 对应的历史数据| []| 配车界面选择包数据|
  POST | /package/set-use/{profile_id}/{lv1_id}|设置profile选择历史配置包| []|  配车界面选择包数据 |
  GET| /package/by-lv1/{lv1_id}|package对应lv1_id 对应的 lv2 数据列表| []|   |
